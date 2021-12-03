@@ -1,2 +1,2 @@
 # gradientize
-Visual browser for Spotify
+A visual browser for Spotify, using the Spotify API
