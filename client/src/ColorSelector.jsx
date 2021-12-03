@@ -6,7 +6,7 @@ const ColorSelector = () => {
 
   return (
     <>
-      <Text>Select a Color</Text>
+      <Text size={'lg'} weight={800}>Select a Color</Text>
       <HueSlider value={value} onChange={onChange} size="xl" />
     </>
   )

@@ -1,2 +1,3 @@
-# gradientize
-A visual browser for Spotify, using the Spotify API
+# Gradientize
+  A visual-first browser for new music, using the Spotify API
+

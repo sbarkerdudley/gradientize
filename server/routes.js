@@ -1,3 +1,6 @@
+require('dotenv').config();
+
 const axios = require('axios');
 const express = require('express');
-const route = express.router('/')
+const spotify = express.Router();
+
