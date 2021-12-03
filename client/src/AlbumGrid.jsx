@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Grid, Col } from '@mantine/core';
+import { Button, Grid, Col, Transition } from '@mantine/core';
 import Album from './Album.jsx';
 import data from '../../data.js';
 
@@ -10,14 +10,22 @@ const AlbumGrid = () => {
 
   return (
     <Grid grow gutter={gutter}>
-    <Col span={colSpan}><Album img={''} album={{}}/></Col>
-    <Col span={colSpan}><Album img={''} album={{}}/></Col>
-    <Col span={colSpan}><Album img={''} album={{}}/></Col>
-    <Col span={colSpan}><Album img={''} album={{}}/></Col>
-    <Col span={colSpan}><Album img={''} album={{}}/></Col>
-    <Col span={colSpan}><Album img={''} album={{}}/></Col>
-    <Col span={colSpan}><Album img={''} album={{}}/></Col>
-  </Grid>
+      {/* <Transition
+        mounted={ true }
+        transition='fade'
+        duration={400}
+        timingFunction='ease'
+      > */}
+
+        <Col span={colSpan}><Album img={''} album={{}} /></Col>
+        <Col span={colSpan}><Album img={''} album={{}} /></Col>
+        <Col span={colSpan}><Album img={''} album={{}} /></Col>
+        <Col span={colSpan}><Album img={''} album={{}} /></Col>
+        <Col span={colSpan}><Album img={''} album={{}} /></Col>
+        <Col span={colSpan}><Album img={''} album={{}} /></Col>
+        <Col span={colSpan}><Album img={''} album={{}} /></Col>
+      {/* </Transition> */}
+    </Grid>
   )
 }
 

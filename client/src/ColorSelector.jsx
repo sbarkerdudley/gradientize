@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { HueSlider, Text } from '@mantine/core';
 
 const ColorSelector = () => {

@@ -7,6 +7,7 @@ import AlbumGrid from './AlbumGrid.jsx';
 const App = () => {
   return (
     <div className="App">
+
       <AppShell>
 
       <nav className="nav">
