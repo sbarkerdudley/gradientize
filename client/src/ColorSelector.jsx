@@ -1,25 +1,20 @@
 import React, { useState, useContext } from 'react';
-import { HueSlider, Title, useMantineTheme, MantineProvider, Button, Group, Slider, Center } from '@mantine/core';
+import { HueSlider, Title, useMantineTheme, Button, Group, Slider, Center } from '@mantine/core';
 import SlidersDrawer from './SlidersDrawer.jsx';
+import { SpotifyContext } from './SpotifyProvider.jsx';
 
 
-const ColorSelector = () => {
-  const [sliderValue, onChange] = useState(250);
-  let theme = useMantineTheme();
+const ColorSelector = (props) => {
 
+  const [value, setValue] = useState(300);
+
+  let {slider, setSlider} = React.useContext(SpotifyContext)
 
   return (
-    <MantineProvider theme={{
-      headings: { fontFamily: 'Greycliff CF, sans-serif' }
-    }}>
-      <Group direction='column' position='apart'>
-        <Center>
-          <Title order={2}>Select a Color</Title>
-        </Center>
-        <HueSlider value={sliderValue} onChange={onChange} thumbSize='xl' size="xl" />
-        <SlidersDrawer methods={'randomize'}/>
-      </Group>
-    </MantineProvider>
+    <Group direction='column' position='apart'>
+      <HueSlider value={slider} onChange={setSlider} size="xl" />
+      <SlidersDrawer />
+    </Group>
   )
 };
 

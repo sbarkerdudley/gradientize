@@ -4,25 +4,26 @@ import { Slider, RangeSlider, Center, Text } from '@mantine/core';
 export const SliderGenerator = (props) => {
 
   var randomSliderValues = Array(2).fill().map(x => Math.floor(Math.random() * 20) * 5).sort()
+  var randomSliderValue = Math.floor(Math.random() * 100)
 
   return (
     <>
       <Center><Text size='sm' weight={700}>{props.label}</Text></Center>
-      <RangeSlider
+      <Slider
         radius="xl"
         marks={[
-          { value: 30 },
+          { value: 25 },
           { value: 50 },
-          { value: 70 },
+          { value: 75 },
         ]}
         labelTransition="fade"
-        labelTransitionDuration={300}
+        labelTransitionDuration={400}
         labelTransitionTimingFunction="ease"
         step={5}
         min={0}
         max={100}
-        // defaultValue={50}
-        defaultValue={randomSliderValues}
+        // defaultValue={randomSliderValues}
+        defaultValue={randomSliderValue}
         color={props.color}
         thumb={{
           height: 40,

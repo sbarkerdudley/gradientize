@@ -1,13 +1,13 @@
 require('dotenv').config();
 const auth = require('express').Router();
-// const auth = express.Router();
 const SpotifyStrategy = require('passport-spotify').Strategy;
-const passport = require('passport')
+const passport = require('passport');
 
 const credentials = {
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: process.env.CALLBACK_URI,
+  callbackURL: 'http://localhost:3000/auth/spotify/callback',
+  scope: []
 }
 
 passport.use(
@@ -15,7 +15,7 @@ passport.use(
       // User.findOrCreate({spotifyId: profile.id}, function (err, user) {
       //   return done(err, user);
       // });
-      console.log({spotifyId: profile.id});
+      console.log({spotifyId: profile.id}, accessToken, refreshToken, expires_in, profile);
       return done();
     }
   )
@@ -25,22 +25,23 @@ auth.get('/spotify',
   passport.authenticate('spotify', {
     scope: ['user-read-email', 'user-read-private'],
     showDialog: true,
+    failureRedirect: '/auth/error'
+  }, (req, res) => {
+    res.redirect('/main')
   })
 );
 
 auth.get(
   '/spotify/callback',
-  passport.authenticate('spotify', {failureRedirect: '/login'}),
-  function (req, res) {
+  passport.authenticate('spotify', {failureRedirect: '/auth/error'}),
+  (req, res) => {
     // Successful authentication, redirect home.
-    res.redirect('/');
+    res.redirect('/main');
   }
 );
 
-// auth.get('/spotify/callback', (req, res) => {
-//   let { code } = req.query;
-//   console.log(code);
-//   res.redirect();
-// });
+auth.get('/error', (req, res) => {
+  res.send('Error in Authentication')
+});
 
-module.exports = auth;
+module.exports = {auth, passport};

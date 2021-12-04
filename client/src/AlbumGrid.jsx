@@ -4,7 +4,7 @@ import Album from './Album.jsx';
 import data from '../../data.js';
 
 
-const AlbumGrid = () => {
+const AlbumGrid = (props) => {
   let colSpan = 4
   let gutter = 'md'
 
@@ -13,7 +13,8 @@ const AlbumGrid = () => {
   })
 
   return (
-    <Grid gutter={gutter}>
+    <Grid grow gutter={gutter}>
+      {props.children }
       {AlbumComponents}
     </Grid>
   )

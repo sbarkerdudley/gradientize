@@ -4,13 +4,11 @@ import ColorSelector from './ColorSelector.jsx';
 
 
 const AppHeader = () => {
-  let
-    gradient = {from: '#00000', to: '#ffee00', deg: 60},
-    radius = 'lg'
+
 
   return (
-    <Header height={300} padding={0} >
-      <ColorSelector />
+    <Header height={200} padding={10} >
+        <ColorSelector />
     </Header>
   );
 }

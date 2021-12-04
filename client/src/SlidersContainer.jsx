@@ -13,7 +13,9 @@ const SlidersContainer = () => {
       <Col span={colSpan}><SliderGenerator color={'pink'} label={'Danceability'}/></Col>
       <Col span={colSpan}><SliderGenerator color={'orange'} label={'Energy'}/></Col>
       <Col span={colSpan}><SliderGenerator color={'green'} label={'Instrumentalness'}/></Col>
-      <Col span={colSpan}><SliderGenerator color={'teal'} label={'Acousticness'}/></Col>
+      <Col span={colSpan}><SliderGenerator color={'teal'} label={'Acousticness'} /></Col>
+      <Col span={colSpan}><SliderGenerator color={'blue'} label={'Acousticness'} /></Col>
+      <Col span={colSpan}><SliderGenerator color={'yellow'} label={'Acousticness'} /></Col>
   </Grid>
   )
 }
