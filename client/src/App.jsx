@@ -1,26 +1,20 @@
 import React from 'react';
-import { Button, AppShell } from '@mantine/core';
-import ColorSelector from './ColorSelector.jsx';
-import Album from './Album.jsx';
+import { MantineProvider, Button, AppShell, Slider, RangeSlider } from '@mantine/core';
+
+import AppHeader from './AppHeader.jsx';
 import AlbumGrid from './AlbumGrid.jsx';
+
 
 const App = () => {
   return (
-    <div className="App">
-
-      <AppShell>
-
-      <nav className="nav">
-        Navigation Bar
-        <div><ColorSelector /></div>
-        <Button variant="gradient" gradient={{ from: 'grape', to: 'pink', deg: 35 }}>Select Album</Button>
-      </nav>
-      <main>
-        <AlbumGrid>
-        </AlbumGrid>
-      </main>
+    <MantineProvider theme={{
+      fontFamily: 'Greycliff CF, sans-serif'
+    }}>
+      <AppShell header={<AppHeader />}>
+        <AlbumGrid />
       </AppShell>
-    </div>
+
+    </MantineProvider>
   );
 }
 

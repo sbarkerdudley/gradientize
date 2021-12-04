@@ -5,26 +5,17 @@ import data from '../../data.js';
 
 
 const AlbumGrid = () => {
-  let colSpan = 3
+  let colSpan = 4
   let gutter = 'md'
 
-  return (
-    <Grid grow gutter={gutter}>
-      {/* <Transition
-        mounted={ true }
-        transition='fade'
-        duration={400}
-        timingFunction='ease'
-      > */}
+  let AlbumComponents = data.albums.items.map(album => {
+    return <Col span={colSpan}><Album {...{album}} /></Col>
+  })
 
+  return (
+    <Grid gutter={gutter}>
+      {AlbumComponents}
         <Col span={colSpan}><Album img={''} album={{}} /></Col>
-        <Col span={colSpan}><Album img={''} album={{}} /></Col>
-        <Col span={colSpan}><Album img={''} album={{}} /></Col>
-        <Col span={colSpan}><Album img={''} album={{}} /></Col>
-        <Col span={colSpan}><Album img={''} album={{}} /></Col>
-        <Col span={colSpan}><Album img={''} album={{}} /></Col>
-        <Col span={colSpan}><Album img={''} album={{}} /></Col>
-      {/* </Transition> */}
     </Grid>
   )
 }

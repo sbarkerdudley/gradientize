@@ -4,10 +4,12 @@ import { Card, Image, Text, Button } from '@mantine/core';
 const Album = (props) => {
   let radius = 'md';
   let dims = 160;
+  let image = "https://i.scdn.co/image/ab67616d00001e02b62b03a629fec8f1ac2d1c0d"
 
   return (
 
     <Card
+      ket={props.album.id}
       shadow="sm"
       padding="xl"
       component="a"
@@ -17,10 +19,8 @@ const Album = (props) => {
     >
       <Card.Section>
         <Image
-          src="https://i.scdn.co/image/ab67616d00001e02b62b03a629fec8f1ac2d1c0d"
-          // src={props.img}
+          src={props.album.images?.[1].url || image}
           height={dims}
-          // width={dims}
           radius={radius} />
 
 

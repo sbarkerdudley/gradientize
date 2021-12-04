@@ -1,6 +1,6 @@
-const me = { top: {}}
+const data = {}
 
-me.top.artists = {
+data.artists = {
   /*
 
     curl -X "GET" "https://api.spotfy.com/v1/me/top/artists?time_range=long_term&limit=20&offset=5" -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer BQA5W3vr1WV2MdhfKh_-bDfXbgHWGoG88RlviBX9h1GEvKs-ilXqw75khRwPOFqzDaJcrJqXpo56tGG6V_JizcPT6egCOxbIt5HtEt44F6ShMdwkQkvm9h85YAq6jB_FuJwai8s8gip8vi3DBbO2m36bulpRpZJpa90LiwUVjTxyG5LPqc-Llr1Gjg"
@@ -24,7 +24,7 @@ me.top.artists = {
       "width" : 640
     }, {
       "height" : 300,
-      "url" : "https://i.scdn.co/image/ab67616d00001e02b62b03a629fec8f1ac2d1c0d",
+      "url" : "https://i.scdn.co/image/ab67616d00001e02b62b03a629fec8f1ac2d1c0d`",
       "width" : 300
     }, {
       "height" : 64,
@@ -590,47 +590,893 @@ me.top.artists = {
 
 
 
-export default me;
+export default data;
 
-me: {
-  top: {
-    items: [
-      {
+// data: {
+//   artists: {
+//     items: [
+//       {
 
-      }
-    ]
-  }
-}
+//       }
+//     ],
+//     total: 50,
+//   }
+// }
 
 let userGenres = {};
-let userArtists = items;
-let
+let userAlbums = data.albums?.items;
 
-for var (artist of userArtists) {
 
-  var mediumImages = artist.images.filter(img => img.height<=350 || img.width <= 350)
-  var thumbnails = artist.images.filter(img => img.height<=200 || img.width <= 200)
+// for (var album of userAlbums) {
 
-  artist.genres.forEach(g => {
-    userGenres[g] = userGenres[g] ? userGenres[g]++ : 1)
-  }
-  userArtists[artist.id] = {
-    name: artist.name,
-    url: artist.external_urls.spotify,
-    images: thumbnails
-  }
+//   var mediumImages = album.images.filter(img => img.height<=350 || img.width <= 350)
+//   var thumbnails = album.images.filter(img => img.height<=200 || img.width <= 200)
 
+//   album.genres.forEach(g => {
+//     userGenres[g] = userGenres[g] ? userGenres[g]++ : 1
+//   });
+//   userAlbums[album.id] = {
+//     name: album.name,
+//     url: album.external_urls.spotify,
+//     images: thumbnails
+//   }
+
+// }
+
+data.album = {
+  "album_group" : "album",
+  "album_type" : "album",
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
+    },
+    "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
+    "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
+    "name" : "Miles Davis",
+    "type" : "artist",
+    "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
+  } ],
+  "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+  "external_urls" : {
+    "spotify" : "https://open.spotify.com/album/67SjMB8yzuzpCirtVuuO8D"
+  },
+  "href" : "https://api.spotify.com/v1/albums/67SjMB8yzuzpCirtVuuO8D",
+  "id" : "67SjMB8yzuzpCirtVuuO8D",
+  "images" : [ {
+    "height" : 640,
+    "url" : "https://i.scdn.co/image/ab67616d0000b273087c6f2e613ae4246d8ec7d7",
+    "width" : 640
+  }, {
+    "height" : 300,
+    "url" : "https://i.scdn.co/image/ab67616d00001e02087c6f2e613ae4246d8ec7d7",
+    "width" : 300
+  }, {
+    "height" : 64,
+    "url" : "https://i.scdn.co/image/ab67616d00004851087c6f2e613ae4246d8ec7d7",
+    "width" : 64
+  } ],
+  "name" : "BD Music Presents Kind of Blue",
+  "release_date" : "2021-11-20",
+  "release_date_precision" : "day",
+  "total_tracks" : 5,
+  "type" : "album",
+  "uri" : "spotify:album:67SjMB8yzuzpCirtVuuO8D"
 }
-
-
 // map photos to object sorted by artist ID
 // artist has:
 // id, url link to profile, photos
 
 
-me.top.albums = {
+data.albums = {
   "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4/albums?offset=0&limit=20&include_groups=album,single,compilation,appears_on",
-  "items" : [ {
+  "items" : [
+    {
+      "album_group" : "album",
+      "album_type" : "album",
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
+        "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
+        "name" : "Miles Davis",
+        "type" : "artist",
+        "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/2hGh5VOeeqimQFxqXvfCUf"
+        },
+        "href" : "https://api.spotify.com/v1/artists/2hGh5VOeeqimQFxqXvfCUf",
+        "id" : "2hGh5VOeeqimQFxqXvfCUf",
+        "name" : "John Coltrane",
+        "type" : "artist",
+        "uri" : "spotify:artist:2hGh5VOeeqimQFxqXvfCUf"
+      } ],
+      "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/3p6XK8PERkujtV6MRu7QH3"
+      },
+      "href" : "https://api.spotify.com/v1/albums/3p6XK8PERkujtV6MRu7QH3",
+      "id" : "3p6XK8PERkujtV6MRu7QH3",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/ab67616d0000b2732a7a9c4360cedfd978af36b7",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/ab67616d00001e022a7a9c4360cedfd978af36b7",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/ab67616d000048512a7a9c4360cedfd978af36b7",
+        "width" : 64
+      } ],
+      "name" : "The Final Tour: The Bootleg Series, Vol. 6",
+      "release_date" : "2018-03-23",
+      "release_date_precision" : "day",
+      "total_tracks" : 23,
+      "type" : "album",
+      "uri" : "spotify:album:3p6XK8PERkujtV6MRu7QH3"
+    }, {
+      "album_group" : "album",
+      "album_type" : "album",
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
+        "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
+        "name" : "Miles Davis",
+        "type" : "artist",
+        "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
+      } ],
+      "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/2cPnNqIkKs8VhF6Ewx5BXI"
+      },
+      "href" : "https://api.spotify.com/v1/albums/2cPnNqIkKs8VhF6Ewx5BXI",
+      "id" : "2cPnNqIkKs8VhF6Ewx5BXI",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/ab67616d0000b273cd6de3ef51c9e64c331e7b16",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/ab67616d00001e02cd6de3ef51c9e64c331e7b16",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/ab67616d00004851cd6de3ef51c9e64c331e7b16",
+        "width" : 64
+      } ],
+      "name" : "Miles Davis Quintet: Freedom Jazz Dance: The Bootleg Series, Vol. 5",
+      "release_date" : "2016-10-21",
+      "release_date_precision" : "day",
+      "total_tracks" : 23,
+      "type" : "album",
+      "uri" : "spotify:album:2cPnNqIkKs8VhF6Ewx5BXI"
+    }, {
+      "album_group" : "album",
+      "album_type" : "album",
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
+        "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
+        "name" : "Miles Davis",
+        "type" : "artist",
+        "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/5cM1PvItlR21WUyBnsdMcn"
+        },
+        "href" : "https://api.spotify.com/v1/artists/5cM1PvItlR21WUyBnsdMcn",
+        "id" : "5cM1PvItlR21WUyBnsdMcn",
+        "name" : "Robert Glasper",
+        "type" : "artist",
+        "uri" : "spotify:artist:5cM1PvItlR21WUyBnsdMcn"
+      } ],
+      "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/0nTqzVgkJewGhfjr0oUllt"
+      },
+      "href" : "https://api.spotify.com/v1/albums/0nTqzVgkJewGhfjr0oUllt",
+      "id" : "0nTqzVgkJewGhfjr0oUllt",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/ab67616d0000b27345a8bb2cdfe0bf695439bdfe",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/ab67616d00001e0245a8bb2cdfe0bf695439bdfe",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/ab67616d0000485145a8bb2cdfe0bf695439bdfe",
+        "width" : 64
+      } ],
+      "name" : "Everything's Beautiful",
+      "release_date" : "2016-06-24",
+      "release_date_precision" : "day",
+      "total_tracks" : 11,
+      "type" : "album",
+      "uri" : "spotify:album:0nTqzVgkJewGhfjr0oUllt"
+    }, {
+      "album_group" : "album",
+      "album_type" : "album",
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
+        "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
+        "name" : "Miles Davis",
+        "type" : "artist",
+        "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/5cM1PvItlR21WUyBnsdMcn"
+        },
+        "href" : "https://api.spotify.com/v1/artists/5cM1PvItlR21WUyBnsdMcn",
+        "id" : "5cM1PvItlR21WUyBnsdMcn",
+        "name" : "Robert Glasper",
+        "type" : "artist",
+        "uri" : "spotify:artist:5cM1PvItlR21WUyBnsdMcn"
+      } ],
+      "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/0DI27qIRQRFkXrMvHxj9yh"
+      },
+      "href" : "https://api.spotify.com/v1/albums/0DI27qIRQRFkXrMvHxj9yh",
+      "id" : "0DI27qIRQRFkXrMvHxj9yh",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/ab67616d0000b2739883e7842775fc3401d77e14",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/ab67616d00001e029883e7842775fc3401d77e14",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/ab67616d000048519883e7842775fc3401d77e14",
+        "width" : 64
+      } ],
+      "name" : "Everything's Beautiful",
+      "release_date" : "2016-05-27",
+      "release_date_precision" : "day",
+      "total_tracks" : 11,
+      "type" : "album",
+      "uri" : "spotify:album:0DI27qIRQRFkXrMvHxj9yh"
+    }, {
+      "album_group" : "album",
+      "album_type" : "album",
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
+        "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
+        "name" : "Miles Davis",
+        "type" : "artist",
+        "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
+      } ],
+      "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/2NJ0qZ1UNsiESTmFSQDkT1"
+      },
+      "href" : "https://api.spotify.com/v1/albums/2NJ0qZ1UNsiESTmFSQDkT1",
+      "id" : "2NJ0qZ1UNsiESTmFSQDkT1",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/ab67616d0000b273a7b311a72bfca11ace1a115c",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/ab67616d00001e02a7b311a72bfca11ace1a115c",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/ab67616d00004851a7b311a72bfca11ace1a115c",
+        "width" : 64
+      } ],
+      "name" : "Miles Ahead (Original Motion Picture Soundtrack)",
+      "release_date" : "2016-04-01",
+      "release_date_precision" : "day",
+      "total_tracks" : 24,
+      "type" : "album",
+      "uri" : "spotify:album:2NJ0qZ1UNsiESTmFSQDkT1"
+    }, {
+      "album_group" : "album",
+      "album_type" : "album",
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
+        "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
+        "name" : "Miles Davis",
+        "type" : "artist",
+        "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
+      } ],
+      "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/10w9yWdQOPbgIG0EKUf1ak"
+      },
+      "href" : "https://api.spotify.com/v1/albums/10w9yWdQOPbgIG0EKUf1ak",
+      "id" : "10w9yWdQOPbgIG0EKUf1ak",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/ab67616d0000b273763bec54bd2fdeafbf15e317",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/ab67616d00001e02763bec54bd2fdeafbf15e317",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/ab67616d00004851763bec54bd2fdeafbf15e317",
+        "width" : 64
+      } ],
+      "name" : "Miles Davis at Newport: 1955-1975: The Bootleg Series, Vol. 4",
+      "release_date" : "2015-07-17",
+      "release_date_precision" : "day",
+      "total_tracks" : 40,
+      "type" : "album",
+      "uri" : "spotify:album:10w9yWdQOPbgIG0EKUf1ak"
+    }, {
+      "album_group" : "album",
+      "album_type" : "album",
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
+        "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
+        "name" : "Miles Davis",
+        "type" : "artist",
+        "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
+      } ],
+      "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/1KWsuwZClXVSbyVD1nkJwK"
+      },
+      "href" : "https://api.spotify.com/v1/albums/1KWsuwZClXVSbyVD1nkJwK",
+      "id" : "1KWsuwZClXVSbyVD1nkJwK",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/ab67616d0000b273c0318dd0254a5e4456c785c3",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/ab67616d00001e02c0318dd0254a5e4456c785c3",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/ab67616d00004851c0318dd0254a5e4456c785c3",
+        "width" : 64
+      } ],
+      "name" : "Take Off: The Complete Blue Note Albums",
+      "release_date" : "2014-05-13",
+      "release_date_precision" : "day",
+      "total_tracks" : 26,
+      "type" : "album",
+      "uri" : "spotify:album:1KWsuwZClXVSbyVD1nkJwK"
+    }, {
+      "album_group" : "album",
+      "album_type" : "album",
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
+        "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
+        "name" : "Miles Davis",
+        "type" : "artist",
+        "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
+      } ],
+      "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/1lTY8MqxId57NQtblgRV4Y"
+      },
+      "href" : "https://api.spotify.com/v1/albums/1lTY8MqxId57NQtblgRV4Y",
+      "id" : "1lTY8MqxId57NQtblgRV4Y",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/ab67616d0000b273b50b14a850008784170e6f68",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/ab67616d00001e02b50b14a850008784170e6f68",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/ab67616d00004851b50b14a850008784170e6f68",
+        "width" : 64
+      } ],
+      "name" : "Miles at The Fillmore: Miles Davis 1970: The Bootleg Series, Vol. 3",
+      "release_date" : "2014-03-21",
+      "release_date_precision" : "day",
+      "total_tracks" : 31,
+      "type" : "album",
+      "uri" : "spotify:album:1lTY8MqxId57NQtblgRV4Y"
+    }, {
+      "album_group" : "album",
+      "album_type" : "album",
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
+        "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
+        "name" : "Miles Davis",
+        "type" : "artist",
+        "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
+      } ],
+      "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/5BcPZGYYch0uDOV5UkbWvs"
+      },
+      "href" : "https://api.spotify.com/v1/albums/5BcPZGYYch0uDOV5UkbWvs",
+      "id" : "5BcPZGYYch0uDOV5UkbWvs",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/ab67616d0000b273bcad3b156d59c7bf9d0702b2",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/ab67616d00001e02bcad3b156d59c7bf9d0702b2",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/ab67616d00004851bcad3b156d59c7bf9d0702b2",
+        "width" : 64
+      } ],
+      "name" : "Ascenseur pour l'echafaud",
+      "release_date" : "2014",
+      "release_date_precision" : "year",
+      "total_tracks" : 13,
+      "type" : "album",
+      "uri" : "spotify:album:5BcPZGYYch0uDOV5UkbWvs"
+    }, {
+      "album_group" : "album",
+      "album_type" : "album",
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
+        "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
+        "name" : "Miles Davis",
+        "type" : "artist",
+        "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
+      } ],
+      "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/4jSv7dCwUWqp8kf8nXBEGn"
+      },
+      "href" : "https://api.spotify.com/v1/albums/4jSv7dCwUWqp8kf8nXBEGn",
+      "id" : "4jSv7dCwUWqp8kf8nXBEGn",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/ab67616d0000b2736642c45e82deef0e2b20e12b",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/ab67616d00001e026642c45e82deef0e2b20e12b",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/ab67616d000048516642c45e82deef0e2b20e12b",
+        "width" : 64
+      } ],
+      "name" : "Miles Davis Quintet: Live In Europe 1967: The Bootleg Series, Vol. 1",
+      "release_date" : "2011-09-21",
+      "release_date_precision" : "day",
+      "total_tracks" : 24,
+      "type" : "album",
+      "uri" : "spotify:album:4jSv7dCwUWqp8kf8nXBEGn"
+    }, {
+      "album_group" : "album",
+      "album_type" : "album",
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
+        "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
+        "name" : "Miles Davis",
+        "type" : "artist",
+        "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
+      } ],
+      "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/2j5GUDLnu0vbZCK1fgHo7c"
+      },
+      "href" : "https://api.spotify.com/v1/albums/2j5GUDLnu0vbZCK1fgHo7c",
+      "id" : "2j5GUDLnu0vbZCK1fgHo7c",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/ab67616d0000b273ed837668aaab18b3cf369883",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/ab67616d00001e02ed837668aaab18b3cf369883",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/ab67616d00004851ed837668aaab18b3cf369883",
+        "width" : 64
+      } ],
+      "name" : "Embraceable",
+      "release_date" : "2011-07-05",
+      "release_date_precision" : "day",
+      "total_tracks" : 12,
+      "type" : "album",
+      "uri" : "spotify:album:2j5GUDLnu0vbZCK1fgHo7c"
+    }, {
+      "album_group" : "album",
+      "album_type" : "album",
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
+        "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
+        "name" : "Miles Davis",
+        "type" : "artist",
+        "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
+      } ],
+      "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/1UzI5mJt5myuAkGCX1kDI4"
+      },
+      "href" : "https://api.spotify.com/v1/albums/1UzI5mJt5myuAkGCX1kDI4",
+      "id" : "1UzI5mJt5myuAkGCX1kDI4",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/ab67616d0000b273cb533ff2a0bf4c4c0e58bee9",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/ab67616d00001e02cb533ff2a0bf4c4c0e58bee9",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/ab67616d00004851cb533ff2a0bf4c4c0e58bee9",
+        "width" : 64
+      } ],
+      "name" : "Bitches Brew Live",
+      "release_date" : "2011-02-08",
+      "release_date_precision" : "day",
+      "total_tracks" : 9,
+      "type" : "album",
+      "uri" : "spotify:album:1UzI5mJt5myuAkGCX1kDI4"
+    }, {
+      "album_group" : "album",
+      "album_type" : "album",
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
+        "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
+        "name" : "Miles Davis",
+        "type" : "artist",
+        "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
+      } ],
+      "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/0U2AJT507sOU5PgO9BXLdc"
+      },
+      "href" : "https://api.spotify.com/v1/albums/0U2AJT507sOU5PgO9BXLdc",
+      "id" : "0U2AJT507sOU5PgO9BXLdc",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/ab67616d0000b2739c1d61b1244babbf81db5898",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/ab67616d00001e029c1d61b1244babbf81db5898",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/ab67616d000048519c1d61b1244babbf81db5898",
+        "width" : 64
+      } ],
+      "name" : "Dig [Original Jazz Classics Remasters]",
+      "release_date" : "2010-01-01",
+      "release_date_precision" : "day",
+      "total_tracks" : 7,
+      "type" : "album",
+      "uri" : "spotify:album:0U2AJT507sOU5PgO9BXLdc"
+    }, {
+      "album_group" : "album",
+      "album_type" : "album",
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
+        "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
+        "name" : "Miles Davis",
+        "type" : "artist",
+        "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
+      } ],
+      "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/3gJ0bYmHa87sKS5RoYdAIU"
+      },
+      "href" : "https://api.spotify.com/v1/albums/3gJ0bYmHa87sKS5RoYdAIU",
+      "id" : "3gJ0bYmHa87sKS5RoYdAIU",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/ab67616d0000b27394e675fb06080b050d296acc",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/ab67616d00001e0294e675fb06080b050d296acc",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/ab67616d0000485194e675fb06080b050d296acc",
+        "width" : 64
+      } ],
+      "name" : "Groovin' High",
+      "release_date" : "2009-11-11",
+      "release_date_precision" : "day",
+      "total_tracks" : 10,
+      "type" : "album",
+      "uri" : "spotify:album:3gJ0bYmHa87sKS5RoYdAIU"
+    }, {
+      "album_group" : "album",
+      "album_type" : "album",
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
+        "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
+        "name" : "Miles Davis",
+        "type" : "artist",
+        "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
+      } ],
+      "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/5sEW8PRqhUpSm0NIUirUHe"
+      },
+      "href" : "https://api.spotify.com/v1/albums/5sEW8PRqhUpSm0NIUirUHe",
+      "id" : "5sEW8PRqhUpSm0NIUirUHe",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/ab67616d0000b273c395977751d680e96c230865",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/ab67616d00001e02c395977751d680e96c230865",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/ab67616d00004851c395977751d680e96c230865",
+        "width" : 64
+      } ],
+      "name" : "The Classic Prestige Sessions, 1951-1956",
+      "release_date" : "2009-01-01",
+      "release_date_precision" : "day",
+      "total_tracks" : 25,
+      "type" : "album",
+      "uri" : "spotify:album:5sEW8PRqhUpSm0NIUirUHe"
+    }, {
+      "album_group" : "album",
+      "album_type" : "album",
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
+        "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
+        "name" : "Miles Davis",
+        "type" : "artist",
+        "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
+      } ],
+      "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/0RS41QUxSzi1bSJEhMUiYX"
+      },
+      "href" : "https://api.spotify.com/v1/albums/0RS41QUxSzi1bSJEhMUiYX",
+      "id" : "0RS41QUxSzi1bSJEhMUiYX",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/ab67616d0000b27316aa9fa085ea4227043e310e",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/ab67616d00001e0216aa9fa085ea4227043e310e",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/ab67616d0000485116aa9fa085ea4227043e310e",
+        "width" : 64
+      } ],
+      "name" : "Collectors' Items [RVG Remaster]",
+      "release_date" : "2009-01-01",
+      "release_date_precision" : "day",
+      "total_tracks" : 7,
+      "type" : "album",
+      "uri" : "spotify:album:0RS41QUxSzi1bSJEhMUiYX"
+    }, {
+      "album_group" : "album",
+      "album_type" : "album",
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
+        "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
+        "name" : "Miles Davis",
+        "type" : "artist",
+        "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
+      } ],
+      "available_markets" : [ "FR" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/6tGFUTmD6ZtcQ8qGeIZkcT"
+      },
+      "href" : "https://api.spotify.com/v1/albums/6tGFUTmD6ZtcQ8qGeIZkcT",
+      "id" : "6tGFUTmD6ZtcQ8qGeIZkcT",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/ab67616d0000b273eda4eeee264e617c7544e9d1",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/ab67616d00001e02eda4eeee264e617c7544e9d1",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/ab67616d00004851eda4eeee264e617c7544e9d1",
+        "width" : 64
+      } ],
+      "name" : "Les Incontournables du Jazz - Miles Davis",
+      "release_date" : "2008-02-11",
+      "release_date_precision" : "day",
+      "total_tracks" : 13,
+      "type" : "album",
+      "uri" : "spotify:album:6tGFUTmD6ZtcQ8qGeIZkcT"
+    }, {
+      "album_group" : "album",
+      "album_type" : "album",
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
+        "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
+        "name" : "Miles Davis",
+        "type" : "artist",
+        "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/2hGh5VOeeqimQFxqXvfCUf"
+        },
+        "href" : "https://api.spotify.com/v1/artists/2hGh5VOeeqimQFxqXvfCUf",
+        "id" : "2hGh5VOeeqimQFxqXvfCUf",
+        "name" : "John Coltrane",
+        "type" : "artist",
+        "uri" : "spotify:artist:2hGh5VOeeqimQFxqXvfCUf"
+      } ],
+      "available_markets" : [ "AD", "AL", "AM", "AT", "AU", "AZ", "BA", "BE", "BG", "BY", "CA", "CH", "CY", "CZ", "DE", "DK", "EE", "ES", "FI", "FR", "GB", "GE", "GR", "HR", "HU", "IE", "IS", "IT", "JP", "KZ", "LI", "LT", "LU", "LV", "MC", "MD", "ME", "MK", "MT", "NL", "NO", "PL", "PT", "RO", "RS", "RU", "SE", "SI", "SK", "SM", "TR", "UA", "XK" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/6oLOpee7AsMb63G4dRfz3d"
+      },
+      "href" : "https://api.spotify.com/v1/albums/6oLOpee7AsMb63G4dRfz3d",
+      "id" : "6oLOpee7AsMb63G4dRfz3d",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/ab67616d0000b27310755748d6f31964b23e99d0",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/ab67616d00001e0210755748d6f31964b23e99d0",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/ab67616d0000485110755748d6f31964b23e99d0",
+        "width" : 64
+      } ],
+      "name" : "Trane's Blues",
+      "release_date" : "2007-09-10",
+      "release_date_precision" : "day",
+      "total_tracks" : 10,
+      "type" : "album",
+      "uri" : "spotify:album:6oLOpee7AsMb63G4dRfz3d"
+    }, {
+      "album_group" : "album",
+      "album_type" : "album",
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
+        "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
+        "name" : "Miles Davis",
+        "type" : "artist",
+        "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4Ww5mwS7BWYjoZTUIrMHfC"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4Ww5mwS7BWYjoZTUIrMHfC",
+        "id" : "4Ww5mwS7BWYjoZTUIrMHfC",
+        "name" : "Charlie Parker",
+        "type" : "artist",
+        "uri" : "spotify:artist:4Ww5mwS7BWYjoZTUIrMHfC"
+      } ],
+      "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/2Ds50zsxc94s62c9ARDZyV"
+      },
+      "href" : "https://api.spotify.com/v1/albums/2Ds50zsxc94s62c9ARDZyV",
+      "id" : "2Ds50zsxc94s62c9ARDZyV",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/ab67616d0000b273c82089f11bca2595ea4de3d5",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/ab67616d00001e02c82089f11bca2595ea4de3d5",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/ab67616d00004851c82089f11bca2595ea4de3d5",
+        "width" : 64
+      } ],
+      "name" : "Out Of Nowhere: The Rise Of Miles Davis",
+      "release_date" : "2006-02-21",
+      "release_date_precision" : "day",
+      "total_tracks" : 13,
+      "type" : "album",
+      "uri" : "spotify:album:2Ds50zsxc94s62c9ARDZyV"
+    }, {
+      "album_group" : "album",
+      "album_type" : "album",
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
+        "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
+        "name" : "Miles Davis",
+        "type" : "artist",
+        "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
+      } ],
+      "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/4Hu1GTnm9eylgTggHFPEy0"
+      },
+      "href" : "https://api.spotify.com/v1/albums/4Hu1GTnm9eylgTggHFPEy0",
+      "id" : "4Hu1GTnm9eylgTggHFPEy0",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/ab67616d0000b273bfdaefda80ddf379d770fd8f",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/ab67616d00001e02bfdaefda80ddf379d770fd8f",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/ab67616d00004851bfdaefda80ddf379d770fd8f",
+        "width" : 64
+      } ],
+      "name" : "Birdland 1951 (Reissue)",
+      "release_date" : "2004-01-17",
+      "release_date_precision" : "day",
+      "total_tracks" : 10,
+      "type" : "album",
+      "uri" : "spotify:album:4Hu1GTnm9eylgTggHFPEy0"
+    },
+    {
     "album_group" : "album",
     "album_type" : "album",
     "artists" : [ {
@@ -1425,817 +2271,19 @@ me.top.albums = {
   "total" : 669
 }
 
-me.top.albums.next = {
-  "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4/albums?offset=20&limit=20&include_groups=album,single,compilation,appears_on",
-  "items" : [ {
-    "album_group" : "album",
-    "album_type" : "album",
-    "artists" : [ {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
-      },
-      "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
-      "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
-      "name" : "Miles Davis",
-      "type" : "artist",
-      "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
-    }, {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/2hGh5VOeeqimQFxqXvfCUf"
-      },
-      "href" : "https://api.spotify.com/v1/artists/2hGh5VOeeqimQFxqXvfCUf",
-      "id" : "2hGh5VOeeqimQFxqXvfCUf",
-      "name" : "John Coltrane",
-      "type" : "artist",
-      "uri" : "spotify:artist:2hGh5VOeeqimQFxqXvfCUf"
-    } ],
-    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
-    "external_urls" : {
-      "spotify" : "https://open.spotify.com/album/3p6XK8PERkujtV6MRu7QH3"
-    },
-    "href" : "https://api.spotify.com/v1/albums/3p6XK8PERkujtV6MRu7QH3",
-    "id" : "3p6XK8PERkujtV6MRu7QH3",
-    "images" : [ {
-      "height" : 640,
-      "url" : "https://i.scdn.co/image/ab67616d0000b2732a7a9c4360cedfd978af36b7",
-      "width" : 640
-    }, {
-      "height" : 300,
-      "url" : "https://i.scdn.co/image/ab67616d00001e022a7a9c4360cedfd978af36b7",
-      "width" : 300
-    }, {
-      "height" : 64,
-      "url" : "https://i.scdn.co/image/ab67616d000048512a7a9c4360cedfd978af36b7",
-      "width" : 64
-    } ],
-    "name" : "The Final Tour: The Bootleg Series, Vol. 6",
-    "release_date" : "2018-03-23",
-    "release_date_precision" : "day",
-    "total_tracks" : 23,
-    "type" : "album",
-    "uri" : "spotify:album:3p6XK8PERkujtV6MRu7QH3"
-  }, {
-    "album_group" : "album",
-    "album_type" : "album",
-    "artists" : [ {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
-      },
-      "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
-      "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
-      "name" : "Miles Davis",
-      "type" : "artist",
-      "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
-    } ],
-    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
-    "external_urls" : {
-      "spotify" : "https://open.spotify.com/album/2cPnNqIkKs8VhF6Ewx5BXI"
-    },
-    "href" : "https://api.spotify.com/v1/albums/2cPnNqIkKs8VhF6Ewx5BXI",
-    "id" : "2cPnNqIkKs8VhF6Ewx5BXI",
-    "images" : [ {
-      "height" : 640,
-      "url" : "https://i.scdn.co/image/ab67616d0000b273cd6de3ef51c9e64c331e7b16",
-      "width" : 640
-    }, {
-      "height" : 300,
-      "url" : "https://i.scdn.co/image/ab67616d00001e02cd6de3ef51c9e64c331e7b16",
-      "width" : 300
-    }, {
-      "height" : 64,
-      "url" : "https://i.scdn.co/image/ab67616d00004851cd6de3ef51c9e64c331e7b16",
-      "width" : 64
-    } ],
-    "name" : "Miles Davis Quintet: Freedom Jazz Dance: The Bootleg Series, Vol. 5",
-    "release_date" : "2016-10-21",
-    "release_date_precision" : "day",
-    "total_tracks" : 23,
-    "type" : "album",
-    "uri" : "spotify:album:2cPnNqIkKs8VhF6Ewx5BXI"
-  }, {
-    "album_group" : "album",
-    "album_type" : "album",
-    "artists" : [ {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
-      },
-      "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
-      "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
-      "name" : "Miles Davis",
-      "type" : "artist",
-      "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
-    }, {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/5cM1PvItlR21WUyBnsdMcn"
-      },
-      "href" : "https://api.spotify.com/v1/artists/5cM1PvItlR21WUyBnsdMcn",
-      "id" : "5cM1PvItlR21WUyBnsdMcn",
-      "name" : "Robert Glasper",
-      "type" : "artist",
-      "uri" : "spotify:artist:5cM1PvItlR21WUyBnsdMcn"
-    } ],
-    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
-    "external_urls" : {
-      "spotify" : "https://open.spotify.com/album/0nTqzVgkJewGhfjr0oUllt"
-    },
-    "href" : "https://api.spotify.com/v1/albums/0nTqzVgkJewGhfjr0oUllt",
-    "id" : "0nTqzVgkJewGhfjr0oUllt",
-    "images" : [ {
-      "height" : 640,
-      "url" : "https://i.scdn.co/image/ab67616d0000b27345a8bb2cdfe0bf695439bdfe",
-      "width" : 640
-    }, {
-      "height" : 300,
-      "url" : "https://i.scdn.co/image/ab67616d00001e0245a8bb2cdfe0bf695439bdfe",
-      "width" : 300
-    }, {
-      "height" : 64,
-      "url" : "https://i.scdn.co/image/ab67616d0000485145a8bb2cdfe0bf695439bdfe",
-      "width" : 64
-    } ],
-    "name" : "Everything's Beautiful",
-    "release_date" : "2016-06-24",
-    "release_date_precision" : "day",
-    "total_tracks" : 11,
-    "type" : "album",
-    "uri" : "spotify:album:0nTqzVgkJewGhfjr0oUllt"
-  }, {
-    "album_group" : "album",
-    "album_type" : "album",
-    "artists" : [ {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
-      },
-      "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
-      "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
-      "name" : "Miles Davis",
-      "type" : "artist",
-      "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
-    }, {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/5cM1PvItlR21WUyBnsdMcn"
-      },
-      "href" : "https://api.spotify.com/v1/artists/5cM1PvItlR21WUyBnsdMcn",
-      "id" : "5cM1PvItlR21WUyBnsdMcn",
-      "name" : "Robert Glasper",
-      "type" : "artist",
-      "uri" : "spotify:artist:5cM1PvItlR21WUyBnsdMcn"
-    } ],
-    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
-    "external_urls" : {
-      "spotify" : "https://open.spotify.com/album/0DI27qIRQRFkXrMvHxj9yh"
-    },
-    "href" : "https://api.spotify.com/v1/albums/0DI27qIRQRFkXrMvHxj9yh",
-    "id" : "0DI27qIRQRFkXrMvHxj9yh",
-    "images" : [ {
-      "height" : 640,
-      "url" : "https://i.scdn.co/image/ab67616d0000b2739883e7842775fc3401d77e14",
-      "width" : 640
-    }, {
-      "height" : 300,
-      "url" : "https://i.scdn.co/image/ab67616d00001e029883e7842775fc3401d77e14",
-      "width" : 300
-    }, {
-      "height" : 64,
-      "url" : "https://i.scdn.co/image/ab67616d000048519883e7842775fc3401d77e14",
-      "width" : 64
-    } ],
-    "name" : "Everything's Beautiful",
-    "release_date" : "2016-05-27",
-    "release_date_precision" : "day",
-    "total_tracks" : 11,
-    "type" : "album",
-    "uri" : "spotify:album:0DI27qIRQRFkXrMvHxj9yh"
-  }, {
-    "album_group" : "album",
-    "album_type" : "album",
-    "artists" : [ {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
-      },
-      "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
-      "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
-      "name" : "Miles Davis",
-      "type" : "artist",
-      "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
-    } ],
-    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
-    "external_urls" : {
-      "spotify" : "https://open.spotify.com/album/2NJ0qZ1UNsiESTmFSQDkT1"
-    },
-    "href" : "https://api.spotify.com/v1/albums/2NJ0qZ1UNsiESTmFSQDkT1",
-    "id" : "2NJ0qZ1UNsiESTmFSQDkT1",
-    "images" : [ {
-      "height" : 640,
-      "url" : "https://i.scdn.co/image/ab67616d0000b273a7b311a72bfca11ace1a115c",
-      "width" : 640
-    }, {
-      "height" : 300,
-      "url" : "https://i.scdn.co/image/ab67616d00001e02a7b311a72bfca11ace1a115c",
-      "width" : 300
-    }, {
-      "height" : 64,
-      "url" : "https://i.scdn.co/image/ab67616d00004851a7b311a72bfca11ace1a115c",
-      "width" : 64
-    } ],
-    "name" : "Miles Ahead (Original Motion Picture Soundtrack)",
-    "release_date" : "2016-04-01",
-    "release_date_precision" : "day",
-    "total_tracks" : 24,
-    "type" : "album",
-    "uri" : "spotify:album:2NJ0qZ1UNsiESTmFSQDkT1"
-  }, {
-    "album_group" : "album",
-    "album_type" : "album",
-    "artists" : [ {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
-      },
-      "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
-      "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
-      "name" : "Miles Davis",
-      "type" : "artist",
-      "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
-    } ],
-    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
-    "external_urls" : {
-      "spotify" : "https://open.spotify.com/album/10w9yWdQOPbgIG0EKUf1ak"
-    },
-    "href" : "https://api.spotify.com/v1/albums/10w9yWdQOPbgIG0EKUf1ak",
-    "id" : "10w9yWdQOPbgIG0EKUf1ak",
-    "images" : [ {
-      "height" : 640,
-      "url" : "https://i.scdn.co/image/ab67616d0000b273763bec54bd2fdeafbf15e317",
-      "width" : 640
-    }, {
-      "height" : 300,
-      "url" : "https://i.scdn.co/image/ab67616d00001e02763bec54bd2fdeafbf15e317",
-      "width" : 300
-    }, {
-      "height" : 64,
-      "url" : "https://i.scdn.co/image/ab67616d00004851763bec54bd2fdeafbf15e317",
-      "width" : 64
-    } ],
-    "name" : "Miles Davis at Newport: 1955-1975: The Bootleg Series, Vol. 4",
-    "release_date" : "2015-07-17",
-    "release_date_precision" : "day",
-    "total_tracks" : 40,
-    "type" : "album",
-    "uri" : "spotify:album:10w9yWdQOPbgIG0EKUf1ak"
-  }, {
-    "album_group" : "album",
-    "album_type" : "album",
-    "artists" : [ {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
-      },
-      "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
-      "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
-      "name" : "Miles Davis",
-      "type" : "artist",
-      "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
-    } ],
-    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
-    "external_urls" : {
-      "spotify" : "https://open.spotify.com/album/1KWsuwZClXVSbyVD1nkJwK"
-    },
-    "href" : "https://api.spotify.com/v1/albums/1KWsuwZClXVSbyVD1nkJwK",
-    "id" : "1KWsuwZClXVSbyVD1nkJwK",
-    "images" : [ {
-      "height" : 640,
-      "url" : "https://i.scdn.co/image/ab67616d0000b273c0318dd0254a5e4456c785c3",
-      "width" : 640
-    }, {
-      "height" : 300,
-      "url" : "https://i.scdn.co/image/ab67616d00001e02c0318dd0254a5e4456c785c3",
-      "width" : 300
-    }, {
-      "height" : 64,
-      "url" : "https://i.scdn.co/image/ab67616d00004851c0318dd0254a5e4456c785c3",
-      "width" : 64
-    } ],
-    "name" : "Take Off: The Complete Blue Note Albums",
-    "release_date" : "2014-05-13",
-    "release_date_precision" : "day",
-    "total_tracks" : 26,
-    "type" : "album",
-    "uri" : "spotify:album:1KWsuwZClXVSbyVD1nkJwK"
-  }, {
-    "album_group" : "album",
-    "album_type" : "album",
-    "artists" : [ {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
-      },
-      "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
-      "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
-      "name" : "Miles Davis",
-      "type" : "artist",
-      "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
-    } ],
-    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
-    "external_urls" : {
-      "spotify" : "https://open.spotify.com/album/1lTY8MqxId57NQtblgRV4Y"
-    },
-    "href" : "https://api.spotify.com/v1/albums/1lTY8MqxId57NQtblgRV4Y",
-    "id" : "1lTY8MqxId57NQtblgRV4Y",
-    "images" : [ {
-      "height" : 640,
-      "url" : "https://i.scdn.co/image/ab67616d0000b273b50b14a850008784170e6f68",
-      "width" : 640
-    }, {
-      "height" : 300,
-      "url" : "https://i.scdn.co/image/ab67616d00001e02b50b14a850008784170e6f68",
-      "width" : 300
-    }, {
-      "height" : 64,
-      "url" : "https://i.scdn.co/image/ab67616d00004851b50b14a850008784170e6f68",
-      "width" : 64
-    } ],
-    "name" : "Miles at The Fillmore: Miles Davis 1970: The Bootleg Series, Vol. 3",
-    "release_date" : "2014-03-21",
-    "release_date_precision" : "day",
-    "total_tracks" : 31,
-    "type" : "album",
-    "uri" : "spotify:album:1lTY8MqxId57NQtblgRV4Y"
-  }, {
-    "album_group" : "album",
-    "album_type" : "album",
-    "artists" : [ {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
-      },
-      "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
-      "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
-      "name" : "Miles Davis",
-      "type" : "artist",
-      "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
-    } ],
-    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
-    "external_urls" : {
-      "spotify" : "https://open.spotify.com/album/5BcPZGYYch0uDOV5UkbWvs"
-    },
-    "href" : "https://api.spotify.com/v1/albums/5BcPZGYYch0uDOV5UkbWvs",
-    "id" : "5BcPZGYYch0uDOV5UkbWvs",
-    "images" : [ {
-      "height" : 640,
-      "url" : "https://i.scdn.co/image/ab67616d0000b273bcad3b156d59c7bf9d0702b2",
-      "width" : 640
-    }, {
-      "height" : 300,
-      "url" : "https://i.scdn.co/image/ab67616d00001e02bcad3b156d59c7bf9d0702b2",
-      "width" : 300
-    }, {
-      "height" : 64,
-      "url" : "https://i.scdn.co/image/ab67616d00004851bcad3b156d59c7bf9d0702b2",
-      "width" : 64
-    } ],
-    "name" : "Ascenseur pour l'echafaud",
-    "release_date" : "2014",
-    "release_date_precision" : "year",
-    "total_tracks" : 13,
-    "type" : "album",
-    "uri" : "spotify:album:5BcPZGYYch0uDOV5UkbWvs"
-  }, {
-    "album_group" : "album",
-    "album_type" : "album",
-    "artists" : [ {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
-      },
-      "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
-      "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
-      "name" : "Miles Davis",
-      "type" : "artist",
-      "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
-    } ],
-    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
-    "external_urls" : {
-      "spotify" : "https://open.spotify.com/album/4jSv7dCwUWqp8kf8nXBEGn"
-    },
-    "href" : "https://api.spotify.com/v1/albums/4jSv7dCwUWqp8kf8nXBEGn",
-    "id" : "4jSv7dCwUWqp8kf8nXBEGn",
-    "images" : [ {
-      "height" : 640,
-      "url" : "https://i.scdn.co/image/ab67616d0000b2736642c45e82deef0e2b20e12b",
-      "width" : 640
-    }, {
-      "height" : 300,
-      "url" : "https://i.scdn.co/image/ab67616d00001e026642c45e82deef0e2b20e12b",
-      "width" : 300
-    }, {
-      "height" : 64,
-      "url" : "https://i.scdn.co/image/ab67616d000048516642c45e82deef0e2b20e12b",
-      "width" : 64
-    } ],
-    "name" : "Miles Davis Quintet: Live In Europe 1967: The Bootleg Series, Vol. 1",
-    "release_date" : "2011-09-21",
-    "release_date_precision" : "day",
-    "total_tracks" : 24,
-    "type" : "album",
-    "uri" : "spotify:album:4jSv7dCwUWqp8kf8nXBEGn"
-  }, {
-    "album_group" : "album",
-    "album_type" : "album",
-    "artists" : [ {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
-      },
-      "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
-      "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
-      "name" : "Miles Davis",
-      "type" : "artist",
-      "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
-    } ],
-    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
-    "external_urls" : {
-      "spotify" : "https://open.spotify.com/album/2j5GUDLnu0vbZCK1fgHo7c"
-    },
-    "href" : "https://api.spotify.com/v1/albums/2j5GUDLnu0vbZCK1fgHo7c",
-    "id" : "2j5GUDLnu0vbZCK1fgHo7c",
-    "images" : [ {
-      "height" : 640,
-      "url" : "https://i.scdn.co/image/ab67616d0000b273ed837668aaab18b3cf369883",
-      "width" : 640
-    }, {
-      "height" : 300,
-      "url" : "https://i.scdn.co/image/ab67616d00001e02ed837668aaab18b3cf369883",
-      "width" : 300
-    }, {
-      "height" : 64,
-      "url" : "https://i.scdn.co/image/ab67616d00004851ed837668aaab18b3cf369883",
-      "width" : 64
-    } ],
-    "name" : "Embraceable",
-    "release_date" : "2011-07-05",
-    "release_date_precision" : "day",
-    "total_tracks" : 12,
-    "type" : "album",
-    "uri" : "spotify:album:2j5GUDLnu0vbZCK1fgHo7c"
-  }, {
-    "album_group" : "album",
-    "album_type" : "album",
-    "artists" : [ {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
-      },
-      "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
-      "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
-      "name" : "Miles Davis",
-      "type" : "artist",
-      "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
-    } ],
-    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
-    "external_urls" : {
-      "spotify" : "https://open.spotify.com/album/1UzI5mJt5myuAkGCX1kDI4"
-    },
-    "href" : "https://api.spotify.com/v1/albums/1UzI5mJt5myuAkGCX1kDI4",
-    "id" : "1UzI5mJt5myuAkGCX1kDI4",
-    "images" : [ {
-      "height" : 640,
-      "url" : "https://i.scdn.co/image/ab67616d0000b273cb533ff2a0bf4c4c0e58bee9",
-      "width" : 640
-    }, {
-      "height" : 300,
-      "url" : "https://i.scdn.co/image/ab67616d00001e02cb533ff2a0bf4c4c0e58bee9",
-      "width" : 300
-    }, {
-      "height" : 64,
-      "url" : "https://i.scdn.co/image/ab67616d00004851cb533ff2a0bf4c4c0e58bee9",
-      "width" : 64
-    } ],
-    "name" : "Bitches Brew Live",
-    "release_date" : "2011-02-08",
-    "release_date_precision" : "day",
-    "total_tracks" : 9,
-    "type" : "album",
-    "uri" : "spotify:album:1UzI5mJt5myuAkGCX1kDI4"
-  }, {
-    "album_group" : "album",
-    "album_type" : "album",
-    "artists" : [ {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
-      },
-      "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
-      "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
-      "name" : "Miles Davis",
-      "type" : "artist",
-      "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
-    } ],
-    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
-    "external_urls" : {
-      "spotify" : "https://open.spotify.com/album/0U2AJT507sOU5PgO9BXLdc"
-    },
-    "href" : "https://api.spotify.com/v1/albums/0U2AJT507sOU5PgO9BXLdc",
-    "id" : "0U2AJT507sOU5PgO9BXLdc",
-    "images" : [ {
-      "height" : 640,
-      "url" : "https://i.scdn.co/image/ab67616d0000b2739c1d61b1244babbf81db5898",
-      "width" : 640
-    }, {
-      "height" : 300,
-      "url" : "https://i.scdn.co/image/ab67616d00001e029c1d61b1244babbf81db5898",
-      "width" : 300
-    }, {
-      "height" : 64,
-      "url" : "https://i.scdn.co/image/ab67616d000048519c1d61b1244babbf81db5898",
-      "width" : 64
-    } ],
-    "name" : "Dig [Original Jazz Classics Remasters]",
-    "release_date" : "2010-01-01",
-    "release_date_precision" : "day",
-    "total_tracks" : 7,
-    "type" : "album",
-    "uri" : "spotify:album:0U2AJT507sOU5PgO9BXLdc"
-  }, {
-    "album_group" : "album",
-    "album_type" : "album",
-    "artists" : [ {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
-      },
-      "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
-      "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
-      "name" : "Miles Davis",
-      "type" : "artist",
-      "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
-    } ],
-    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
-    "external_urls" : {
-      "spotify" : "https://open.spotify.com/album/3gJ0bYmHa87sKS5RoYdAIU"
-    },
-    "href" : "https://api.spotify.com/v1/albums/3gJ0bYmHa87sKS5RoYdAIU",
-    "id" : "3gJ0bYmHa87sKS5RoYdAIU",
-    "images" : [ {
-      "height" : 640,
-      "url" : "https://i.scdn.co/image/ab67616d0000b27394e675fb06080b050d296acc",
-      "width" : 640
-    }, {
-      "height" : 300,
-      "url" : "https://i.scdn.co/image/ab67616d00001e0294e675fb06080b050d296acc",
-      "width" : 300
-    }, {
-      "height" : 64,
-      "url" : "https://i.scdn.co/image/ab67616d0000485194e675fb06080b050d296acc",
-      "width" : 64
-    } ],
-    "name" : "Groovin' High",
-    "release_date" : "2009-11-11",
-    "release_date_precision" : "day",
-    "total_tracks" : 10,
-    "type" : "album",
-    "uri" : "spotify:album:3gJ0bYmHa87sKS5RoYdAIU"
-  }, {
-    "album_group" : "album",
-    "album_type" : "album",
-    "artists" : [ {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
-      },
-      "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
-      "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
-      "name" : "Miles Davis",
-      "type" : "artist",
-      "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
-    } ],
-    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
-    "external_urls" : {
-      "spotify" : "https://open.spotify.com/album/5sEW8PRqhUpSm0NIUirUHe"
-    },
-    "href" : "https://api.spotify.com/v1/albums/5sEW8PRqhUpSm0NIUirUHe",
-    "id" : "5sEW8PRqhUpSm0NIUirUHe",
-    "images" : [ {
-      "height" : 640,
-      "url" : "https://i.scdn.co/image/ab67616d0000b273c395977751d680e96c230865",
-      "width" : 640
-    }, {
-      "height" : 300,
-      "url" : "https://i.scdn.co/image/ab67616d00001e02c395977751d680e96c230865",
-      "width" : 300
-    }, {
-      "height" : 64,
-      "url" : "https://i.scdn.co/image/ab67616d00004851c395977751d680e96c230865",
-      "width" : 64
-    } ],
-    "name" : "The Classic Prestige Sessions, 1951-1956",
-    "release_date" : "2009-01-01",
-    "release_date_precision" : "day",
-    "total_tracks" : 25,
-    "type" : "album",
-    "uri" : "spotify:album:5sEW8PRqhUpSm0NIUirUHe"
-  }, {
-    "album_group" : "album",
-    "album_type" : "album",
-    "artists" : [ {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
-      },
-      "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
-      "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
-      "name" : "Miles Davis",
-      "type" : "artist",
-      "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
-    } ],
-    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
-    "external_urls" : {
-      "spotify" : "https://open.spotify.com/album/0RS41QUxSzi1bSJEhMUiYX"
-    },
-    "href" : "https://api.spotify.com/v1/albums/0RS41QUxSzi1bSJEhMUiYX",
-    "id" : "0RS41QUxSzi1bSJEhMUiYX",
-    "images" : [ {
-      "height" : 640,
-      "url" : "https://i.scdn.co/image/ab67616d0000b27316aa9fa085ea4227043e310e",
-      "width" : 640
-    }, {
-      "height" : 300,
-      "url" : "https://i.scdn.co/image/ab67616d00001e0216aa9fa085ea4227043e310e",
-      "width" : 300
-    }, {
-      "height" : 64,
-      "url" : "https://i.scdn.co/image/ab67616d0000485116aa9fa085ea4227043e310e",
-      "width" : 64
-    } ],
-    "name" : "Collectors' Items [RVG Remaster]",
-    "release_date" : "2009-01-01",
-    "release_date_precision" : "day",
-    "total_tracks" : 7,
-    "type" : "album",
-    "uri" : "spotify:album:0RS41QUxSzi1bSJEhMUiYX"
-  }, {
-    "album_group" : "album",
-    "album_type" : "album",
-    "artists" : [ {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
-      },
-      "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
-      "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
-      "name" : "Miles Davis",
-      "type" : "artist",
-      "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
-    } ],
-    "available_markets" : [ "FR" ],
-    "external_urls" : {
-      "spotify" : "https://open.spotify.com/album/6tGFUTmD6ZtcQ8qGeIZkcT"
-    },
-    "href" : "https://api.spotify.com/v1/albums/6tGFUTmD6ZtcQ8qGeIZkcT",
-    "id" : "6tGFUTmD6ZtcQ8qGeIZkcT",
-    "images" : [ {
-      "height" : 640,
-      "url" : "https://i.scdn.co/image/ab67616d0000b273eda4eeee264e617c7544e9d1",
-      "width" : 640
-    }, {
-      "height" : 300,
-      "url" : "https://i.scdn.co/image/ab67616d00001e02eda4eeee264e617c7544e9d1",
-      "width" : 300
-    }, {
-      "height" : 64,
-      "url" : "https://i.scdn.co/image/ab67616d00004851eda4eeee264e617c7544e9d1",
-      "width" : 64
-    } ],
-    "name" : "Les Incontournables du Jazz - Miles Davis",
-    "release_date" : "2008-02-11",
-    "release_date_precision" : "day",
-    "total_tracks" : 13,
-    "type" : "album",
-    "uri" : "spotify:album:6tGFUTmD6ZtcQ8qGeIZkcT"
-  }, {
-    "album_group" : "album",
-    "album_type" : "album",
-    "artists" : [ {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
-      },
-      "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
-      "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
-      "name" : "Miles Davis",
-      "type" : "artist",
-      "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
-    }, {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/2hGh5VOeeqimQFxqXvfCUf"
-      },
-      "href" : "https://api.spotify.com/v1/artists/2hGh5VOeeqimQFxqXvfCUf",
-      "id" : "2hGh5VOeeqimQFxqXvfCUf",
-      "name" : "John Coltrane",
-      "type" : "artist",
-      "uri" : "spotify:artist:2hGh5VOeeqimQFxqXvfCUf"
-    } ],
-    "available_markets" : [ "AD", "AL", "AM", "AT", "AU", "AZ", "BA", "BE", "BG", "BY", "CA", "CH", "CY", "CZ", "DE", "DK", "EE", "ES", "FI", "FR", "GB", "GE", "GR", "HR", "HU", "IE", "IS", "IT", "JP", "KZ", "LI", "LT", "LU", "LV", "MC", "MD", "ME", "MK", "MT", "NL", "NO", "PL", "PT", "RO", "RS", "RU", "SE", "SI", "SK", "SM", "TR", "UA", "XK" ],
-    "external_urls" : {
-      "spotify" : "https://open.spotify.com/album/6oLOpee7AsMb63G4dRfz3d"
-    },
-    "href" : "https://api.spotify.com/v1/albums/6oLOpee7AsMb63G4dRfz3d",
-    "id" : "6oLOpee7AsMb63G4dRfz3d",
-    "images" : [ {
-      "height" : 640,
-      "url" : "https://i.scdn.co/image/ab67616d0000b27310755748d6f31964b23e99d0",
-      "width" : 640
-    }, {
-      "height" : 300,
-      "url" : "https://i.scdn.co/image/ab67616d00001e0210755748d6f31964b23e99d0",
-      "width" : 300
-    }, {
-      "height" : 64,
-      "url" : "https://i.scdn.co/image/ab67616d0000485110755748d6f31964b23e99d0",
-      "width" : 64
-    } ],
-    "name" : "Trane's Blues",
-    "release_date" : "2007-09-10",
-    "release_date_precision" : "day",
-    "total_tracks" : 10,
-    "type" : "album",
-    "uri" : "spotify:album:6oLOpee7AsMb63G4dRfz3d"
-  }, {
-    "album_group" : "album",
-    "album_type" : "album",
-    "artists" : [ {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
-      },
-      "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
-      "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
-      "name" : "Miles Davis",
-      "type" : "artist",
-      "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
-    }, {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/4Ww5mwS7BWYjoZTUIrMHfC"
-      },
-      "href" : "https://api.spotify.com/v1/artists/4Ww5mwS7BWYjoZTUIrMHfC",
-      "id" : "4Ww5mwS7BWYjoZTUIrMHfC",
-      "name" : "Charlie Parker",
-      "type" : "artist",
-      "uri" : "spotify:artist:4Ww5mwS7BWYjoZTUIrMHfC"
-    } ],
-    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
-    "external_urls" : {
-      "spotify" : "https://open.spotify.com/album/2Ds50zsxc94s62c9ARDZyV"
-    },
-    "href" : "https://api.spotify.com/v1/albums/2Ds50zsxc94s62c9ARDZyV",
-    "id" : "2Ds50zsxc94s62c9ARDZyV",
-    "images" : [ {
-      "height" : 640,
-      "url" : "https://i.scdn.co/image/ab67616d0000b273c82089f11bca2595ea4de3d5",
-      "width" : 640
-    }, {
-      "height" : 300,
-      "url" : "https://i.scdn.co/image/ab67616d00001e02c82089f11bca2595ea4de3d5",
-      "width" : 300
-    }, {
-      "height" : 64,
-      "url" : "https://i.scdn.co/image/ab67616d00004851c82089f11bca2595ea4de3d5",
-      "width" : 64
-    } ],
-    "name" : "Out Of Nowhere: The Rise Of Miles Davis",
-    "release_date" : "2006-02-21",
-    "release_date_precision" : "day",
-    "total_tracks" : 13,
-    "type" : "album",
-    "uri" : "spotify:album:2Ds50zsxc94s62c9ARDZyV"
-  }, {
-    "album_group" : "album",
-    "album_type" : "album",
-    "artists" : [ {
-      "external_urls" : {
-        "spotify" : "https://open.spotify.com/artist/0kbYTNQb4Pb1rPbbaF0pT4"
-      },
-      "href" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4",
-      "id" : "0kbYTNQb4Pb1rPbbaF0pT4",
-      "name" : "Miles Davis",
-      "type" : "artist",
-      "uri" : "spotify:artist:0kbYTNQb4Pb1rPbbaF0pT4"
-    } ],
-    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
-    "external_urls" : {
-      "spotify" : "https://open.spotify.com/album/4Hu1GTnm9eylgTggHFPEy0"
-    },
-    "href" : "https://api.spotify.com/v1/albums/4Hu1GTnm9eylgTggHFPEy0",
-    "id" : "4Hu1GTnm9eylgTggHFPEy0",
-    "images" : [ {
-      "height" : 640,
-      "url" : "https://i.scdn.co/image/ab67616d0000b273bfdaefda80ddf379d770fd8f",
-      "width" : 640
-    }, {
-      "height" : 300,
-      "url" : "https://i.scdn.co/image/ab67616d00001e02bfdaefda80ddf379d770fd8f",
-      "width" : 300
-    }, {
-      "height" : 64,
-      "url" : "https://i.scdn.co/image/ab67616d00004851bfdaefda80ddf379d770fd8f",
-      "width" : 64
-    } ],
-    "name" : "Birdland 1951 (Reissue)",
-    "release_date" : "2004-01-17",
-    "release_date_precision" : "day",
-    "total_tracks" : 10,
-    "type" : "album",
-    "uri" : "spotify:album:4Hu1GTnm9eylgTggHFPEy0"
-  } ],
-  "limit" : 20,
-  "next" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4/albums?offset=40&limit=20&include_groups=album,single,compilation,appears_on",
-  "offset" : 20,
-  "previous" : "https://api.spotify.com/v1/artists/0kbYTNQb4Pb1rPbbaF0pT4/albums?offset=0&limit=20&include_groups=album,single,compilation,appears_on",
-  "total" : 669
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
