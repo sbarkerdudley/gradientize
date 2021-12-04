@@ -1,16 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { HueSlider, Title, useMantineTheme, MantineProvider, Button, Group, Slider, Center } from '@mantine/core';
-import SlidersContainer from './SlidersContainer.jsx';
+import SlidersDrawer from './SlidersDrawer.jsx';
 
 
 const ColorSelector = () => {
   const [sliderValue, onChange] = useState(250);
   let theme = useMantineTheme();
-  let gradient = {
-    from: 'orange',
-    to: 'grape',
-    deg: 135,
-  }
+
 
   return (
     <MantineProvider theme={{
@@ -20,13 +16,8 @@ const ColorSelector = () => {
         <Center>
           <Title order={2}>Select a Color</Title>
         </Center>
-        <HueSlider value={sliderValue} onChange={onChange} size="xl" />
-        <Button
-          variant='gradient'
-          gradient={gradient}
-          radius='xl'
-          onChange={onChange}>Randomize</Button>
-        <SlidersContainer />
+        <HueSlider value={sliderValue} onChange={onChange} thumbSize='xl' size="xl" />
+        <SlidersDrawer methods={'randomize'}/>
       </Group>
     </MantineProvider>
   )

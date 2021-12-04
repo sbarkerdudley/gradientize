@@ -7,7 +7,7 @@ const SlidersContainer = () => {
   let gutter = 'md'
 
   return (
-    <Grid gutter={gutter}>
+    <Grid gutter={gutter} >
       <Col span={colSpan}><SliderGenerator color={'grape'} label={'Tempo'}/></Col>
       <Col span={colSpan}><SliderGenerator color={'red'} label={'Loudness'}/></Col>
       <Col span={colSpan}><SliderGenerator color={'pink'} label={'Danceability'}/></Col>

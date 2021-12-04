@@ -1,37 +1,46 @@
 require('dotenv').config();
+const auth = require('express').Router();
+// const auth = express.Router();
+const SpotifyStrategy = require('passport-spotify').Strategy;
+const passport = require('passport')
 
-const axios = require('axios');
-const express = require('express');
-const auth = express.Router();
+const credentials = {
+  clientID: process.env.CLIENT_ID,
+  clientSecret: process.env.CLIENT_SECRET,
+  callbackURL: process.env.CALLBACK_URI,
+}
 
-const CLIENT_ID = process.env.CLIENT_ID;
-const CALLBACK_URI = process.env.CALLBACK_URI;
+passport.use(
+  new SpotifyStrategy(credentials, (accessToken, refreshToken, expires_in, profile, done) => {
+      // User.findOrCreate({spotifyId: profile.id}, function (err, user) {
+      //   return done(err, user);
+      // });
+      console.log({spotifyId: profile.id});
+      return done();
+    }
+  )
+);
 
-/**
- * Generates a random string containing numbers and letters
- * @param  {number} length The length of the string
- * @return {string} The generated string
- */
-  function generateRandomString(length) {
-  var text = '';
-  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+auth.get('/spotify',
+  passport.authenticate('spotify', {
+    scope: ['user-read-email', 'user-read-private'],
+    showDialog: true,
+  })
+);
 
-  for (var i = 0; i < length; i++) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
+auth.get(
+  '/spotify/callback',
+  passport.authenticate('spotify', {failureRedirect: '/login'}),
+  function (req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
   }
-  return text;
-};
+);
 
-auth.get('/login', (req, res) => {
-  res.redirect(
-    `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${CALLBACK_URI}`
-  );
-});
-
-auth.get('/callback', (req, res) => {
-  let { code } = req.query;
-  console.log(code);
-  res.redirect();
-});
+// auth.get('/spotify/callback', (req, res) => {
+//   let { code } = req.query;
+//   console.log(code);
+//   res.redirect();
+// });
 
 module.exports = auth;

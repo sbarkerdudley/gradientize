@@ -15,7 +15,6 @@ const AlbumGrid = () => {
   return (
     <Grid gutter={gutter}>
       {AlbumComponents}
-        <Col span={colSpan}><Album img={''} album={{}} /></Col>
     </Grid>
   )
 }
