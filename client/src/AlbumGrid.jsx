@@ -5,7 +5,7 @@ import data from '../../data.js';
 
 
 const AlbumGrid = (props) => {
-  let colSpan = 4
+  let colSpan = 3
   let gutter = 'md'
 
   let AlbumComponents = data.albums.items.map(album => {
@@ -13,7 +13,7 @@ const AlbumGrid = (props) => {
   })
 
   return (
-    <Grid grow gutter={gutter}>
+    <Grid gutter={gutter}>
       {props.children }
       {AlbumComponents}
     </Grid>

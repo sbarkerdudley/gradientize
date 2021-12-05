@@ -1,12 +1,10 @@
-import React, { useState, useContext } from 'react';
-import { HueSlider, Title, useMantineTheme, Button, Group, Slider, Center } from '@mantine/core';
+import React, { useContext } from 'react';
+import { HueSlider, Title, Group } from '@mantine/core';
 import SlidersDrawer from './SlidersDrawer.jsx';
 import { SpotifyContext } from './SpotifyProvider.jsx';
 
 
 const ColorSelector = (props) => {
-
-  const [value, setValue] = useState(300);
 
   let {slider, setSlider} = React.useContext(SpotifyContext)
 
