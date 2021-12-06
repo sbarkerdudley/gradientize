@@ -12,7 +12,6 @@ const AlbumGrid = (props) => {
 
   let AlbumComponents = data.albums.items.map(album => {
     return <Col span={4} md={3} lg={2}><Album {...{album}} /></Col>
-    // <Col span={12} md={6} lg={3}>4</Col>
   })
 
   return (

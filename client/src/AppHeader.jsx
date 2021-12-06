@@ -8,7 +8,7 @@ const AppHeader = () => {
 
 
   return (
-    <Header height={150} padding={10} >
+    <Header height={220} padding={10} >
       <Group direction='column' position='apart'>
       <ColorSelector />
       <SlidersDrawer />

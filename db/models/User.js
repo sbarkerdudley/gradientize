@@ -7,14 +7,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     unique: true
   },
-  shirt: {
+  spotifyId: {
     type: String,
-    enum: ['XS', 'S', 'M', 'L', 'XL', 'XXL']
   },
-  skillLevel: {
-    type: String,
-    enum: ['beginner', 'intermediate', 'expert']
-  }
+  albums: [String]
 });
 
 const User = mongoose.model('User', UserSchema);

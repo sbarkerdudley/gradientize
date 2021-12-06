@@ -23,19 +23,12 @@ const SlidersDrawer = (props) => {
       <Drawer
         opened={opened}
         onClose={() => setOpened(false)}
-        size={'50%'}
+        size={'35%'}
         position='bottom'
         title={props.title}
         padding="sm"
       >
-        <Group position='apart' grow>
-          <Button
-            style={{ background: secondaryGradient }}
-            radius='xl'
-            size='xl'
-            onClick={() => setAlbumsList(shuffleArray(albumsList))}>{'Generate Recommendations'}
-          </Button>
-        </Group>
+
         <SlidersContainer />
       </Drawer>
 
@@ -53,6 +46,14 @@ const SlidersDrawer = (props) => {
           onClick={toggleDrawer}>{'Set Mood By Hue'}
         </Button>
       </Group>
+      <Group position='apart' grow>
+          <Button
+            style={{ background: secondaryGradient }}
+            radius='xl'
+            size='xl'
+            onClick={() => setAlbumsList(shuffleArray(albumsList))}>{'Generate Recommendations'}
+          </Button>
+        </Group>
     </>
   );
 };

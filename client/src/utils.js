@@ -5,7 +5,7 @@ export const makeHSLAGradients = ([...colors]) => {
   let angle = 360 / qty;
   for (let i = 0; i < qty; i++) {
     gradients.push(
-      `linear-gradient(${angle * i}deg, hsl(${colors[i]}, 100%, 50%) 0%, hsla(${
+      `linear-gradient(${angle * i}deg, hsla(${colors[i]}, 100%, 50%, 0.9) 0%, hsla(${
         colors[i]
       }, 100%, 50%, 0%) 67%) `
     );
