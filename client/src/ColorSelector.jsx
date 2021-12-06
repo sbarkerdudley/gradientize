@@ -6,11 +6,22 @@ import { SpotifyContext } from './SpotifyProvider.jsx';
 
 const ColorSelector = (props) => {
 
-  let {slider, setSlider} = React.useContext(SpotifyContext)
+  let { slider, setSlider } = React.useContext(SpotifyContext);
+  let sliderHeight = 40;
 
   return (
     <Group direction='column' position='apart'>
-      <HueSlider value={slider} onChange={setSlider} size="xl" />
+      <HueSlider
+        value={slider}
+        onChange={setSlider}
+        size="xl"
+        style={{ height: sliderHeight }}
+        styles={(theme) => ({
+          thumb: {
+            height: sliderHeight,
+            width: sliderHeight
+          }
+        })} />
       <SlidersDrawer />
     </Group>
   )

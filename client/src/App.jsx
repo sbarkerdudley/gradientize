@@ -10,11 +10,9 @@ const App = () => {
 
   return (
     <SpotifyProvider>
-      <MantineProvider theme={{white: 'rgba(255,255,255,0.95)'}}>
         <AppShell header={<AppHeader />}>
           <AlbumGrid />
         </AppShell>
-      </MantineProvider>
     </SpotifyProvider>
   );
 }
