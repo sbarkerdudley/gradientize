@@ -14,7 +14,7 @@ const ColorSelector = (props) => {
       value={slider}
       onChange={setSlider}
       size="xl"
-      style={{ height: sliderHeight }}
+      style={{ height: sliderHeight, cursor: 'pointer' }}
       styles={(theme) => ({
         thumb: {
           height: sliderHeight,

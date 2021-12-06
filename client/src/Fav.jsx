@@ -1,14 +1,22 @@
 import React from 'react';
 import { ThemeIcon } from '@mantine/core';
+import { useMantineTheme } from '@mantine/styles';
 
 
 const Fav = (props) => {
+  let theme = useMantineTheme()
   return (
     <ThemeIcon
       radius="xl"
       size="xl"
-      color="red"
-      style={{position:'absolute', 'bottom': '5px', 'right': '5px', 'z-index': 10}}
+      color="pink"
+      style={{
+        position: 'absolute',
+        top: '5px',
+        right: '5px',
+        zIndex: 5,
+        cursor: 'pointer'
+      }}
       variant={props.variant}
       onClick={props.handleClick}>
       {props.children}

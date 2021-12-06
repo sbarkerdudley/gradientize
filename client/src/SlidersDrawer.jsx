@@ -3,6 +3,7 @@ import { Drawer, Button, Col, Group } from '@mantine/core';
 import SlidersContainer from './SlidersContainer.jsx'
 import { SpotifyContext } from './SpotifyProvider.jsx';
 import { ButtonGenerator } from './Buttons.jsx';
+import { shuffleArray } from './utils.js';
 
 
 const SlidersDrawer = (props) => {
@@ -10,7 +11,12 @@ const SlidersDrawer = (props) => {
   const [opened, setOpened] = useState(false);
   const toggleDrawer = () => setOpened(!opened)
 
-  let { slider, setSlider, primaryGradient, secondaryGradient, tertiaryGradient, values } = React.useContext(SpotifyContext)
+  let { slider, setSlider, primaryGradient, secondaryGradient, tertiaryGradient, albumsList,setAlbumsList, values } = React.useContext(SpotifyContext)
+
+  let randomize = () => {
+    toggleDrawer()
+    return setSlider(Math.floor(Math.random() * slider))
+  }
 
   return (
     <>
@@ -23,12 +29,12 @@ const SlidersDrawer = (props) => {
         padding="sm"
       >
         <Group position='apart' grow>
-        <Button
-          style={{ background: secondaryGradient }}
-          radius='xl'
-          size='xl'
-          onClick={toggleDrawer}>{'Generate Recommendations'}
-        </Button>
+          <Button
+            style={{ background: secondaryGradient }}
+            radius='xl'
+            size='xl'
+            onClick={() => setAlbumsList(shuffleArray(albumsList))}>{'Generate Recommendations'}
+          </Button>
         </Group>
         <SlidersContainer />
       </Drawer>
@@ -38,13 +44,13 @@ const SlidersDrawer = (props) => {
           style={{ background: primaryGradient }}
           radius='xl'
           size='xl'
-          onClick={toggleDrawer}>{'Randomize Search'}
+          onClick={toggleDrawer}>{'Randomize'}
         </Button>
         <Button
           style={{ background: tertiaryGradient }}
           radius='xl'
           size='xl'
-          onClick={toggleDrawer}>{'Select Hue'}
+          onClick={toggleDrawer}>{'Set Mood By Hue'}
         </Button>
       </Group>
     </>

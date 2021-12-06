@@ -1,6 +1,8 @@
 import React from 'react';
 import { Slider, RangeSlider, Center, Text } from '@mantine/core';
 import { randomSliderValues, randomSliderValue, steps } from './utils.js'
+import { SpotifyContext } from './SpotifyProvider.jsx';
+
 
 export const SliderGenerator = (props) => {
 
@@ -8,10 +10,15 @@ export const SliderGenerator = (props) => {
   var randomSliderValue = Math.floor(Math.random() * 100);
   var steps = Array(9).fill().map((x, i) => ({ value: (i + 1) * 10 }));
 
+  var {soundSliders, soundSlider, setSoundSlider} = React.useContext(SpotifyContext);
+  var updateSlider = () => setSoundSlider(soundSliders[props.label] = soundSlider)
+  soundSliders[props.label] = randomSliderValue
+
   return (
     <>
       <Center><Text size='md' weight={700} style={{ color: props.color }}>{props.label}</Text></Center>
       <RangeSlider
+        onChange={updateSlider}
         size='xl'
         radius="xl"
         marks={steps}
@@ -21,8 +28,8 @@ export const SliderGenerator = (props) => {
         step={5}
         min={0}
         max={100}
-        // defaultValue={randomSliderValues}
         defaultValue={randomSliderValues}
+        // defaultValue={soundSlider}
         color={props.color}
         thumb={{
           height: 'xl',

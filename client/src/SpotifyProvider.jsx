@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MantineProvider } from '@mantine/core';
 import { makeHSLAGradients, makeOffsetHSLAGradients, shuffleArray } from './utils.js'
 import data from '../../data.js';
@@ -9,11 +9,10 @@ const SpotifyProvider = (props) => {
 
   // Random HSLA Hue on page load
 
-  let theme = {
-      colorScheme: 'dark',
-      'user-select': 'none'
-    },
+  let theme = { colorScheme: 'dark' },
     [slider, setSlider] = React.useState(Math.floor(Math.random() * 360)),
+    [soundSlider, setSoundSlider] = useState(50),
+    [albumsList, setAlbumsList] = useState(data.albums.items),
     values = [slider, slider + 40, slider + 80],
     value = {
       primaryGradient: makeHSLAGradients(values),
@@ -21,8 +20,12 @@ const SpotifyProvider = (props) => {
       tertiaryGradient: makeOffsetHSLAGradients(values, 240),
       slider,
       setSlider,
-      albumsList: data.albums.items,
-      shuffleArray
+      albumsList,
+      setAlbumsList,
+      shuffleArray,
+      soundSliders: {},
+      soundSlider,
+      setSoundSlider
     }
 
   return (
