@@ -17,11 +17,19 @@ const SlidersDrawer = (props) => {
       <Drawer
         opened={opened}
         onClose={() => setOpened(false)}
-        size={'45%'}
+        size={'50%'}
         position='bottom'
         title={props.title}
         padding="sm"
       >
+        <Group position='apart' grow>
+        <Button
+          style={{ background: secondaryGradient }}
+          radius='xl'
+          size='xl'
+          onClick={toggleDrawer}>{'Generate Recommendations'}
+        </Button>
+        </Group>
         <SlidersContainer />
       </Drawer>
 
@@ -30,13 +38,7 @@ const SlidersDrawer = (props) => {
           style={{ background: primaryGradient }}
           radius='xl'
           size='xl'
-          onClick={toggleDrawer}>{'Randomize'}
-        </Button>
-        <Button
-          style={{ background: secondaryGradient }}
-          radius='xl'
-          size='xl'
-          onClick={toggleDrawer}>{'Generate'}
+          onClick={toggleDrawer}>{'Randomize Search'}
         </Button>
         <Button
           style={{ background: tertiaryGradient }}

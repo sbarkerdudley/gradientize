@@ -10,20 +10,18 @@ const ColorSelector = (props) => {
   let sliderHeight = 40;
 
   return (
-    <Group direction='column' position='apart'>
-      <HueSlider
-        value={slider}
-        onChange={setSlider}
-        size="xl"
-        style={{ height: sliderHeight }}
-        styles={(theme) => ({
-          thumb: {
-            height: sliderHeight,
-            width: sliderHeight
-          }
-        })} />
-      <SlidersDrawer />
-    </Group>
+    <HueSlider
+      value={slider}
+      onChange={setSlider}
+      size="xl"
+      style={{ height: sliderHeight }}
+      styles={(theme) => ({
+        thumb: {
+          height: sliderHeight,
+          width: sliderHeight
+        }
+      })}
+    />
   )
 };
 
