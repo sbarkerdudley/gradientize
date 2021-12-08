@@ -10,7 +10,7 @@ const App = () => {
 
   return (
     <SpotifyProvider>
-        <AppShell  style={{'background-image': tertiaryGradient}} header={<AppHeader />}>
+        <AppShell header={<AppHeader />}>
           <AlbumGrid />
         </AppShell>
     </SpotifyProvider>
