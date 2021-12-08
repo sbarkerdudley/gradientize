@@ -8,9 +8,9 @@ import data from '../../data.js';
 const AlbumGrid = (props) => {
   let colSpan = 12
   let gutter = 'md'
-  let albumsList = React.useContext(SpotifyContext)
+  let {albumsList} = React.useContext(SpotifyContext)
 
-  let AlbumComponents = data.albums.items.map(album => {
+  let AlbumComponents = albumsList.map(album => {
     return <Col span={4} md={3} lg={2}><Album {...{album}} /></Col>
   })
 

@@ -13,7 +13,7 @@ const SpotifyProvider = (props) => {
     [slider, setSlider] = React.useState(Math.floor(Math.random() * 360)),
     [soundSlider, setSoundSlider] = useState(50),
     [albumsList, setAlbumsList] = useState(data.albums.items),
-    values = [slider, slider + 40, slider + 80],
+    values = [slider, slider + 50, slider + 100],
     value = {
       primaryGradient: makeHSLAGradients(values),
       secondaryGradient: makeOffsetHSLAGradients(values, 120),

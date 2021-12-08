@@ -6,11 +6,11 @@ import SpotifyProvider, {SpotifyContext} from './SpotifyProvider.jsx';
 
 
 const App = () => {
-  let slider = React.useContext(SpotifyContext)
+  let tertiaryGradient = React.useContext(SpotifyContext)
 
   return (
     <SpotifyProvider>
-        <AppShell header={<AppHeader />}>
+        <AppShell  style={{'background-image': tertiaryGradient}} header={<AppHeader />}>
           <AlbumGrid />
         </AppShell>
     </SpotifyProvider>

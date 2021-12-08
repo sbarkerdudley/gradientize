@@ -11,7 +11,7 @@ const SlidersDrawer = (props) => {
   const [opened, setOpened] = useState(false);
   const toggleDrawer = () => setOpened(!opened)
 
-  let { slider, setSlider, primaryGradient, secondaryGradient, tertiaryGradient, albumsList,setAlbumsList, values } = React.useContext(SpotifyContext)
+  let { slider, setSlider, primaryGradient, secondaryGradient, tertiaryGradient, albumsList, setAlbumsList, values } = React.useContext(SpotifyContext)
 
   let randomize = () => {
     toggleDrawer()
