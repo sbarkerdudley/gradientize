@@ -33,7 +33,7 @@ app.get('/login', (req, res) => {
 
 
 app.get('/logout', (req, res) => {
-    req.session = null;
-    req.logout();
-    res.redirect('/');
-  })
+  req.session = null;
+  req.logout();
+  res.redirect('/');
+})
