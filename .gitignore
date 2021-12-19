@@ -109,3 +109,5 @@ test/
 bundle.js
 
 .DS_Store
+
+config.js

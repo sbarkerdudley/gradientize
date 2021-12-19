@@ -2,7 +2,6 @@ import React from 'react';
 import { Button, Grid, Col, Transition } from '@mantine/core';
 import Album from './Album.jsx';
 import { SpotifyContext } from './SpotifyProvider.jsx';
-import data from '../../data.js';
 
 
 const AlbumGrid = (props) => {
@@ -16,7 +15,6 @@ const AlbumGrid = (props) => {
 
   return (
     <Grid gutter={gutter}>
-      {props.children }
       {AlbumComponents}
     </Grid>
   )
