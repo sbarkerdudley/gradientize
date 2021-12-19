@@ -5,24 +5,23 @@ auth.get('/spotify',
   passport.authenticate('spotify', {
     scope: ['user-read-email', 'user-read-private'],
     showDialog: true,
-    failureRedirect: '/main'
-    // failureRedirect: '/auth/error'
+    // failureRedirect: '/main'
+    failureRedirect: '/auth/error'
   }, (req, res) => {
-    res.redirect('/main')
+    res.redirect('/')
   })
 );
 
-auth.get('/spotify/callback',
-  // passport.authenticate('spotify', {failureRedirect: '/main'}),
-  (req, res) => {
-    // Successful authentication, redirect home.
-    res.redirect('/main');
+auth.get('/spotify/callback',(req, res) => {
+  console.log(req.query)
+  // res.set('http://api.spotify.com/api/token')
+  res.redirect('/');
   }
 );
 
 auth.get('/error', (req, res) => {
-  res.redirect('/main')
-  // res.send('Error in Authentication')
+  // res.redirect('/')
+  res.send('Error in Authentication')
 });
 
 module.exports = auth;

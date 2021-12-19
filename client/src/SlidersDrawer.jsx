@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Drawer, Button, Col, Group } from '@mantine/core';
+import { Drawer, Button, Col, Group, Title, Space } from '@mantine/core';
 import SlidersContainer from './SlidersContainer.jsx'
 import { SpotifyContext } from './SpotifyProvider.jsx';
 import { ButtonGenerator } from './Buttons.jsx';
@@ -23,12 +23,11 @@ const SlidersDrawer = (props) => {
       <Drawer
         opened={opened}
         onClose={() => setOpened(false)}
-        size={'35%'}
+        size='350px'
         position='bottom'
         title={props.title}
-        padding="sm"
+        padding='xl'
       >
-
         <SlidersContainer />
       </Drawer>
 
@@ -43,17 +42,17 @@ const SlidersDrawer = (props) => {
           style={{ background: tertiaryGradient }}
           radius='xl'
           size='xl'
-          onClick={toggleDrawer}>{'Set Mood By Hue'}
+          onClick={toggleDrawer}>{'Set Sliders By Hue'}
         </Button>
       </Group>
       <Group position='apart' grow>
-          <Button
-            style={{ background: secondaryGradient }}
-            radius='xl'
-            size='xl'
-            onClick={() => setAlbumsList(shuffleArray(albumsList))}>{'Generate Recommendations'}
-          </Button>
-        </Group>
+        <Button
+          style={{ background: secondaryGradient }}
+          radius='xl'
+          size='xl'
+          onClick={() => setAlbumsList(shuffleArray(albumsList))}>{'Generate Recommendations'}
+        </Button>
+      </Group>
     </>
   );
 };

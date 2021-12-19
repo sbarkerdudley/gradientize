@@ -3,6 +3,8 @@ import { Card, Image, Text, ThemeIcon, Overlay, Group } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
 import { SpotifyContext } from './SpotifyProvider.jsx';
 import Fav from './Fav.jsx';
+import AlbumImage from './AlbumImage.jsx';
+import AlbumTextModal from './AlbumTextModal.jsx';
 
 const Album = (props) => {
 
@@ -11,19 +13,17 @@ const Album = (props) => {
   let toggleFav = () => setFav(fav === 'light' ? '' : 'light');
   let { hovered, ref } = useHover();
   let hoverStyle = hovered ? {
-    transform: 'scale(1.02)',
+    transform: 'scale(1.04)',
     transition: 'ease-in-out 200ms'
   } : {}
-
   return (
 
     <Card
       ref={ref}
       key={props.album.id}
       component="a"
-      href={props.artistURL}
+      // href={props.album.external_urls.spotify}
       style={hoverStyle}
-
       radius='md'
       target="_blank"
     >
@@ -31,19 +31,11 @@ const Album = (props) => {
         <Fav children={'♥️'} variant={fav} handleClick={toggleFav} style={hoverStyle} />
       </Card.Section>
       <Card.Section>
-        <Image
-          src={props.album?.images?.[1].url}
-          style={{'z-index': 0}}
-          radius={'sm'}
-        />
+        <AlbumImage images={props.album?.images} radius='sm' artistURL={props.artist} albumURL={props.album?.external_urls.spotify}/>
       </Card.Section>
-      {/* <Card.Section>
-        <Group position='apart' direction='column'>
-          <Text weight={'bold'} size="md">{props.album.artists?.[0].name}</Text>
-          <Text weight={300} size="sm">{props.album.name}</Text>
-          <Text weight={500} size="sm">{props.album.artists?.[0].name}</Text>
-        </Group>
-      </Card.Section> */}
+      <Card.Section>
+        <AlbumTextModal album={props.album} />
+      </Card.Section>
     </Card>
 
   )
