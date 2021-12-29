@@ -1,12 +1,9 @@
-import React, { useState, useContext, useEffect } from 'react';
-// import { Card, Image, Text, ThemeIcon, Overlay, Group } from '@mantine/core';
+import React, { useState, useEffect } from 'react';
 import { Card, Image } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
 import FastAverageColor from 'fast-average-color';
 const fac = new FastAverageColor();
 import { getHue, makeHSLAShadow } from './utils.js'
-
-// import { SpotifyContext } from './SpotifyProvider.jsx';
 import Fav from './Fav.jsx';
 
 const AlbumImage = (props) => {
@@ -19,7 +16,7 @@ const AlbumImage = (props) => {
       .then(color => getHue(...color.value))
       .then(int => `hsla(${int}, 100%, 50%, 0.34)`)
       .then(colorString => setAverageColor(makeHSLAShadow(colorString))))
-  }, [])
+  }, [images]);
 
 
   return (
@@ -29,6 +26,6 @@ const AlbumImage = (props) => {
       radius='xs'
     />
   )
-}
+};
 
 export default AlbumImage;

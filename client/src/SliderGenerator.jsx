@@ -16,7 +16,11 @@ export const SliderGenerator = (props) => {
 
   return (
     <>
-      <Center><Text size='md' weight={700} style={{ color: props.color }}>{props.label}</Text></Center>
+      <Center>
+        <Text size='md' weight={700} style={{ color: props.color }}>
+          {props.label}
+        </Text>
+      </Center>
       <RangeSlider
         onChange={updateSlider}
         size='xl'
@@ -29,12 +33,7 @@ export const SliderGenerator = (props) => {
         min={0}
         max={100}
         defaultValue={randomSliderValues}
-        // defaultValue={soundSlider}
         color={props.color}
-        thumb={{
-          height: 'xl',
-          width: 'xl'
-        }}
       />
     </>
   )

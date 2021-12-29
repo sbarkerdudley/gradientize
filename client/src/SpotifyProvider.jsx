@@ -2,15 +2,14 @@ import React, { useState, useEffect, useContext } from 'react';
 import { MantineProvider } from '@mantine/core';
 import { makeHSLAGradients, makeOffsetHSLAGradients, shuffleArray } from './utils.js'
 import data from '../../data.js';
-import axios from 'axios';
-import {SPOTIFY_CONFIG} from '../../config.js'
+import { SPOTIFY_CONFIG } from '../../config.js'
 import { SpotifyApiContext } from 'react-spotify-api'
 
 export const SpotifyContext = React.createContext();
 
 const SpotifyProvider = (props) => {
 
-  let {token} = useContext(SpotifyApiContext)
+  let { token } = useContext(SpotifyApiContext)
   // Random HSLA Hue on page load
 
   let theme = { colorScheme: 'dark' },
