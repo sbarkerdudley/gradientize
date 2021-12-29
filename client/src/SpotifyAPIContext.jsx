@@ -1,10 +1,9 @@
-import { CLIENT_ID, CLIENT_SECRET } from '../../config.js'
-import React from 'react'
-import { SpotifyApiContext } from 'react-spotify-api'
-import Cookies from 'js-cookie'
-import { SpotifyAuth, Scopes } from 'react-spotify-auth'
-import 'react-spotify-auth/dist/index.css'
-import axios from 'axios'
+import React from 'react';
+import Cookies from 'js-cookie';
+import { CLIENT_ID, CLIENT_SECRET } from '../../config.js';
+import { SpotifyAuth, Scopes } from 'react-spotify-auth';
+import { SpotifyApiContext } from 'react-spotify-api';
+import 'react-spotify-auth/dist/index.css';
 
 const SpotifyAPIContext = (props) => {
   const [token, setToken] = React.useState(Cookies.get("spotifyAuthToken"))
@@ -12,8 +11,6 @@ const SpotifyAPIContext = (props) => {
     <div className='api-context'>
       {token ? (
         <SpotifyApiContext.Provider value={token}>
-          {/* Your Spotify Code here */}
-          {/* <p>You are authorized with token: {token}</p> */}
           {props.children}
         </SpotifyApiContext.Provider>
       ) : (
@@ -28,9 +25,6 @@ const SpotifyAPIContext = (props) => {
       )}
     </div>
   )
-}
+};
+
 export default SpotifyAPIContext;
-
-
-// process.env.CLIENT_ID
-// process.env.CLIENT_SECRET

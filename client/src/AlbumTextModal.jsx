@@ -1,9 +1,8 @@
 import React from 'react';
-import { Group, Text, Popper, Paper } from '@mantine/core'
+import { Group, Text, Popper, Paper } from '@mantine/core';
 
 const AlbumTextModal = (props) => {
-
-  let [visible, setVisible] = React.useState(true)
+  let [visible, setVisible] = React.useState(true);
   return (
     <Group position='apart' direction='column'>
       <Text weight={'bold'} size="md">{props.album.artists?.[0].name}</Text>
@@ -11,6 +10,6 @@ const AlbumTextModal = (props) => {
       <Text weight={500} size="sm">{props.album.artists?.[0].name}</Text>
     </Group>
   )
-}
+};
 
 export default AlbumTextModal;

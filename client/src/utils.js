@@ -20,11 +20,11 @@ export const makeOffsetHSLAGradients = (colors, offset) => {
   return makeHSLAGradients(colors.map((x) => x + offset));
 };
 
+export const randomSliderValue = Math.floor(Math.random() * 100);
+
 export const randomSliderValues = Array(2)
   .fill(randomSliderValue)
   .sort((a, b) => a - b);
-
-export const randomSliderValue = Math.floor(Math.random() * 100);
 
 export const steps = Array(9)
   .fill()
@@ -49,7 +49,7 @@ export const getHue = (r, g, b) => {
   var min = Math.min(r, g, b);
   var c   = max - min;
   var hue;
-  if (c == 0) {
+  if (c === 0) {
     hue = 0;
   } else {
     switch(max) {
