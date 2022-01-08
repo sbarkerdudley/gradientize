@@ -14,8 +14,11 @@ const AppHeader = () => {
       padding={10}
       style={{
         position: 'sticky',
-        'background-color': 'rgba(0, 0, 0, 0.8)',
-        width: '101%'}}>
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        margin: 'auto',
+        width: '100%'
+      }}
+    >
       <Group direction='column' position='apart'>
       <ColorSelector />
       <SlidersDrawer />
