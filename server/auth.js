@@ -1,4 +1,4 @@
-const passport = require('./passport.js');
+const passport = require('./passport')
 const auth = require('express').Router();
 
 auth.get('/spotify',
@@ -8,14 +8,22 @@ auth.get('/spotify',
     // failureRedirect: '/main'
     failureRedirect: '/auth/error'
   }, (req, res) => {
-    res.redirect('/')
+    res.redirect('/butts')
   })
 );
 
 auth.get('/spotify/callback',(req, res) => {
-  console.log(req.query)
-  // res.set('http://api.spotify.com/api/token')
-  res.redirect('/');
+  try {
+    console.log(req.query)
+    let {code} = req?.query
+    if (code) {
+      res.redirect('/#' + code);
+    } else {
+      throw new Error()
+    }
+  } catch (error) {
+    res.redirect('/error')
+  }
   }
 );
 
