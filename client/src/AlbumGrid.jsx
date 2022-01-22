@@ -13,7 +13,7 @@ const AlbumGrid = (props) => {
   })
 
   return (
-    <Grid {...{gutter}} grow>
+    <Grid grow {...{gutter}} >
       <Suspense fallback={<h1>Albums Grid broke</h1>}>
         {AlbumComponents}
       </Suspense>

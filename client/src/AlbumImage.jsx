@@ -9,12 +9,16 @@ import Fav from './Fav.jsx';
 const AlbumImage = (props) => {
   let { images } = props
   let [averageColor, setAverageColor] = React.useState('')
+  let [hue, setHue] = React.useState(0)
 
   useEffect(() => {
     (images &&
     fac.getColorAsync(images[2].url)
       .then(color => getHue(...color.value))
-      .then(int => `hsla(${int}, 100%, 50%, 0.34)`)
+      .then(hue => {
+        setHue()
+        return `hsla(${hue}, 100%, 50%, 0.34)`
+      })
       .then(colorString => setAverageColor(makeHSLAShadow(colorString))))
   }, [images]);
 
