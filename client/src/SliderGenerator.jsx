@@ -4,30 +4,28 @@ import { randomSliderValues, randomSliderValue, steps } from './utils.js'
 import { SpotifyContext } from './SpotifyProvider.jsx';
 
 
-export const SliderGenerator = ({label, color}) => {
-  const randomSliderValue = Math.floor(Math.random() * 100);
-  const marks = Array(9).fill().map((mark, i) => ({ value: (i + 1) * 10 }));
-  const [checked, setChecked] = React.useState(true)
+const SliderGenerator = (props) => {
 
-  const { soundSliders, soundSlider, setSoundSlider } = React.useContext(SpotifyContext);
-  const updateSlider = () => setSoundSlider(soundSliders[label] = soundSlider)
-  soundSliders[label] = randomSliderValue
+  var randomSliderValues = Array(2).fill().map(x => Math.floor(Math.random() * 20) * 5).sort();
+  var randomSliderValue = Math.floor(Math.random() * 100);
+  var steps = Array(9).fill().map((x, i) => ({ value: (i + 1) * 10 }));
+
+  var { soundSliders, soundSlider, setSoundSlider } = React.useContext(SpotifyContext);
+  var updateSlider = () => setSoundSlider(soundSliders[props.label] = soundSlider)
+  soundSliders[props.label] = randomSliderValue
 
   return (
     <>
-      <Group position='apart'>
+      <Center>
         <Text
           size='md'
           weight={700}
-          style={{ color }}>
-          {label}
+          style={{ color: props.color }}
+        >
+          {props.label}
         </Text>
-        <Switch
-          {...{color, checked}}
-          onChange={e => setChecked(e.target.checked)}
-        />
-      </Group>
-      <Slider
+      </Center>
+      <RangeSlider
         onChange={updateSlider}
         size='xl'
         radius="xl"
@@ -39,9 +37,15 @@ export const SliderGenerator = ({label, color}) => {
         step={5}
         min={0}
         max={100}
-        defaultValue={randomSliderValue}
-        color={color}
-        />
+        defaultValue={randomSliderValues}
+        color={props.color}
+        thumb={{
+          height: 'xl',
+          width: 'xl'
+        }}
+      />
     </>
   )
 };
+
+export default React.memo(SliderGenerator);

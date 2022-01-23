@@ -1,32 +1,34 @@
 import React from 'react';
-import { Header, Button, Group, Center } from '@mantine/core';
+import { Header, Group, Grid } from '@mantine/core';
 import ColorSelector from './ColorSelector.jsx';
 import SlidersDrawer from './SlidersDrawer.jsx';
+import UserAvatar from './UserAvatar.jsx';
 
 
-const AppHeader = () => {
-  let height = 240;
-
-
-  return (
-    <Header
-      height={height}
-      padding={10}
-      style={{
-        position: 'sticky',
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-        margin: 'auto',
-        width: '100%'
-      }}
+const AppHeader = () => (
+  <Header
+    padding={'xs'}
+    sx={{
+      position: 'sticky',
+      top: 0,
+      opacity: '95%',
+      paddingBottom: '2rem',
+      padding: '1rem',
+      margin: '0 auto',
+    }}
+  >
+    <Group
+      grow
+      direction='column'
+      position='apart'
     >
-      <Group direction='column' position='apart'>
-      <ColorSelector />
+      {/* <ColorSelector /> */}
       <SlidersDrawer />
-      </Group>
-    </Header>
-  );
-}
+    </Group>
+  </Header>
+);
 
 
 
-export default AppHeader;
+
+export default React.memo(AppHeader);

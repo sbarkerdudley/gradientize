@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Drawer, Button, Col, Group, Title, Space } from '@mantine/core';
 import SlidersContainer from './SlidersContainer.jsx'
-import { SpotifyContext } from './SpotifyProvider.jsx';
+import { SpotifyContext, ColorContext } from './SpotifyProvider.jsx';
 import { ButtonGenerator } from './Buttons.jsx';
 import { shuffleArray } from './utils.js';
 
@@ -11,11 +11,23 @@ const SlidersDrawer = (props) => {
   const [opened, setOpened] = useState(false);
   const toggleDrawer = () => setOpened(!opened)
 
-  let { slider, setSlider, primaryGradient, secondaryGradient, tertiaryGradient, albumsList, setAlbumsList, values } = React.useContext(SpotifyContext)
+  let {
+    slider,
+    setSlider,
+    albumsList,
+    setAlbumsList,
+  } = useContext(SpotifyContext)
+
+  let {
+    primaryGradient,
+    secondaryGradient,
+    tertiaryGradient,
+  } = useContext(ColorContext)
 
   let randomize = () => {
     toggleDrawer()
-    return setSlider(Math.floor(Math.random() * slider))
+    // return setSlider(Math.floor(Math.random() * slider))
+    // return setSlider(slider)
   }
 
   return (
@@ -57,4 +69,4 @@ const SlidersDrawer = (props) => {
   );
 };
 
-export default SlidersDrawer;
+export default React.memo(SlidersDrawer);

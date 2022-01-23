@@ -1,5 +1,5 @@
 import React from 'react';
-import { Group, Text, Popper, Paper } from '@mantine/core';
+import { Group, Text } from '@mantine/core'
 
 const AlbumTextModal = (props) => {
   let [visible, setVisible] = React.useState(true);
@@ -12,4 +12,4 @@ const AlbumTextModal = (props) => {
   )
 };
 
-export default AlbumTextModal;
+export default React.memo(AlbumTextModal);

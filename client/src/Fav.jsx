@@ -1,10 +1,7 @@
 import React from 'react';
 import { ThemeIcon } from '@mantine/core';
-import { useMantineTheme } from '@mantine/styles';
-
 
 const Fav = (props) => {
-  let theme = useMantineTheme()
   return (
     <ThemeIcon
       radius="xl"
@@ -12,8 +9,8 @@ const Fav = (props) => {
       color="pink"
       style={{
         position: 'absolute',
-        top: '5px',
-        right: '5px',
+        top: '0.5rem',
+        right: '0.5rem',
         zIndex: 5,
         cursor: 'pointer'
       }}
@@ -26,4 +23,4 @@ const Fav = (props) => {
 
 
 
-export default Fav;
+export default React.memo(Fav);

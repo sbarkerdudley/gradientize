@@ -1,0 +1,66 @@
+/*
+
+#root {
+  margin: 0 auto;
+  max-width: 1200px;
+
+}
+
+#app {
+  margin: 0 auto;
+  padding: 0 5rem;
+  min-width: 500px;
+  padding-bottom: 100px;
+  max-width: 1200px;
+}
+*/
+
+
+/* Login Page */
+
+.login {
+  display: flex;
+  overflow: hidden;
+  position: fixed;
+  padding: 0;
+  top: -1vh;
+  left: -1vw;
+  width: 102vw;
+  height: 102vh;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  background:
+  linear-gradient(0deg, hsla(20, 100%, 50%, 1),hsla(40, 100%, 50%, 0.6) 31%, hsla(60, 100%, 50%, 0.0) 67%),
+  linear-gradient(60deg, rgb(0, 89, 255),hsla(160, 100%, 50%, 0.6) 31%, hsla(180, 100%, 50%, 0.0) 67%),
+  linear-gradient(120deg, hsl(226, 100%, 50%),hsla(220, 100%, 50%, 0.6) 31%, hsla(240, 100%, 50%, 0.0) 67%),
+  linear-gradient(240deg, hsl(271, 100%, 50%),hsla(280, 100%, 50%, 0.6) 31%, hsla(300, 100%, 50%, 0.0) 67%),
+  linear-gradient(300deg, hsla(300, 100%, 50%, 1),hsla(280, 100%, 50%, 0.6) 31%, hsla(300, 100%, 50%, 0.0) 67%);
+}
+
+._3xrlJ {
+  transition-duration: 300ms;
+  background-color: #131614b9;
+  color: white;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 32px;
+  border: none;
+  border-radius: 1rem;
+}
+
+._1JCP_ {
+  padding-right: 0.75rem;
+  height: 3rem;
+  fill: white;
+  width:fit-content;
+}
+
+._3xrlJ:hover, ._3xrlJ:focus {
+  transition-duration: 500ms;
+  transform: scale(1.04);
+}

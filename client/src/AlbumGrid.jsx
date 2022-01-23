@@ -1,22 +1,25 @@
-import React, { Suspense, lazy } from 'react';
-import { Button, Grid, Col } from '@mantine/core';
+import React from 'react';
+import { Button, Grid, Transition } from '@mantine/core';
 import Album from './Album.jsx';
 import { SpotifyContext } from './SpotifyProvider.jsx';
 
-const AlbumGrid = (props) => {
-  let colSpan = 12;
-  let gutter = 'md';
-  let {albumsList} = React.useContext(SpotifyContext);
 
-  let AlbumComponents = albumsList.map(album => {
-    return <Col span={4} md={3} lg={2}><Album {...{album}} /></Col>
-  })
+const AlbumGrid = () => {
+
+  let { albumsList, setAlbumsList } = React.useContext(SpotifyContext)
+
+  let AlbumComponents = React.useMemo(() => {
+    return albumsList.map((album, i) => {
+      return (
+        <Grid.Col span={4} xs={6} sm={4} md={3} lg={3} xl={2} key={i}>
+          <Album {...{ album }} />
+        </Grid.Col>
+      )
+    })}, [albumsList])
 
   return (
-    <Grid grow {...{gutter}} >
-      <Suspense fallback={<h1>Albums Grid broke</h1>}>
-        {AlbumComponents}
-      </Suspense>
+    <Grid gutter={'lg'}>
+      {AlbumComponents}
     </Grid>
   )
 }
