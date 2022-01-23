@@ -57,4 +57,4 @@ const SlidersDrawer = (props) => {
   );
 };
 
-export default SlidersDrawer;
+export default React.memo(SlidersDrawer);

@@ -4,19 +4,27 @@ import { randomSliderValues, randomSliderValue, steps } from './utils.js'
 import { SpotifyContext } from './SpotifyProvider.jsx';
 
 
-export const SliderGenerator = (props) => {
+const SliderGenerator = (props) => {
 
   var randomSliderValues = Array(2).fill().map(x => Math.floor(Math.random() * 20) * 5).sort();
   var randomSliderValue = Math.floor(Math.random() * 100);
   var steps = Array(9).fill().map((x, i) => ({ value: (i + 1) * 10 }));
 
-  var {soundSliders, soundSlider, setSoundSlider} = React.useContext(SpotifyContext);
+  var { soundSliders, soundSlider, setSoundSlider } = React.useContext(SpotifyContext);
   var updateSlider = () => setSoundSlider(soundSliders[props.label] = soundSlider)
   soundSliders[props.label] = randomSliderValue
 
   return (
     <>
-      <Center><Text size='md' weight={700} style={{ color: props.color }}>{props.label}</Text></Center>
+      <Center>
+        <Text
+          size='md'
+          weight={700}
+          style={{ color: props.color }}
+        >
+          {props.label}
+        </Text>
+      </Center>
       <RangeSlider
         onChange={updateSlider}
         size='xl'
@@ -29,7 +37,6 @@ export const SliderGenerator = (props) => {
         min={0}
         max={100}
         defaultValue={randomSliderValues}
-        // defaultValue={soundSlider}
         color={props.color}
         thumb={{
           height: 'xl',
@@ -39,3 +46,5 @@ export const SliderGenerator = (props) => {
     </>
   )
 };
+
+export default React.memo(SliderGenerator);

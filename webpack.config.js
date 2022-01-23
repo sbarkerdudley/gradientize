@@ -1,15 +1,29 @@
 const path = require('path');
+const webpack = require('webpack');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const DIST_DIR = path.resolve(__dirname, 'client', 'dist');
 const SRC_DIR = path.resolve(__dirname, 'client', 'src');
 const SRC_FILE = path.resolve(SRC_DIR, 'index.js');
+const HTML_FILE = path.resolve(SRC_DIR, 'index.html');
 
 module.exports = {
   entry: ['babel-polyfill', SRC_FILE],
   output: {
-    filename: 'bundle.js',
+    filename: 'index_bundle.js',
     path: DIST_DIR,
   },
+  plugins: [
+    new webpack.ProgressPlugin(),
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: HTML_FILE,
+      inject: false
+    }),
+    new MiniCssExtractPlugin()
+  ],
   devServer: {
     static: {
       directory: DIST_DIR
@@ -29,15 +43,14 @@ module.exports = {
           options: {
             presets: [
               '@babel/preset-env',
-              '@babel/preset-react'
-
+              '@babel/preset-react',
             ]
           }
         }
       },
       {
         test: /\.?css$/i,
-        use: [ 'style-loader', 'css-loader' ],
+        use: [ MiniCssExtractPlugin.loader, 'css-loader' ],
       }
     ]
   },

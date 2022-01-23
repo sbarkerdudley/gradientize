@@ -1,31 +1,35 @@
-import React from 'react';
-import { AppShell } from '@mantine/core';
+import './style.css';
+import React, { Suspense, useContext } from 'react';
+import { AppShell, MantineProvider } from '@mantine/core';
 import SpotifyAPIContext from './SpotifyAPIContext.jsx';
 import AppHeader from './AppHeader.jsx';
+import Footer from './Footer.jsx';
 import AlbumGrid from './AlbumGrid.jsx';
 import SpotifyProvider, { SpotifyContext } from './SpotifyProvider.jsx';
-import { TypographyStylesProvider } from '@mantine/core';
-
-function Demo() {
-  return (
-    <TypographyStylesProvider>
-      <div dangerouslySetInnerHTML={{ __html: '<p>Your html here</p>' }} />
-    </TypographyStylesProvider>
-  );
-}
 
 const App = () => {
+  if (document !== undefined) {
+    document.title = 'Hello World';
+  }
+
   return (
-    <SpotifyAPIContext children={
-      <SpotifyProvider>
-        <AppShell header={<AppHeader />}>
-          <AlbumGrid />
-        </AppShell>
-      </SpotifyProvider>
-    }>
-    </SpotifyAPIContext>
+    <div id='app'>
+      {/* <MantineProvider theme={{}}> */}
+        <SpotifyAPIContext>
+          <SpotifyProvider>
+            <Suspense fallback={<></>}>
+              <AppShell header={<AppHeader />}>
+                <Suspense fallback={<></>}>
+                  <AlbumGrid />
+                </Suspense>
+              </AppShell>
+              <Footer />
+            </Suspense>
+          </SpotifyProvider>
+        </SpotifyAPIContext>
+      {/* </MantineProvider> */}
+    </div>
   );
 }
-
 
 export default App;

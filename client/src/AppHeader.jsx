@@ -4,26 +4,22 @@ import ColorSelector from './ColorSelector.jsx';
 import SlidersDrawer from './SlidersDrawer.jsx';
 
 
-const AppHeader = () => {
-  let height = 240;
-
-
-  return (
-    <Header
-      height={height}
-      padding={10}
-      style={{
-        position: 'sticky',
-        'background-color': 'rgba(0, 0, 0, 0.8)',
-        width: '101%'}}>
-      <Group direction='column' position='apart'>
+const AppHeader = () => (
+  <nav className='nav'>
+  <Header padding={'xs'}>
+    <Group
+      grow
+      direction='column'
+      position='apart'
+      >
       <ColorSelector />
       <SlidersDrawer />
-      </Group>
-    </Header>
-  );
-}
+    </Group>
+  </Header>
+      </nav>
+);
 
 
 
-export default AppHeader;
+
+export default React.memo(AppHeader);

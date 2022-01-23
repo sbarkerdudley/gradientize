@@ -7,11 +7,15 @@ import { SpotifyContext } from './SpotifyProvider.jsx';
 const AlbumGrid = (props) => {
   let colSpan = 12
   let gutter = 'md'
-  let {albumsList} = React.useContext(SpotifyContext)
+  let { albumsList, setAlbumsList } = React.useContext(SpotifyContext)
 
-  let AlbumComponents = albumsList.map(album => {
-    return <Col span={4} md={3} lg={2}><Album {...{album}} /></Col>
-  })
+  let AlbumComponents =albumsList.map((album, i) => {
+      return (
+        <Col span={4} md={3} lg={2} key={i}>
+          <Album {...{ album }} />
+        </Col>
+      )
+    })
 
   return (
     <Grid gutter={gutter}>
