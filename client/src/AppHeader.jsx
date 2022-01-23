@@ -1,22 +1,32 @@
 import React from 'react';
-import { Header, Button, Group, Center } from '@mantine/core';
+import { Header, Group, Grid } from '@mantine/core';
 import ColorSelector from './ColorSelector.jsx';
 import SlidersDrawer from './SlidersDrawer.jsx';
+import UserAvatar from './UserAvatar.jsx';
 
 
 const AppHeader = () => (
-  <nav className='nav'>
-  <Header padding={'xs'}>
+  <Header
+    padding={'xs'}
+    sx={{
+      position: 'sticky',
+      top: 0,
+      opacity: '95%',
+      paddingBottom: '2rem',
+      padding: '1rem',
+      margin: '0 auto',
+    }}
+  >
+    <UserAvatar />
     <Group
       grow
       direction='column'
       position='apart'
-      >
-      <ColorSelector />
+    >
+      {/* <ColorSelector /> */}
       <SlidersDrawer />
     </Group>
   </Header>
-      </nav>
 );
 
 

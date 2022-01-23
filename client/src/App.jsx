@@ -1,4 +1,4 @@
-import './style.css';
+// import './style.css';
 import React, { Suspense, useContext } from 'react';
 import { AppShell, MantineProvider } from '@mantine/core';
 import SpotifyAPIContext from './SpotifyAPIContext.jsx';

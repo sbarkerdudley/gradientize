@@ -1,23 +1,21 @@
 import React, { useState, useContext, useEffect, Suspense } from 'react';
-import FastAverageColor from 'fast-average-color';
 import { Image } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
-import { getHue, makeHSLAShadow } from './utils.js'
-import Fav from './Fav.jsx';
-const fac = new FastAverageColor();
+import { parseAlbumColorToCss } from './utils.js';
 
-const AlbumImage = (props) => {
-  let { images } = props
+const AlbumImage = ({images}) => {
+
+  if (!images) return <></> // TODO: Unsure if Suspense is handling this
+
   let [averageColor, setAverageColor] = React.useState()
-
+  console.log(images);
   useEffect(() => {
-    (images &&
-    fac.getColorAsync(images[2].url)
-      .then(color => getHue(...color.value))
-      .then(int => `hsla(${int}, 100%, 50%, 0.34)`)
-      .then(colorString => setAverageColor(makeHSLAShadow(colorString))))
-  }, [images?.[2]?.url])
-
+    if (images) {
+      parseAlbumColorToCss(images[2].url)
+        .then((css) => setAverageColor(css))
+        .catch(console.error())
+    }
+  }, [images[0].url])
 
   return (
     <Suspense fallback={<></>}>

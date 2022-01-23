@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Col } from '@mantine/core';
-import SliderGenerator from './SliderGenerator.jsx';
+import SliderGenerator from './SliderGenerator';
 
 const SlidersContainer = () => (
   <Grid gutter={'md'} >

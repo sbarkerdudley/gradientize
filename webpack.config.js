@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
@@ -20,17 +20,17 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: HTML_FILE,
-      inject: false
+      inject: false,
     }),
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin(),
   ],
   devServer: {
     static: {
-      directory: DIST_DIR
+      directory: DIST_DIR,
     },
     compress: true,
     port: 9000,
-    hot: true
+    hot: true,
   },
   mode: 'development',
   module: {
@@ -41,21 +41,17 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [
-              '@babel/preset-env',
-              '@babel/preset-react',
-            ]
-          }
-        }
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        },
       },
       {
         test: /\.?css$/i,
-        use: [ MiniCssExtractPlugin.loader, 'css-loader' ],
-      }
-    ]
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+    ],
   },
   resolve: {
-    extensions: ['css', '...']
-  }
+    extensions: ['.css', '.tsx', '.jsx', '.ts', '.js', '...'],
+  },
 };
-
