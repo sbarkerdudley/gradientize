@@ -1,24 +1,24 @@
 import React from 'react';
-import { Button, Grid, Col, Transition } from '@mantine/core';
+import { Button, Grid, Transition } from '@mantine/core';
 import Album from './Album.jsx';
 import { SpotifyContext } from './SpotifyProvider.jsx';
 
 
-const AlbumGrid = (props) => {
-  let colSpan = 12
-  let gutter = 'md'
+const AlbumGrid = () => {
+
   let { albumsList, setAlbumsList } = React.useContext(SpotifyContext)
 
-  let AlbumComponents =albumsList.map((album, i) => {
+  let AlbumComponents = React.useMemo(() => {
+    return albumsList.map((album, i) => {
       return (
-        <Col span={4} md={3} lg={2} key={i}>
+        <Grid.Col span={4} xs={6} sm={4} md={3} lg={3} xl={2} key={i}>
           <Album {...{ album }} />
-        </Col>
+        </Grid.Col>
       )
-    })
+    })}, [albumsList])
 
   return (
-    <Grid gutter={gutter}>
+    <Grid gutter={'lg'}>
       {AlbumComponents}
     </Grid>
   )

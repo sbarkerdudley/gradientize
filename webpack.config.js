@@ -19,6 +19,7 @@ module.exports = {
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
+      title: 'Gradientize',
       template: HTML_FILE,
       inject: false,
     }),

@@ -1,3 +1,5 @@
+/*
+
 #root {
   margin: 0 auto;
   max-width: 1200px;
@@ -11,31 +13,8 @@
   padding-bottom: 100px;
   max-width: 1200px;
 }
+*/
 
-nav,
-footer {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 0.5rem;
-  width: 100%;
-  z-index: 100;
-  opacity: 95%;
-}
-
-
-nav.nav {
-  position: sticky;
-  top: 0;
-}
-
-footer {
-  position: fixed;
-  display: flex;
-  top: 100vh;
-  transform: translate(0, -100%);
-  width: 100%;
-  padding: 0 0.5rem;
-}
 
 /* Login Page */
 

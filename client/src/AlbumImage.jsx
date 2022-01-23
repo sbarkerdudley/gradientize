@@ -8,7 +8,7 @@ const AlbumImage = ({images}) => {
   if (!images) return <></> // TODO: Unsure if Suspense is handling this
 
   let [averageColor, setAverageColor] = React.useState()
-  console.log(images);
+
   useEffect(() => {
     if (images) {
       parseAlbumColorToCss(images[2].url)

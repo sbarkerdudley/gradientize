@@ -2,7 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Webpack App</title>
+    <title>
+      <%= htmlWebpackPlugin.options.title %>
+    </title>
     <style>
       html,
       body {
@@ -15,6 +17,6 @@
     <script defer src="index_bundle.js"></script>
   </head>
   <body>
-    <div id="root"><h1>¯\_(ツ)_/¯</h1></div>
+    <div id="root"></div>
   </body>
 </html>

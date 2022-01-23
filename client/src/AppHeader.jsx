@@ -17,7 +17,6 @@ const AppHeader = () => (
       margin: '0 auto',
     }}
   >
-    <UserAvatar />
     <Group
       grow
       direction='column'
