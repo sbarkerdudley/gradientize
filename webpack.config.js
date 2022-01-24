@@ -7,7 +7,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const DIST_DIR = path.resolve(__dirname, 'client', 'dist');
 const SRC_DIR = path.resolve(__dirname, 'client', 'src');
 const SRC_FILE = path.resolve(SRC_DIR, 'index.js');
-const HTML_FILE = path.resolve(SRC_DIR, 'index.html');
+const HTML_FILE = path.resolve(SRC_DIR, 'index_template.html');
 
 module.exports = {
   entry: ['babel-polyfill', SRC_FILE],

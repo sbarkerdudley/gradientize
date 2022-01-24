@@ -2,27 +2,20 @@ require('dotenv').config();
 const passport = require('passport');
 const SpotifyStrategy = require('passport-spotify').Strategy;
 
-const credentials = {
+const CREDENTIALS = {
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: 'http://localhost:3000/auth/spotify/callback'
+  callbackURL: process.env.REDIRECT_URI,
 }
 
 passport.use(
-  new SpotifyStrategy(credentials, (accessToken, refreshToken, expires_in, profile, done) => {
-      console.log({spotifyId: profile.id}, accessToken, refreshToken, expires_in, profile);
+  new SpotifyStrategy(CREDENTIALS,
+    (accessToken, refreshToken, expires_in, profile, done) => {
+      console.log('profile.id: ', profile.id, 'access token: ', accessToken, 'refresh token: ', refreshToken, 'expires in: ', expires_in, 'pr0file: ', profile);
       return done(null, profile);
     }
+
   )
 );
-
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-
-passport.deserializeUser(function(user, done) {
-  done(null, user);
-});
-
 
 module.exports = passport
