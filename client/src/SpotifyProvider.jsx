@@ -11,7 +11,7 @@ export const ColorContext = React.createContext({});
 
 const SpotifyProvider = ({ children }) => {
 
-  let { token } = useContext(SpotifyApiContext);
+
 
   let [slider, setSlider] = React.useState(Math.floor(Math.random() * 360));
   let [soundSlider, setSoundSlider] = useState(50);

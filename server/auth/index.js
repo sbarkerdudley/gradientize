@@ -77,6 +77,15 @@ auth.get('/spotify/callback', (req, res) => {
     .then((response) => {
       if (response.status === 200) {
         return res.send(`<pre>${JSON.stringify(response.data, null, 2)}</pre>`);
+          /*
+            {
+              "access_token": "BQ...ayog",
+              "token_type": "Bearer",
+              "expires_in": 3600,
+              "refresh_token": "AQAV...Ngc",
+              "scope": "user-read-email user-read-recently-played user-read-private user-top-read"
+            }
+         */
       }
       res.send('This shouldn\'t happen');
     })
@@ -93,37 +102,3 @@ auth.get('/error', (req, res) => {
 });
 
 module.exports = auth;
-
-/*
-
-Mandatory:
-
-user-read-private
-user-read-email
-
-Useful:
-
-user-library-read
-user-library-modify
-
-user-top-read
-user-read-recently-played
-
-playlist-modify-public
-playlist-read-public
-
-playlist-modify-private
-playlist-read-private
-
-Later:
-
-  Streaming:
-
-  streaming
-  user-read-playback-state
-  user-modify-playback-state
-  user-read-currently-playing
-  app-remote-control
-  user-read-playback-position
-
-*/
