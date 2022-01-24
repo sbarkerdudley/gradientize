@@ -9,6 +9,8 @@ const redirect_uri = process.env.REDIRECT_URI;
 
 const authorizationURL = 'https://accounts.spotify.com/authorize?';
 const tokenURL = 'https://accounts.spotify.com/api/token';
+const baseURL = 'https://api.spotify.com';
+const userURL = `${baseURL}/v1/me`;
 
 const scopes = [
   'user-read-email',
@@ -62,7 +64,7 @@ auth.get('/spotify/callback', (req, res) => {
 
     const bufferString = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
 
-    axios({
+    return axios({
       method: 'post',
       url: tokenURL,
       data: querystring.stringify({
@@ -76,18 +78,29 @@ auth.get('/spotify/callback', (req, res) => {
     })
     .then((response) => {
       if (response.status === 200) {
-        return res.send(`<pre>${JSON.stringify(response.data, null, 2)}</pre>`);
+        let {data} = response;
+        let { access_token, token_type, expires_in, refresh_token } = data;
+        // return res.send(`<pre>${JSON.stringify(response.data, null, 2)}</pre>`);
           /*
             {
-              "access_token": "BQ...ayog",
+              "access_token": "...",
               "token_type": "Bearer",
               "expires_in": 3600,
-              "refresh_token": "AQAV...Ngc",
+              "refresh_token": "...",
               "scope": "user-read-email user-read-recently-played user-read-private user-top-read"
             }
          */
+        return axios.get(userURL, {
+          headers: {
+            Authorization: `${token_type} ${access_token}`,
+          }
+        })
       }
       res.send('This shouldn\'t happen');
+    })
+    .then(response => {
+      res.send(`<pre>${JSON.stringify(response.data, null, 2)}</pre>`);
+      // This works
     })
     .catch((err) => {
       res.send(err);
