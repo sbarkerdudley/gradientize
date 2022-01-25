@@ -7,21 +7,16 @@ const AlbumImage = ({images}) => {
 
   if (!images) return <></> // TODO: Unsure if Suspense is handling this
 
-  let [averageColor, setAverageColor] = React.useState()
-
-  useEffect(() => {
-    if (images) {
-      parseAlbumColorToCss(images[2].url)
-        .then((css) => setAverageColor(css))
-        .catch(console.error())
-    }
-  }, [images[0].url])
-
   return (
     <Suspense fallback={<></>}>
       <Image
         src={images?.[1].url}
-        style={averageColor}
+        sx={{
+          'aspectRatio': '1 / 1',
+          'objectFit': 'cover',
+        }}
+
+        // style={averageColor}
         radius='xs'
       />
     </Suspense>

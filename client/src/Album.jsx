@@ -1,28 +1,36 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext, Suspense } from 'react';
 import { Card, Image, Text, ThemeIcon, Overlay, Group } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
 import { SpotifyContext } from './SpotifyProvider.jsx';
 import Fav from './Fav.jsx';
 import AlbumImage from './AlbumImage.jsx';
 import AlbumTextModal from './AlbumTextModal.jsx';
+import { parseAlbumColorToCss } from './utils.js';
 
-const Album = ({album}) => {
+const Album = ({ album }) => {
 
   let [fav, setFav] = useState('light');
-  let [visible, setVisible] = useState(false);
+  let [averageColor, setAverageColor] = React.useState({})
+  let [hue, setHue] = React.useState({})
+
   let toggleFav = () => setFav(fav === 'light' ? '' : 'light');
   let { hovered, ref } = useHover();
   let [referenceElement, setReferenceElement] = useState(null);
   let hoverStyle = hovered ? {
     transform: 'scale(1.04)',
-    transition: 'ease-in-out 200ms'
+    transition: '200ms'
   } : {}
-  React.useEffect(() => {
-    if (album) {
 
+  useEffect(() => {
+    if (album.images) {
+      parseAlbumColorToCss(album.images[2].url)
+        .then((success) => {
+          let [hue, shadow] = success;
+          console.log(hue);
+          setAverageColor(shadow)
+        })
     }
-  }, [album?.id])
-
+  }, [])
 
   return (
 
@@ -32,14 +40,21 @@ const Album = ({album}) => {
       component="a"
       href={album.external_urls.spotify}
       style={hoverStyle}
+      sx={{
+        'aspectRatio': '1 / 1',
+        'willChange': 'transform',
+        ...averageColor
+      }}
       radius='md'
       target="_blank"
     >
       <Card.Section>
-        <Fav children={'♥️'} variant={fav} handleClick={toggleFav} style={hoverStyle} />
+        <Suspense fallback={<></>}>
+          <Fav children={'♥️'} handleClick={toggleFav} style={hoverStyle} color={hue} />
+        </Suspense>
       </Card.Section>
       <Card.Section>
-        <AlbumImage images={album?.images} radius='sm' artistURL={album.artist} albumURL={album?.external_urls.spotify}/>
+        <AlbumImage images={album?.images} radius='sm' artistURL={album.artist} albumURL={album?.external_urls.spotify} />
       </Card.Section>
       <Card.Section>
         <AlbumTextModal album={album} />
@@ -49,5 +64,5 @@ const Album = ({album}) => {
   )
 }
 
-export default Album;
-// export default React.memo(Album);
+// export default Album;
+export default React.memo(Album);

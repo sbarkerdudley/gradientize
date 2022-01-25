@@ -7,13 +7,14 @@ export const parseAlbumColorToCss = async (imageUrl) => {
   ); /* Sample average color of smallest image */
   let hue = await getHue(...averageColor.value); /* Convert color to pure hue */
   let parsedHue = `hsla(${hue}, 100%, 50%, 0.34)`; /* Format for CSS */
-  return await makeHSLAShadow(parsedHue);
+  // let parsedHue = `hsla(${hue}, 100%, 50%, 0.44)`; /* Format for CSS */
+  return await [parsedHue, makeHSLAShadow(parsedHue)];
 };
 
 export const makeHSLAGradient = (color = 360, angle = 0) =>
   `linear-gradient(${angle}deg,
     hsla(${color}, 100%, 50%, 100%),
-    hsla(${color}, 100%, 50%, 0) 73%) `;
+    hsla(${color}, 100%, 50%, 0) 83%) `;
 
 export const makeHSLAGradients = ([...colors]) => {
   //0 <= color <= 360 - references ColorSlider component
@@ -36,7 +37,7 @@ export const randomSliderValues = Array(2)
   .fill(randomSliderValue)
   .sort((a, b) => a - b);
 
-export const steps = Array(9)
+export const sliderMarks = Array(9)
   .fill()
   .map((x, i) => ({ value: (i + 1) * 10 }));
 
@@ -84,10 +85,19 @@ export const getHue = (r, g, b) => {
         break;
     }
   }
-  return hue * 60; // hue is in [0,6], scale it up
+  return parseInt(hue * 60); // hue is in [0,6], scale it up
 };
 
 export const makeHSLAShadow = (color) => {
+  return {
+    boxShadow:
+      `-10px 10px 9.9px ${color}, ` +
+      `-20px 20px 28.5px ${color}, ` +
+      `-6px 60px 52.6px ${color} `,
+  };
+};
+
+export const xmakeHSLAShadow = (color) => {
   return {
     boxShadow:
       `0px 10px 9.9px ${color}, ` +

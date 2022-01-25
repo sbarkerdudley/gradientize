@@ -9,12 +9,14 @@ const AppHeader = () => (
   <Header
     padding={'xs'}
     sx={{
+      outline: 0,
+      border: 'none',
       position: 'sticky',
       top: 0,
       opacity: '95%',
-      paddingBottom: '2rem',
-      padding: '1rem',
-      margin: '0 auto',
+      // paddingBottom: '2rem',
+      // padding: '1rem',
+      // margin: '0 auto',
     }}
   >
     <Group
@@ -22,7 +24,6 @@ const AppHeader = () => (
       direction='column'
       position='apart'
     >
-      {/* <ColorSelector /> */}
       <SlidersDrawer />
     </Group>
   </Header>

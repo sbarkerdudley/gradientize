@@ -23,7 +23,7 @@ const SpotifyAPIContext = ({ children }) => {
             redirectUri={REDIRECT_URI}
             clientID={CLIENT_ID}
             scopes={[Scopes.userReadPrivate, 'user-read-email']}
-            onAccessToken={(token) => { console.log(token); setToken(token) }}
+            onAccessToken={(token) => setToken(token) }
           />
         </Login>
       )}

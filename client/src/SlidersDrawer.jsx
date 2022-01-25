@@ -47,24 +47,30 @@ const SlidersDrawer = (props) => {
         <Button
           style={{ background: primaryGradient }}
           radius='xl'
-          size='xl'
+          size='md'
           onClick={toggleDrawer}>{'Randomize'}
         </Button>
         <Button
           style={{ background: tertiaryGradient }}
           radius='xl'
-          size='xl'
+          size='md'
           onClick={toggleDrawer}>{'Set Sliders By Hue'}
         </Button>
+      <Button
+        style={{ background: secondaryGradient }}
+        radius='xl'
+        size='md'
+        onClick={() => setAlbumsList(shuffleArray(albumsList))}>{'Generate Recommendations'}
+      </Button>
       </Group>
-      <Group position='apart' grow>
+      {/* <Group position='apart' grow>
         <Button
           style={{ background: secondaryGradient }}
           radius='xl'
-          size='xl'
+          size='md'
           onClick={() => setAlbumsList(shuffleArray(albumsList))}>{'Generate Recommendations'}
         </Button>
-      </Group>
+      </Group> */}
     </>
   );
 };

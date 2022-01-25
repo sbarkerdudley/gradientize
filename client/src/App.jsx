@@ -6,27 +6,30 @@ import AppHeader from './AppHeader.jsx';
 import Login from './Login.jsx';
 import Footer from './Footer.jsx';
 import AlbumGrid from './AlbumGrid.jsx';
-import SpotifyProvider, { SpotifyContext } from './SpotifyProvider.jsx';
+
+import { Button } from '@mantine/core';
+
 
 const App = () => {
 
   return (
     <div id='app'>
       <Login />
-      {/* <MantineProvider theme={{}}> */}
-        <SpotifyAPIContext>
-          <SpotifyProvider>
-            <Suspense fallback={<></>}>
-              <AppShell header={<AppHeader />}>
-                <Suspense fallback={<></>}>
-                  <AlbumGrid />
-                </Suspense>
-              </AppShell>
-              <Footer />
-            </Suspense>
-          </SpotifyProvider>
-        </SpotifyAPIContext>
-      {/* </MantineProvider> */}
+      {/* <SpotifyAPIContext> */}
+        <SpotifyProvider>
+          <Suspense fallback={<></>}>
+            <AppShell header={<AppHeader />}>
+              <Suspense fallback={<></>}>
+                <AlbumGrid />
+                <a href='/login'><h1>LOGIN</h1></a>
+                <br />
+                <a href='/'><h1>HOME</h1></a>
+              </Suspense>
+            </AppShell>
+            <Footer />
+          </Suspense>
+        </SpotifyProvider>
+      {/* </SpotifyAPIContext> */}
     </div>
   );
 };
