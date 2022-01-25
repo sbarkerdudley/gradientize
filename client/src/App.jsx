@@ -1,11 +1,11 @@
 import React, { Suspense, useContext } from 'react';
 import { AppShell, MantineProvider } from '@mantine/core';
-import SpotifyAPIContext from './SpotifyAPIContext.jsx';
-import SpotifyProvider from './SpotifyProvider.jsx';
-import AppHeader from './AppHeader.jsx';
-import Login from './Login.jsx';
-import Footer from './Footer.jsx';
-import AlbumGrid from './AlbumGrid.jsx';
+import SpotifyAPIContext from './SpotifyAPIContext';
+import SpotifyProvider from './SpotifyProvider';
+import AppHeader from './AppHeader';
+import Login from './Login';
+import Footer from './Footer';
+import AlbumGrid from './AlbumGrid';
 
 import { Button } from '@mantine/core';
 
@@ -16,19 +16,19 @@ const App = () => {
     <div id='app'>
       <Login />
       {/* <SpotifyAPIContext> */}
-        <SpotifyProvider>
-          <Suspense fallback={<></>}>
-            <AppShell header={<AppHeader />}>
-              <Suspense fallback={<></>}>
-                <AlbumGrid />
-                <a href='/login'><h1>LOGIN</h1></a>
-                <br />
-                <a href='/'><h1>HOME</h1></a>
-              </Suspense>
-            </AppShell>
-            <Footer />
-          </Suspense>
-        </SpotifyProvider>
+      <SpotifyProvider>
+
+        <Suspense fallback={<></>}>
+              <a href='/login'><h1>LOGIN</h1></a>
+          <AppShell header={<AppHeader />}>`
+            <Suspense fallback={<></>}>
+              <AlbumGrid />
+            </Suspense>
+          </AppShell>
+          <Footer />
+        </Suspense>
+
+      </SpotifyProvider>
       {/* </SpotifyAPIContext> */}
     </div>
   );

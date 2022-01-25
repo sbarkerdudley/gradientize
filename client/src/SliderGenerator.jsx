@@ -1,18 +1,22 @@
 import React from 'react';
 import { RangeSlider, Group, Text, Switch, Center } from '@mantine/core';
-import { randomSliderValues, randomSliderValue, sliderMarks } from './utils.js'
-import { SpotifyContext } from './SpotifyProvider.jsx';
+import { randomSliderValues, randomSliderValue, sliderMarks } from './utils'
+import { SpotifyContext } from './SpotifyProvider';
 
 
 const SliderGenerator = (props) => {
 
-  var randomSliderValues = Array(2).fill().map(x => Math.floor(Math.random() * 20) * 5).sort();
-  var randomSliderValue = Math.floor(Math.random() * 100);
-
+  const name = props.label.toLowerCase();
 
   var { soundSliders, soundSlider, setSoundSlider } = React.useContext(SpotifyContext);
-  var updateSlider = () => setSoundSlider(soundSliders[props.label] = soundSlider)
-  soundSliders[props.label] = randomSliderValue
+
+  var updateSlider = (e) => {
+    console.log(e);
+    console.log(name);
+    console.log(soundSliders);
+    setSoundSlider(soundSliders[name] = e)
+  }
+  // soundSliders[name] = e.target.value
 
   return (
     <>
@@ -37,6 +41,7 @@ const SliderGenerator = (props) => {
         step={5}
         min={0}
         max={100}
+        // value={randomSliderValues}
         defaultValue={randomSliderValues}
         color={props.color}
         thumb={{

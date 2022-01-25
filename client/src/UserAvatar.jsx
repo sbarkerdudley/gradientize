@@ -1,6 +1,6 @@
 import React from 'react';
 import { Avatar } from '@mantine/core';
-import { SpotifyContext } from './SpotifyProvider.jsx';
+import { SpotifyContext } from './SpotifyProvider';
 
 const UserAvatar = () => {
   // TODO: Style this and add to AppHeader

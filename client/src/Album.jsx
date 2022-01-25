@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext, Suspense } from 'react';
 import { Card, Image, Text, ThemeIcon, Overlay, Group } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
-import { SpotifyContext } from './SpotifyProvider.jsx';
-import Fav from './Fav.jsx';
-import AlbumImage from './AlbumImage.jsx';
-import AlbumTextModal from './AlbumTextModal.jsx';
-import { parseAlbumColorToCss } from './utils.js';
+import { SpotifyContext } from './SpotifyProvider';
+import Fav from './Fav';
+import AlbumImage from './AlbumImage';
+import AlbumTextModal from './AlbumTextModal';
+import { parseAlbumColorToCss } from './utils';
 
 const Album = ({ album }) => {
 

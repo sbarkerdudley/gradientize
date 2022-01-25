@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { Drawer, Button, Col, Group, Title, Space } from '@mantine/core';
-import SlidersContainer from './SlidersContainer.jsx'
-import { SpotifyContext, ColorContext } from './SpotifyProvider.jsx';
-import { ButtonGenerator } from './Buttons.jsx';
-import { shuffleArray } from './utils.js';
+import SlidersContainer from './SlidersContainer'
+import { SpotifyContext, ColorContext } from './SpotifyProvider';
+import { ButtonGenerator } from './Buttons';
+import { shuffleArray } from './utils';
 
 
 const SlidersDrawer = (props) => {
@@ -35,7 +35,11 @@ const SlidersDrawer = (props) => {
       <Drawer
         opened={opened}
         onClose={() => setOpened(false)}
-        size='350px'
+        // size='350px'
+        sx={{
+          paddingBottom: '5rem',
+          height: 'fit-content'
+        }}
         position='bottom'
         title={props.title}
         padding='xl'

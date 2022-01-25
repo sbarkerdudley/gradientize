@@ -1,5 +1,46 @@
 const data = {}
 
+data.albums = {
+  items: [
+    {
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/2xvtxDNInKDV4AvGmjw6d1"
+      },
+      "followers": {
+        "href": null,
+        "total": 252087
+      },
+      "genres": [
+        "glitchcore",
+        "underground hip hop"
+      ],
+      "href": "https://api.spotify.com/v1/artists/2xvtxDNInKDV4AvGmjw6d1",
+      "id": "2xvtxDNInKDV4AvGmjw6d1",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/ab6761610000e5ebd8a32f7731e293fd4ec6914b",
+          "width": 640
+        },
+        {
+          "height": 320,
+          "url": "https://i.scdn.co/image/ab67616100005174d8a32f7731e293fd4ec6914b",
+          "width": 320
+        },
+        {
+          "height": 160,
+          "url": "https://i.scdn.co/image/ab6761610000f178d8a32f7731e293fd4ec6914b",
+          "width": 160
+        }
+      ],
+      "name": "Bladee",
+      "popularity": 70,
+      "type": "artist",
+      "uri": "spotify:artist:2xvtxDNInKDV4AvGmjw6d1"
+    },
+  ]
+}
+
 data.artists = {
   /*
 

@@ -1,7 +1,6 @@
-import 'react-spotify-auth/dist/index.css'
 import React from 'react'
 import { SpotifyApiContext } from 'react-spotify-api'
-import { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI } from '../../config.js'
+import { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI } from '../../config'
 import Cookies from 'js-cookie'
 import { SpotifyAuth, Scopes } from 'react-spotify-auth'
 import axios from 'axios';

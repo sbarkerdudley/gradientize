@@ -1,8 +1,8 @@
 import React from 'react';
 import { Header, Group, Grid } from '@mantine/core';
-import ColorSelector from './ColorSelector.jsx';
-import SlidersDrawer from './SlidersDrawer.jsx';
-import UserAvatar from './UserAvatar.jsx';
+import ColorSelector from './ColorSelector';
+import SlidersDrawer from './SlidersDrawer';
+import UserAvatar from './UserAvatar';
 
 
 const AppHeader = () => (
