@@ -3,7 +3,7 @@ import { Drawer, Button, Col, Group, Title, Space } from '@mantine/core';
 import SlidersContainer from './SlidersContainer'
 import { SpotifyContext, ColorContext } from './SpotifyProvider';
 import { ButtonGenerator } from './Buttons';
-import { shuffleArray } from './utils';
+import { shuffleArray } from '../utils';
 
 
 const SlidersDrawer = (props) => {

@@ -1,11 +1,11 @@
 import React, { Suspense, useContext } from 'react';
 import { AppShell, MantineProvider } from '@mantine/core';
-import SpotifyAPIContext from './SpotifyAPIContext';
-import SpotifyProvider from './SpotifyProvider';
-import AppHeader from './AppHeader';
-import Login from './Login';
-import Footer from './Footer';
-import AlbumGrid from './AlbumGrid';
+import SpotifyAPIContext from './components/SpotifyAPIContext';
+import SpotifyProvider from './components/SpotifyProvider';
+import AppHeader from './components/AppHeader';
+import Login from './components/Login';
+import Footer from './components/Footer';
+import AlbumGrid from './components/AlbumGrid';
 
 import { Button } from '@mantine/core';
 

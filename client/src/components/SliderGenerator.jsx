@@ -1,6 +1,6 @@
 import React from 'react';
 import { RangeSlider, Group, Text, Switch, Center } from '@mantine/core';
-import { randomSliderValues, randomSliderValue, sliderMarks } from './utils'
+import { randomSliderValues, randomSliderValue, sliderMarks } from '../utils'
 import { SpotifyContext } from './SpotifyProvider';
 
 

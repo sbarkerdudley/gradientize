@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { MantineProvider } from '@mantine/core';
-import { makeHSLAGradients, makeOffsetHSLAGradients, shuffleArray } from './utils.js'
-import data from '../../data.js';
+import { makeHSLAGradients, makeOffsetHSLAGradients, shuffleArray } from '../utils.js'
+import data from '../../../data.js';
 import axios from 'axios';
-import { SPOTIFY_CONFIG } from '../../config.js'
+import { SPOTIFY_CONFIG } from '../../../config'
 import { SpotifyApiContext } from 'react-spotify-api'
 
 export const SpotifyContext = React.createContext();

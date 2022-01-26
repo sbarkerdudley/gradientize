@@ -5,7 +5,7 @@ import { SpotifyContext } from './SpotifyProvider';
 import Fav from './Fav';
 import AlbumImage from './AlbumImage';
 import AlbumTextModal from './AlbumTextModal';
-import { parseAlbumColorToCss } from './utils';
+import { parseAlbumColorToCss } from '../utils';
 
 const Album = ({ album }) => {
 

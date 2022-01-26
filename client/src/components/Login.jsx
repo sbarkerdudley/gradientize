@@ -22,36 +22,25 @@ const Login = ({ children }) => {
         text-align: center;
         -webkit-overscroll-behavior: none;
         place-items: center;
-        background: linear-gradient(0deg, hsla(20, 100%, 50%, 1),hsla(40, 100%, 50%, 0.6) 31%, hsla(60, 100%, 50%, 0.0) 72%),
-        linear-gradient(60deg, rgb(0, 89, 255),hsla(160, 100%, 50%, 0.6) 31%, hsla(180, 100%, 50%, 0.0) 72%),
-        linear-gradient(120deg, hsl(226, 100%, 50%),hsla(220, 100%, 50%, 0.6) 31%, hsla(240, 100%, 50%, 0.0) 72%),
-        linear-gradient(240deg, hsl(271, 100%, 50%),hsla(280, 100%, 50%, 0.6) 31%, hsla(300, 100%, 50%, 0.0) 72%),
-        linear-gradient(300deg, hsla(300, 100%, 50%, 1),hsla(280, 100%, 50%, 0.6) 31%, hsla(300, 100%, 50%, 0.0) 72%);
-        background-size: 400% 400%;
-        animation: gradient 10s ease infinite;
+        background: rgb(0,7,255);
+        background: linear-gradient(120deg, rgba(0,7,255,1), rgba(0,7,255,1) 8%, rgba(133,0,255,1), rgba(205,0,0,1), rgba(205,60,0,1), rgba(255,167,0,1), rgba(255,254,0,1), rgba(0,255,60,1), rgba(0,145,255,1), rgba(0,7,255,1), rgba(120,7,255,1), rgba(220,0,45,1), rgba(133,0,255,1));
+        background-size: 600% 200%;
+        animation: gradient 20s ease infinite;
         top: -1vh;
         left: -1vw;
         z-index: 0;
         padding: 0;
         @keyframes gradient {
           0% {
-            background-position: 0% 100%;
-          }
-          25% {
-            background-position: 50% 50%;
+            background-position: left;
           }
           50% {
-            background-position: 100% 0%;
-          }
-          75% {
-            background-position: 0% 50%;
+            background-position: right;
           }
           100% {
-            background-position: 50% 0%;
+            background-position: left;
           }
-          100% {
-            background-position: 0% 100%;
-          }
+
         }
       `}
     >
@@ -70,7 +59,6 @@ const Login = ({ children }) => {
         }
       >Login</button>
         <SpotifyLogo />
-        <img src='./spotify.svg'/>
       </div>
       {children}
     </div>

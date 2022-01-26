@@ -28,6 +28,7 @@ module.exports = {
   devServer: {
     static: {
       directory: DIST_DIR,
+      contentBase: [SRC_DIR + '/assets'],
     },
     compress: true,
     port: 9000,
@@ -49,6 +50,10 @@ module.exports = {
       {
         test: /\.?css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /\.?(jpg|gif|svg|png|jpeg|tif|tiff)$/i,
+        use: ['file-loader'],
       },
     ],
   },
