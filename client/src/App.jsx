@@ -23,7 +23,7 @@ const App = () => {
           <AppShell header={<AppHeader />}>`
             <Suspense fallback={<></>}>
               <AlbumGrid />
-            </Suspense>
+            </Suspense>x
           </AppShell>
           <Footer />
         </Suspense>
