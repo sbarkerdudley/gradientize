@@ -7,6 +7,7 @@ const { Buffer } = require('buffer');
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
 const redirect_uri = process.env.REDIRECT_URI;
+const client_base_url = process.env.CLIENT_URL;
 
 const CREDENTIALS = Buffer.from(`${client_id}:${client_secret}`).toString(
   'base64',
@@ -64,13 +65,11 @@ auth.get('/spotify', (req, res) => {
 });
 
 auth.get('/spotify/callback', (req, res) => {
-  let { code } = req.query;
-  console.log(code);
-
   try {
-    if (!code) throw new Error();
+    let { code } = req.query;
+    if (!code) throw 'Maybe change this to null'
 
-    return axios({
+    axios({
       method: 'post',
       url: tokenURL,
       data: querystring.stringify({
@@ -86,7 +85,15 @@ auth.get('/spotify/callback', (req, res) => {
         if (response.status === 200) {
           let { data } = response;
           let { access_token, token_type, expires_in, refresh_token } = data;
-          // return res.send(`<pre>${JSON.stringify(response.data, null, 2)}</pre>`);
+
+          let queryParams = querystring.stringify({
+            access_token,
+            refresh_token,
+          })
+
+          let loggedIn = new URL(queryParams)
+          res.redirect(`${client_base_url}/?${queryString}`);
+
           /*
             {
               "access_token": "...",
@@ -96,30 +103,13 @@ auth.get('/spotify/callback', (req, res) => {
               "scope": "user-read-email user-read-recently-played user-read-private user-top-read"
             }
          */
-          return axios.get(userURL, {
-            headers: {
-              Authorization: `${token_type} ${access_token}`,
-            },
-          });
-        }
-        res.send("This shouldn't happen");
-      })
-      .then(test => {
-        res.send(`<pre>${JSON.stringify(response.data, null, 2)}</pre>`);
 
-      })
-      .then((response) => {
-        if (!response.data) return new Error();
-        let { access_token, token_type, expires_in, refresh_token, scope } =
-          response.data;
-        res.send(`<pre>${JSON.stringify(response.data, null, 2)}</pre>`);
-        // This works
-      })
-      .then((response) => {
-        return response;
+        } else {
+          throw 'Unauthorized user'
+        }
       })
       .catch((err) => {
-        res.send(err);
+        res.status(404).send(err);
       });
   } catch (error) {
     res.status(404).send('u oh ');
@@ -140,9 +130,12 @@ auth.get('/refresh_token', (req, res) => {
         Authorization: CREDENTIALS,
       },
     })
+    .then((response) => {
+      res.status(200).send(response.data)
+    })
 
     .catch((error) => {
-      res.send(error);
+      res.redirect('/login')
     });
 });
 

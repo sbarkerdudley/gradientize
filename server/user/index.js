@@ -14,12 +14,17 @@ class User {
   static topURL = `${this.userURL}/top`;
   static topArtistsURL = `${this.topURL}/artists`;
   static topAlbumsURL = `${this.topURL}/albums`;
+
+  async getTopItems(category) {
+    return await ('/top/:items/:timeframe', (req, res) => {
+      let {artistOrAlbum, tacos} = req.params;
+      res.send(artistOrAlbum + ': ' + tacos)
+
+    })
+
+  }
+
 }
 
-user.get('/top/:items/:timeframe', (req, res) => {
-  let {artistOrAlbum, tacos} = req.params;
-  res.send(artistOrAlbum + ': ' + tacos)
-
-})
 
 module.exports = user;

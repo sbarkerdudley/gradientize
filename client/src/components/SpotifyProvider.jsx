@@ -14,7 +14,7 @@ const SpotifyProvider = ({ children }) => {
 
 
   let [slider, setSlider] = React.useState(Math.floor(Math.random() * 360));
-  let [soundSlider, setSoundSlider] = useState(50);
+  let [soundSlider, setSoundSlider] = useState([40, 60]);
   let [avatar, setAvatar] = useState(null);
   let [albumsList, setAlbumsList] = useState(data.albums.items);
 
@@ -22,7 +22,7 @@ const SpotifyProvider = ({ children }) => {
   let values = getValues()
 
   const colors = {
-    values: Array(6).fill(slider).map((v, i) => v += 30 * i),
+    values: Array(6).fill(slider).map((value, i) => value += 30 * i),
     primaryGradient: makeHSLAGradients(values),
     secondaryGradient: makeOffsetHSLAGradients(values, 120),
     tertiaryGradient: makeOffsetHSLAGradients(values, 240),
@@ -30,6 +30,7 @@ const SpotifyProvider = ({ children }) => {
 
 
   let theme = { colorScheme: 'dark' };
+
   let primaryGradient = makeHSLAGradients(values);
   let secondaryGradient = makeOffsetHSLAGradients(values, 120);
   let tertiaryGradient = makeOffsetHSLAGradients(values, 240);

@@ -53,7 +53,8 @@ module.exports = {
       },
       {
         test: /\.?(jpg|gif|svg|png|jpeg|tif|tiff)$/i,
-        use: ['file-loader'],
+        type: 'asset/resource',
+        // use: ['file-loader?name=./assets/images/[name].[ext]'],
       },
     ],
   },
