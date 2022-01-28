@@ -1,3 +1,4 @@
+import { clientBaseURL } from  '../config'
 import React from 'react';
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react'
@@ -57,7 +58,7 @@ const Login = ({ children }) => {
         </h1>
       <button
         onClick={
-          () => window.open('http://localhost:3000/login')
+          () => window.location = new URL('/login', clientBaseURL)
         }
       >Login</button>
 

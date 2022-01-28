@@ -91,8 +91,7 @@ auth.get('/spotify/callback', (req, res) => {
             refresh_token,
           })
 
-          let loggedIn = new URL(queryParams)
-          res.redirect(`${client_base_url}/?${queryString}`);
+          res.redirect(`${client_base_url}/?${queryParams}`);
 
           /*
             {
