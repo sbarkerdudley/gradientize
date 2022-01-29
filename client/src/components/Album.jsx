@@ -9,11 +9,11 @@ import { parseAlbumColorToCss } from '../utils';
 
 const Album = ({ album }) => {
 
-  let [fav, setFav] = useState('light');
+
   let [averageColor, setAverageColor] = React.useState({})
   let [hue, setHue] = React.useState({})
 
-  let toggleFav = () => setFav(fav === 'light' ? '' : 'light');
+
   let { hovered, ref } = useHover();
   let [referenceElement, setReferenceElement] = useState(null);
   let hoverStyle = hovered ? {
@@ -21,36 +21,39 @@ const Album = ({ album }) => {
     transition: '200ms'
   } : {}
 
+  const sx = {
+    'aspectRatio': '1 / 1',
+    'willChange': 'transform',
+    ...averageColor
+  }
+
   useEffect(() => {
     if (album.images) {
       parseAlbumColorToCss(album.images[2].url)
         .then((success) => {
           let [hue, shadow] = success;
-          console.log(hue);
+          setHue(hue)
           setAverageColor(shadow)
+          album.hue = hue
+          console.log(album.hue);
         })
     }
-  }, [])
+  }, [album.images[2].url])
 
   return (
 
     <Card
       ref={ref}
       key={album.id}
-      component="a"
+      // component="a"
       href={album.external_urls.spotify}
       style={hoverStyle}
-      sx={{
-        'aspectRatio': '1 / 1',
-        'willChange': 'transform',
-        ...averageColor
-      }}
+      sx={sx}
       radius='md'
-      target="_blank"
     >
       <Card.Section>
         <Suspense fallback={<></>}>
-          <Fav children={'♥️'} handleClick={toggleFav} style={hoverStyle} color={hue} />
+          <Fav children={'♥️'} handleClick={() => console.log(album.id)} style={hoverStyle} color={hue} />
         </Suspense>
       </Card.Section>
       <Card.Section>

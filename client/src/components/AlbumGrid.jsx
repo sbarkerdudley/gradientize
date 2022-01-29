@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, Grid, Transition } from '@mantine/core';
+import { Grid } from '@mantine/core';
 import Album from './Album';
 import { SpotifyContext } from './SpotifyProvider';
+import ScrollButton from './ScrollButton';
 
 
 const AlbumGrid = () => {
@@ -11,18 +12,21 @@ const AlbumGrid = () => {
   let AlbumComponents = React.useMemo(() => {
     return albumsList.map((album, i) => {
       return (
-        <Grid.Col xs={6} sm={6} md={4} lg={3} xl={2} key={i}>
-          <Album {...{ album }} />
+        <Grid.Col xs={6} sm={6} md={4} lg={3} xl={2} key={album.id}>
+          <Album {...{ album }} key={album.id}/>
         </Grid.Col>
       )
-    })}, [albumsList])
+    })
+  }, [albumsList])
 
   return (
-    <Grid span={12} gutter={'xl'} sx={{
-      filter: 'blur(12px)'
-    }}>
-      {AlbumComponents}
-    </Grid>
+    <>
+      <Grid span={12} gutter={'xl'} sx={{
+      }}>
+        {AlbumComponents}
+      </Grid>
+      <ScrollButton />
+    </>
   )
 }
 

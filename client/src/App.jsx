@@ -11,25 +11,22 @@ import { Button } from '@mantine/core';
 
 
 const App = () => {
-
   return (
     <div id='app'>
-      <Login />
-      {/* <SpotifyAPIContext> */}
+      <SpotifyAPIContext>
       <SpotifyProvider>
 
-        <Suspense fallback={<></>}>
-              <a href='/login'><h1>LOGIN</h1></a>
+        <Suspense fallback={<Login />}>
           <AppShell header={<AppHeader />}>`
             <Suspense fallback={<></>}>
               <AlbumGrid />
-            </Suspense>x
+            </Suspense>
           </AppShell>
           <Footer />
         </Suspense>
 
       </SpotifyProvider>
-      {/* </SpotifyAPIContext> */}
+      </SpotifyAPIContext>
     </div>
   );
 };

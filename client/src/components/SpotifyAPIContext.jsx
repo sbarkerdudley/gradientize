@@ -1,20 +1,23 @@
 import React, { useEffect } from 'react'
-import { accessToken } from '../spotify';
+import { accessToken , refreshToken } from '../spotify';
 import Cookies from 'js-cookie'
 import { SpotifyAuth, Scopes } from 'react-spotify-auth'
 import axios from 'axios';
 import Login from './Login';
+import { SpotifyApiContext } from 'react-spotify-api'
 
 const SpotifyAPIContext = ({ children }) => {
-  const [token, setToken] = React.useState(Cookies.get("spotifyAuthToken"))
+  const [token, setToken] = React.useState(null)
 
   useEffect(() => {
-
-    setToken(accessToken);
-  }, [])
+    if (accessToken) {
+      setToken(accessToken);
+      console.log(accessToken, '\n\n\n\n', new Date())
+    }
+  }, [token])
   return (
     <>
-      {token ? (
+      {accessToken ? (
         <SpotifyApiContext.Provider value={token}>
           {children}
         </SpotifyApiContext.Provider>

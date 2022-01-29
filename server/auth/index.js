@@ -9,9 +9,10 @@ const client_secret = process.env.CLIENT_SECRET;
 const redirect_uri = process.env.REDIRECT_URI;
 const client_base_url = process.env.CLIENT_URL;
 
-const CREDENTIALS = Buffer.from(`${client_id}:${client_secret}`).toString(
-  'base64',
-);
+
+const CREDENTIALS = Buffer
+  .from(`${client_id}:${client_secret}`)
+  .toString('base64');
 
 const authorizationURL = 'https://accounts.spotify.com/authorize?';
 const tokenURL = 'https://accounts.spotify.com/api/token';
@@ -25,8 +26,8 @@ const scopes = [
   'user-read-private',
   'user-top-read',
   'user-read-recently-played',
-  // 'user-library-read',
-  // 'user-library-modify',
+  'user-library-read',
+  'user-library-modify',
   // 'playlist-modify-private',
   // 'playlist-read-public',
   // 'playlist-read-private',
@@ -53,7 +54,6 @@ auth.get('/spotify', (req, res) => {
   res.cookie(stateKey, state);
 
   let params = querystring.stringify({
-    // show_dialog: true,
     client_id,
     response_type: 'code',
     redirect_uri,
@@ -76,6 +76,7 @@ auth.get('/spotify/callback', (req, res) => {
         grant_type: 'authorization_code',
         code,
         redirect_uri,
+        show_dialog: true
       }),
       headers: {
         Authorization: `Basic ${CREDENTIALS}`,

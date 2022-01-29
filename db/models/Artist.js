@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
 
-const album = new mongoose.Schema({
+const artist = new mongoose.Schema({
   id: {
     type: String,
     index: true,
     unique: true,
   },
-  type: 'album',
+  genres: [String],
+  type: 'artist',
   images: [
     {
       url: {
@@ -22,6 +23,6 @@ const album = new mongoose.Schema({
   url: String,
 });
 
-const Album = mongoose.model('Album', album);
+const Artist = mongoose.model('Artist', artist);
 
-module.exports = Album;
+module.exports = Artist;

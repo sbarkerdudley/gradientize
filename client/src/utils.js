@@ -8,7 +8,7 @@ export const parseAlbumColorToCss = async (imageUrl) => {
   let hue = await getHue(...averageColor.value); /* Convert color to pure hue */
   let parsedHue = `hsla(${hue}, 100%, 50%, 0.34)`; /* Format for CSS */
   // let parsedHue = `hsla(${hue}, 100%, 50%, 0.44)`; /* Format for CSS */
-  return await [parsedHue, makeHSLAShadow(parsedHue)];
+  return await [hue, makeHSLAShadow(parsedHue)];
 };
 
 export const makeHSLAGradient = (color = 360, angle = 0) =>
