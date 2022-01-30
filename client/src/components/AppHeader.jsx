@@ -3,6 +3,7 @@ import { Header, Group, Grid } from '@mantine/core';
 import ColorSelector from './ColorSelector';
 import SlidersDrawer from './SlidersDrawer';
 import UserAvatar from './UserAvatar';
+import { LogOutButton } from './Buttons';
 
 
 const AppHeader = () => (
@@ -14,6 +15,7 @@ const AppHeader = () => (
       position: 'sticky',
       top: 0,
       opacity: '95%',
+      padding: '1rem',
       // paddingBottom: '2rem',
       // padding: '1rem',
       // margin: '0 auto',
@@ -25,6 +27,7 @@ const AppHeader = () => (
       position='apart'
     >
       <SlidersDrawer />
+      <LogOutButton />
       <UserAvatar />
     </Group>
   </Header>

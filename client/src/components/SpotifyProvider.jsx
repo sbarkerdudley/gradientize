@@ -35,20 +35,25 @@ const SpotifyProvider = ({ children }) => {
   }
 
   function getMusic() {
-    fetch('http://localhost:3000/spotify/test', {
-      data: data.albums.items,
-      body: data.albums.items
+    fetch('/spotify/test', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      mode: 'cors',
+      body: JSON.stringify([ data.albums.items[0] ])
     })
+    .then(response => response.json())
     .then((albums) => setAlbumsList(albums))
-    .catch((err) => setAlbumsList([data.albums.items[1]]))
+    .catch((err) => console.error(err))
   }
 
 
-  let theme = { colorScheme: 'dark' };
+  const theme = { colorScheme: 'dark' };
 
-  let primaryGradient = makeHSLAGradients(values);
-  let secondaryGradient = makeOffsetHSLAGradients(values, 120);
-  let tertiaryGradient = makeOffsetHSLAGradients(values, 240);
+  const primaryGradient = makeHSLAGradients(values);
+  const secondaryGradient = makeOffsetHSLAGradients(values, 120);
+  const tertiaryGradient = makeOffsetHSLAGradients(values, 240);
 
   React.useEffect(() => {
     if (typeof slider === 'number') {

@@ -16,7 +16,7 @@ const AlbumList = () => {
   //   </Grid.Col>
   // ))))
 
-  let AlbumComponents = React.useMemo(() => {
+  let AlbumComponents = React.memo(() => {
     if (Array.isArray(albumsList)) {
       return albumsList.map((album, i) => {
         return (

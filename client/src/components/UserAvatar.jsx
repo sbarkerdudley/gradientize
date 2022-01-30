@@ -4,12 +4,17 @@ import { SpotifyContext } from './SpotifyProvider';
 import { getUserProfile } from '../spotify';
 
 const UserAvatar = () => {
-  // TODO: Style this and add to AppHeader
-  // let { avatar } = React.useContext(SpotifyContext);
-  let avatar = React.useMemo(() => {
-    let profile = getUserProfile();
-    console.log(profile);
-  });
+
+  let {token} = React.useContext(SpotifyContext);
+
+  let [avatar, setAvatar] = React.useState(null);
+  React.useEffect(() => {
+    if (token) {
+      getUserProfile()
+      .then(profile => setAvatar(profile.images[0].url || null))
+      .catch(err => console.log(err))
+    }
+  }, []);
 
   return (
     <Avatar size={'xl'} src={avatar} />

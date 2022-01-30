@@ -90,6 +90,7 @@ auth.get('/spotify/callback', (req, res) => {
           let queryParams = querystring.stringify({
             access_token,
             refresh_token,
+            expires_in,
           })
 
           res.redirect(`${client_base_url}/?${queryParams}`);
@@ -133,9 +134,8 @@ auth.get('/refresh_token', (req, res) => {
     .then((response) => {
       res.status(200).send(response.data)
     })
-
     .catch((error) => {
-      res.redirect('/login')
+      res.redirect('/error')
     });
 });
 

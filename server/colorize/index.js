@@ -9,7 +9,7 @@ const {
 
 
 colorize.get('/', async (req, res) => {
-  let body = fakeData.albums.items
+  let {body, data} = req
   console.log(body, 'colorize');
   try {
     if (!body) throw 'Error sampling average color'
@@ -23,9 +23,9 @@ colorize.get('/', async (req, res) => {
       return album;
     }))
 
-    res.send(colorized);
+    res.send(JSON.stringify(colorized));
   } catch (error) {
-    res.send(`<pre style='color="pink";'>${error}</pre>`)
+    res.send(`<pre style='color="pink";'>${JSON.stringify(error)}</pre>`)
   }
 
 })

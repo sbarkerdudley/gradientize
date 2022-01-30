@@ -1,18 +1,19 @@
-const axios = require('axios');
 const spotify = require('express').Router();
+const axios = require('axios');
 
 spotify.get('/top/:type', (req, res) => {
-  res.send('hello world');
+  let {type} = req.params;
+  res.send(JSON.stringify({type}));
 });
 
-spotify.get('/test', async (req, res) => {
-  let {body, data} = req
-  console.log({body, data});
+spotify.post('/test', async (req, res) => {
+  let {body} = req
+
   try {
-    let colorized = await axios.get('http://localhost:3000/colorize/', {
+    let colorized = await axios.post('http://localhost:3000/colorize/', {
       data: body
     })
-    res.send(colorized)
+    res.json(colorized)
 
   } catch (err) {
     res.send(err)
