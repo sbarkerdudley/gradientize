@@ -17580,4 +17580,4 @@ data.tracks = {
   ],
 };
 
-export default data;
+module.exports = data;

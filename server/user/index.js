@@ -1,8 +1,5 @@
 const user = require('express').Router();
 
-const FastAverageColor = require('fast-average-color');
-const fac = new FastAverageColor();
-
 class User {
   constructor(id, username) {
     this.userId = id;
@@ -27,4 +24,4 @@ class User {
 }
 
 
-module.exports = user;
+module.exports = User;

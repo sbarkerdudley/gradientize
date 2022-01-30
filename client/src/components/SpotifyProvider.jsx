@@ -15,7 +15,12 @@ const SpotifyProvider = ({ children }) => {
   let [slider, setSlider] = React.useState(Math.floor(Math.random() * 360));
   let [soundSlider, setSoundSlider] = useState([40, 60]);
   let [avatar, setAvatar] = useState(null);
-  let [albumsList, setAlbumsList] = useState(data.albums.items);
+  // let [albumsList, setAlbumsList] = useState(data.albums.items);
+  let [albumsList, setAlbumsList] = useState([]);
+
+  useEffect(() => {
+    getMusic();
+  }, [])
 
   const getValues = () => Array(6).fill(slider).map((value, i) => value += 30 * i);
   let values = getValues()
@@ -23,10 +28,19 @@ const SpotifyProvider = ({ children }) => {
   const colors = {
     slider,
     setSlider,
-    values: Array(6).fill(slider).map((value, i) => value + (30 * i)),
+    values,
     primaryGradient: makeHSLAGradients(values),
     secondaryGradient: makeOffsetHSLAGradients(values, 120),
     tertiaryGradient: makeOffsetHSLAGradients(values, 240),
+  }
+
+  function getMusic() {
+    fetch('http://localhost:3000/spotify/test', {
+      data: data.albums.items,
+      body: data.albums.items
+    })
+    .then((albums) => setAlbumsList(albums))
+    .catch((err) => setAlbumsList([data.albums.items[1]]))
   }
 
 
@@ -47,7 +61,8 @@ const SpotifyProvider = ({ children }) => {
     }
   }, [slider])
 
-  let value = {
+
+  const value = {
     slider,
     setSlider,
     avatar,

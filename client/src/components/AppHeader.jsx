@@ -25,6 +25,7 @@ const AppHeader = () => (
       position='apart'
     >
       <SlidersDrawer />
+      <UserAvatar />
     </Group>
   </Header>
 );
