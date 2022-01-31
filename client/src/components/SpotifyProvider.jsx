@@ -15,12 +15,9 @@ const SpotifyProvider = ({ children }) => {
   let [slider, setSlider] = React.useState(Math.floor(Math.random() * 360));
   let [soundSlider, setSoundSlider] = useState([40, 60]);
   let [avatar, setAvatar] = useState(null);
-  // let [albumsList, setAlbumsList] = useState(data.albums.items);
-  let [albumsList, setAlbumsList] = useState([]);
+  let [albumsList, setAlbumsList] = useState(data.albums.items);
+  // let [albumsList, setAlbumsList] = useState([]);
 
-  useEffect(() => {
-    getMusic();
-  }, [])
 
   const getValues = () => Array(6).fill(slider).map((value, i) => value += 30 * i);
   let values = getValues()
@@ -34,19 +31,6 @@ const SpotifyProvider = ({ children }) => {
     tertiaryGradient: makeOffsetHSLAGradients(values, 240),
   }
 
-  function getMusic() {
-    fetch('/spotify/test', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      mode: 'cors',
-      body: JSON.stringify([ data.albums.items[0] ])
-    })
-    .then(response => response.json())
-    .then((albums) => setAlbumsList(albums))
-    .catch((err) => console.error(err))
-  }
 
 
   const theme = { colorScheme: 'dark' };
@@ -81,13 +65,11 @@ const SpotifyProvider = ({ children }) => {
   };
 
   return (
-    <MantineProvider withGlobalStyles theme={theme} >
-      <SpotifyContext.Provider value={value}>
-        <ColorContext.Provider value={colors}>
-          {children}
-        </ColorContext.Provider>
-      </SpotifyContext.Provider>
-    </MantineProvider>
+    <SpotifyContext.Provider value={value}>
+      <ColorContext.Provider value={colors}>
+        {children}
+      </ColorContext.Provider>
+    </SpotifyContext.Provider>
   )
 }
 

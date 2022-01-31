@@ -3,11 +3,11 @@ import { logout } from '../spotify';
 import { Button } from "@mantine/core";
 
 
-export const ButtonGenerator = (props) => (
+const ButtonGenerator = (props) => (
   <Button
-  sx={props.style}
+  sx={{backgroundColor: 'hotpink'}}
   radius='xl'
-  size='xl'
+  size='lg'
   onClick={props.onClick}>{props.label}
   </Button>
 );
@@ -22,8 +22,9 @@ export const LogOutButton = () => (
 export const LogInButton = () => (
   <ButtonGenerator
     onClick={() => window.location.href += 'login'}
-    label={'LogIn'}
+    label={'LogOut'}
   />
 );
 
 
+export default ButtonGenerator;

@@ -15,7 +15,7 @@ const AppHeader = () => (
       position: 'sticky',
       top: 0,
       opacity: '95%',
-      padding: '1rem',
+      // padding: '1rem',
 
       margin: '0 auto',
     }}
@@ -26,8 +26,8 @@ const AppHeader = () => (
       position='apart'
     >
       <SlidersDrawer />
-      <LogOutButton />
-      <UserAvatar />
+      {/* <LogOutButton /> */}
+      {/* <UserAvatar /> */}
     </Group>
   </Header>
 );

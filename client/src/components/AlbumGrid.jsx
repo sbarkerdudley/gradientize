@@ -29,7 +29,6 @@ const AlbumGrid = () => {
         {/* <AlbumList /> */}
         {AlbumComponents}
       </Grid>
-      <ScrollButton />
     </>
   )
 }
