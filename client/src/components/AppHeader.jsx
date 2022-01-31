@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Header, Group, Grid } from '@mantine/core';
 import ColorSelector from './ColorSelector';
 import SlidersDrawer from './SlidersDrawer';
-import UserAvatar from './UserAvatar';
+const UserAvatar = React.lazy(() => import('./UserAvatar'));
 import { LogOutButton } from './Buttons';
 
 
@@ -35,4 +35,4 @@ const AppHeader = () => (
 
 
 
-export default React.memo(AppHeader);
+export default AppHeader

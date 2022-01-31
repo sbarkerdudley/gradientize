@@ -99,7 +99,10 @@ export async function getUserProfile() {
 
 
 export function logout() {
-  window.localStorage.clear()
+  // window.localStorage.clear()
+  for (const property in LOCALSTORAGE_KEYS) {
+    window.localStorage.removeItem(LOCALSTORAGE_KEYS[property]);
+  }
   window.location = window.location.origin;
 };
 
