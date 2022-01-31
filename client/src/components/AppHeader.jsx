@@ -22,12 +22,12 @@ const AppHeader = () => (
   >
     <Group
       grow
-      direction='column'
+      direction='row'
       position='apart'
     >
       <SlidersDrawer />
-      {/* <LogOutButton /> */}
-      {/* <UserAvatar /> */}
+      <LogOutButton />
+      <UserAvatar />
     </Group>
   </Header>
 );

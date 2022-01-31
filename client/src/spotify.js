@@ -1,15 +1,12 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://api.spotify.com/v1';
-axios.defaults.headers['Authorization'] = `Bearer ${accessToken}` && console.log(accessToken);
-axios.defaults.headers['Content-Type'] = 'application/json';
 
 const LOCALSTORAGE_KEYS = {
   accessToken: 'spotify_access_token',
   refreshToken: 'spotify_refresh_token',
   expireTime: 'spotify_token_expire_time',
   timestamp: 'spotify_token_timestamp',
-}
+};
 
 const LOCALSTORAGE_VALUES = {
   accessToken: window.localStorage.getItem(LOCALSTORAGE_KEYS.accessToken),
@@ -18,8 +15,44 @@ const LOCALSTORAGE_VALUES = {
   timestamp: window.localStorage.getItem(LOCALSTORAGE_KEYS.timestamp),
 };
 
+async function refreshToken() {
+  try {
+    // Logout if there's no refresh token stored or we've managed to get into a reload infinite loop
+    if (!LOCALSTORAGE_VALUES.refreshToken ||
+      LOCALSTORAGE_VALUES.refreshToken === 'undefined' ||
+      (Date.now() - Number(LOCALSTORAGE_VALUES.timestamp) / 1000) < 1000
+    ) {
+      console.error('No refresh token available');
+      await logout();
+      return
+    }
 
-const getAccessToken = () => {
+    // Use `/refresh_token` endpoint from our Node app
+    const { data } = await axios.get(`/auth/refresh_token?refresh_token=${LOCALSTORAGE_VALUES.refreshToken}`);
+
+    // Update localStorage values
+    window.localStorage.setItem(LOCALSTORAGE_KEYS.accessToken, data.access_token);
+    window.localStorage.setItem(LOCALSTORAGE_KEYS.timestamp, Date.now());
+
+    // Reload the page for localStorage updates to be reflected
+    window.location.reload();
+
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+function hasTokenExpired() {
+  const { accessToken, timestamp, expireTime } = LOCALSTORAGE_VALUES;
+  if (!accessToken || !timestamp) {
+    return false;
+  }
+  const millisecondsElapsed = Date.now() - Number(timestamp);
+  return (millisecondsElapsed / 1000) > Number(expireTime);
+};
+
+
+function getAccessToken() {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const queryParams = {
@@ -30,7 +63,7 @@ const getAccessToken = () => {
   const error = urlParams.get('error');
 
   // If there's an error OR the token in localStorage has expired, refresh the token
-  if (error || hasTokenExpired() || LOCALSTORAGE_VALUES.accessToken === 'undefined') {
+  if (error || hasTokenExpired() || typeof LOCALSTORAGE_VALUES.accessToken === 'undefined') {
     refreshToken();
   }
 
@@ -55,44 +88,10 @@ const getAccessToken = () => {
   return false;
 };
 
-
-const hasTokenExpired = () => {
-  const { accessToken, timestamp, expireTime } = LOCALSTORAGE_VALUES;
-  if (!accessToken || !timestamp) {
-    return false;
-  }
-  const millisecondsElapsed = Date.now() - Number(timestamp);
-  return (millisecondsElapsed / 1000) > Number(expireTime);
-};
-
-const refreshToken = async () => {
-  try {
-    // Logout if there's no refresh token stored or we've managed to get into a reload infinite loop
-    if (!LOCALSTORAGE_VALUES.refreshToken ||
-      LOCALSTORAGE_VALUES.refreshToken === 'undefined' ||
-      (Date.now() - Number(LOCALSTORAGE_VALUES.timestamp) / 1000) < 1000
-    ) {
-      console.error('No refresh token available');
-      logout();
-    }
-
-    // Use `/refresh_token` endpoint from our Node app
-    const { data } = await axios.get(`/auth/refresh_token?refresh_token=${LOCALSTORAGE_VALUES.refreshToken}`);
-
-    // Update localStorage values
-    window.localStorage.setItem(LOCALSTORAGE_KEYS.accessToken, data.access_token);
-    window.localStorage.setItem(LOCALSTORAGE_KEYS.timestamp, Date.now());
-
-    // Reload the page for localStorage updates to be reflected
-    window.location.reload();
-
-  } catch (e) {
-    console.error(e);
-  }
-};
+export const accessToken = getAccessToken();
 
 
-export const getUserProfile = () => {
+export function getUserProfile() {
   if (accessToken) {
     axios.defaults.headers['Authorization'] = `Bearer ${accessToken}` && console.log(accessToken);
     return axios.get('/me')
@@ -100,12 +99,25 @@ export const getUserProfile = () => {
 }
 
 
-export const logout = () => {
-  for (const property in LOCALSTORAGE_KEYS) {
-    window.localStorage.removeItem(LOCALSTORAGE_KEYS[property]);
-  }
+export function logout() {
+  window.localStorage.clear()
   window.location = window.location.origin;
 };
 
 
-export const accessToken = getAccessToken();
+(async function setHeaders(attempts = 10) {
+  if (accessToken) {
+    axios.defaults.baseURL = 'https://api.spotify.com/v1';
+    axios.defaults.headers[
+      'Authorization'
+    ] = `Bearer ${LOCALSTORAGE_VALUES.accessToken}`;
+    axios.defaults.headers['Content-Type'] = 'application/json';
+    console.log('Successfully acquired access_token');
+    return await accessToken;
+  } else if (attempts--) {
+    console.log(`No access_token available. Attempts remaining: ${attempts}`);
+    await setTimeout(() => {
+      setHeaders(attempts);
+    }, 1000);
+  }
+})();

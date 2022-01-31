@@ -40,7 +40,7 @@ const SlidersDrawer = (props) => {
           marginBottom: '2rem',
           // height: '100%'
         }}
-        position='right'
+        position='bottom'
         title={props.title}
         padding='xl'
       >
@@ -67,14 +67,6 @@ const SlidersDrawer = (props) => {
           onClick={() => setAlbumsList(shuffleArray(albumsList))}>{'Shuffle'}
         </Button>
       </Group>
-      {/* <Group position='apart' grow>
-        <Button
-          style={{ background: secondaryGradient }}
-          radius='xl'
-          size='md'
-          onClick={() => setAlbumsList(shuffleArray(albumsList))}>{'Generate Recommendations'}
-        </Button>
-      </Group> */}
     </>
   );
 };

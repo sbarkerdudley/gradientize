@@ -15,8 +15,8 @@ const SpotifyProvider = ({ children }) => {
   let [slider, setSlider] = React.useState(Math.floor(Math.random() * 360));
   let [soundSlider, setSoundSlider] = useState([40, 60]);
   let [avatar, setAvatar] = useState(null);
-  let [albumsList, setAlbumsList] = useState(data.albums.items);
-  // let [albumsList, setAlbumsList] = useState([]);
+  // let [albumsList, setAlbumsList] = useState(data.albums.items);
+  let [albumsList, setAlbumsList] = useState([]);
 
 
   const getValues = () => Array(6).fill(slider).map((value, i) => value += 30 * i);

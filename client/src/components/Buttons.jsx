@@ -15,14 +15,14 @@ const ButtonGenerator = (props) => (
 export const LogOutButton = () => (
   <ButtonGenerator
     onClick={logout}
-    label={'LogOut'}
+    label={'Log Out'}
   />
 );
 
 export const LogInButton = () => (
   <ButtonGenerator
     onClick={() => window.location.href += 'login'}
-    label={'LogOut'}
+    label={'Log In'}
   />
 );
 
