@@ -5,15 +5,13 @@ import { getUserProfile } from '../spotify';
 
 const UserAvatar = () => {
 
-  let {token} = React.useContext(SpotifyContext);
+  let { token } = React.useContext(SpotifyContext);
 
   let [avatar, setAvatar] = React.useState(null);
   React.useEffect(() => {
-    if (token) {
-      getUserProfile()
+    getUserProfile()
       .then(profile => setAvatar(profile.images[0].url || null))
       .catch(err => console.log(err))
-    }
   }, []);
 
   return (

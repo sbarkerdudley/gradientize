@@ -91,11 +91,10 @@ function getAccessToken() {
 export const accessToken = getAccessToken();
 
 
-export function getUserProfile() {
-  if (accessToken) {
-    axios.defaults.headers['Authorization'] = `Bearer ${accessToken}` && console.log(accessToken);
-    return axios.get('/me')
-  } return null
+export async function getUserProfile() {
+  await accessToken
+  return axios.get('/me')
+  .then(response => response.data)
 }
 
 
