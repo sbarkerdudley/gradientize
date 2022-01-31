@@ -16,9 +16,8 @@ const AppHeader = () => (
       top: 0,
       opacity: '95%',
       padding: '1rem',
-      // paddingBottom: '2rem',
-      // padding: '1rem',
-      // margin: '0 auto',
+
+      margin: '0 auto',
     }}
   >
     <Group

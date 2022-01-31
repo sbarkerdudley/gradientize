@@ -6,14 +6,15 @@ spotify.get('/top/:type', (req, res) => {
   res.send(JSON.stringify({type}));
 });
 
-spotify.post('/test', async (req, res) => {
+spotify.get('/test', (req, res) => {
   let {body} = req
 
   try {
-    let colorized = await axios.post('http://localhost:3000/colorize/', {
-      data: body
+    axios.post('http://localhost:3000/colorize/', {
+      body
     })
-    res.json(colorized)
+    .then(response => response.body)
+    .then(thing => res.send(thing))
 
   } catch (err) {
     res.send(err)

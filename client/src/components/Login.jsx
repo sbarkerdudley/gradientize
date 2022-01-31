@@ -56,29 +56,26 @@ const Login = ({ children }) => {
 
 
         </h1>
-      <button
-        onClick={
-          () => window.location = new URL('/login', clientBaseURL)
-        }
-      >Login</button>
-      <LogInButton />
 
 
-      {children}
+
+
+
     </div>
     <div className='container'
     css={css`
       background-color: rgba(0,0,0,0.4);
       position: absolute;
       width: 100vw;
-      height: 20vh;
-      z-index:10;
+      height: 40vh;
+      z-index:100;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
     `}
-  >
-
+    >
+    {children}
+        <LogInButton />
     </div>
 
     </>

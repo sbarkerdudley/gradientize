@@ -26,10 +26,11 @@ module.exports = {
     new MiniCssExtractPlugin(),
   ],
   devServer: {
-    static: {
-      directory: DIST_DIR,
-      contentBase: [SRC_DIR + '/assets'],
-    },
+    static: [
+      {
+        directory: path.resolve(SRC_DIR, 'assets'),
+      },
+    ],
     compress: true,
     port: 9000,
     hot: true,
@@ -50,11 +51,6 @@ module.exports = {
       {
         test: /\.?css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
-      },
-      {
-        test: /\.?(jpg|gif|svg|png|jpeg|tif|tiff)$/i,
-        type: 'asset/resource',
-        // use: ['file-loader?name=./assets/images/[name].[ext]'],
       },
     ],
   },
