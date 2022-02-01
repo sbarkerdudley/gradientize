@@ -5,7 +5,7 @@ import { SearchContext } from './SearchProvider';
 
 export default function Thumb(props) {
   const { img, id, parent } = props
-  const { seeds, useSeeds } = useContext(SearchContext);
+  const { useSeeds } = useContext(SearchContext);
   const { hovered, ref } = useHover();
 
   const handleClick = parent === 'seeds' ? useSeeds.splice : useSeeds.prepend

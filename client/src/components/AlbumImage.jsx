@@ -12,7 +12,7 @@ const AlbumImage = ({images}) => {
       <Image
         src={images?.[1].url}
         sx={{
-          'aspectRatio': '1 / 1',
+          'aspectRatio': '1',
           'objectFit': 'cover',
         }}
 

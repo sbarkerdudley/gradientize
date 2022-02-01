@@ -58,7 +58,7 @@ auth.get('/spotify', (req, res) => {
     response_type: 'code',
     redirect_uri,
     state,
-    scope,
+    // scope,
   });
 
   res.redirect(authorizationURL + params);
@@ -135,7 +135,7 @@ auth.get('/refresh_token', (req, res) => {
       res.status(200).send(response.data)
     })
     .catch((error) => {
-      res.redirect('/error')
+      res.redirect('/auth/error')
     });
 });
 

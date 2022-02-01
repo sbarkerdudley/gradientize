@@ -1,4 +1,5 @@
 import React, { Suspense } from 'react';
+import theme from './styles/theme';
 import { AppShell, MantineProvider } from '@mantine/core';
 import SpotifyAPIContext from './components/SpotifyAPIContext';
 import SpotifyProvider from './components/SpotifyProvider';
@@ -16,18 +17,15 @@ import SearchProvider from './components/SearchProvider';
 const App = () => {
   return (
     <div id='app'>
-      <MantineProvider withGlobalStyles theme={{ colorScheme: 'dark' }} >
+      <MantineProvider withGlobalStyles {...{theme}} >
         <SpotifyAPIContext>
           <SpotifyProvider>
             <SearchProvider>
               <Suspense fallback={<Gradient />}>
                 <AppShell header={<AppHeader />}>
-
                   <Suspense fallback={<Gradient />}>
                     <AlbumGrid />
-
                   </Suspense>
-
                 </AppShell>
                 <Footer />
               </Suspense>

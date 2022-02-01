@@ -24,18 +24,18 @@ const FILLER = Array(INITIAL_SIZE).fill({});
 
 var IDS = new Set();
 
-export function persistSeeds(dataArray) {
+function persistSeeds(dataArray) {
   window.localStorage.setItem('seeds', JSON.stringify(dataArray));
 }
 
-export function getSeeds() {
+function getSeeds() {
   let seeds = window.localStorage.getItem('seeds') || '[{},{},{},{},{}]';
   return JSON.parse(seeds) || FILLER;
 }
 
-export function useList(array = getSeeds()) {
+export default function useList(initialArray = getSeeds()) {
 
-  const [list, setList] = useState(array);
+  const [list, setList] = useState(initialArray);
 
   function dedupe(list) {
     return new Set(list.map((seed) => seed.id));

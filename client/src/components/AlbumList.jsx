@@ -2,13 +2,16 @@ import React from 'react';
 import { Grid } from '@mantine/core';
 import Album from './Album';
 import { SpotifyContext } from './SpotifyProvider';
+import { SearchContext } from './SearchProvider';
 import { parseAlbumColorToCss } from '../utils';
 
 
 const AlbumList = () => {
 
   let { albumsList, setAlbumsList } = React.useContext(SpotifyContext);
+  let { seeds, useSeeds } = React.useContext(SearchContext);
 
+  
 
   // let AlbumComponents = React.useMemo(() => {albumsList.map((album) => (
   //   <Grid.Col xs={6} sm={6} md={4} lg={3} xl={2} key={album.id}>

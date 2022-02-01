@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, Suspense } from 'react';
 import { Card, Image, Text, ThemeIcon, Overlay, Group } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
-import { SpotifyContext } from './SpotifyProvider';
+import { SearchContext } from './SearchProvider';
 import Fav from './Fav';
 import AlbumImage from './AlbumImage';
 import AlbumTextModal from './AlbumTextModal';
@@ -9,9 +9,11 @@ import { parseAlbumColorToCss } from '../utils';
 
 const Album = ({ album }) => {
 
+  let { useSeeds } = useContext(SearchContext);
 
   let [averageColor, setAverageColor] = React.useState({})
   let [hue, setHue] = React.useState({})
+  const handleClick = useSeeds.prepend
 
   const sx = {
     'aspectRatio': '1 / 1',
@@ -20,7 +22,7 @@ const Album = ({ album }) => {
   }
 
   let { hovered, ref } = useHover();
-  let [referenceElement, setReferenceElement] = useState(null);
+
   let hoverStyle = hovered ? {
     transform: 'scale(1.04)',
     transition: '200ms',
@@ -38,7 +40,6 @@ const Album = ({ album }) => {
           setAverageColor(shadow)
           album.hue = hue
           album.shadow = shadow
-          console.log(shadow);
         })
         .catch(console.error)
     }
@@ -49,6 +50,7 @@ const Album = ({ album }) => {
     <Suspense fallback={<Card sx={sx} />} >
       <Card
         ref={ref}
+        onClick={() => handleClick({ id: album.id, img: album.images?.[2].url })}
         key={album.id}
         component="a"
         href={`${album.uri}:play`}
@@ -58,7 +60,7 @@ const Album = ({ album }) => {
       >
         <Card.Section>
           <Suspense fallback={<></>}>
-            <Fav children={'♥️'} handleClick={() => console.log(album.id)} style={hoverStyle} color={hue} />
+            <Fav children={'+'} handleClick={() => console.log(album.id)} style={hoverStyle} color={hue} />
           </Suspense>
         </Card.Section>
         <Card.Section>

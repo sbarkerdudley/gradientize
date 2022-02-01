@@ -14,8 +14,8 @@ const SlidersDrawer = (props) => {
   const {
     slider,
     setSlider,
-    albumsList,
-    setAlbumsList,
+    albumsList, // move this
+    setAlbumsList, // move this
   } = useContext(SpotifyContext)
 
   const {
@@ -24,11 +24,7 @@ const SlidersDrawer = (props) => {
     tertiaryGradient,
   } = useContext(ColorContext)
 
-  const randomize = () => {
-    toggleDrawer()
-    // return setSlider(Math.floor(Math.random() * slider))
-    // return setSlider(slider)
-  }
+
 
   return (
     <>
@@ -49,19 +45,19 @@ const SlidersDrawer = (props) => {
 
       <Group padding='sm' direction='row' position='apart' grow>
         <Button
-          style={{ background: primaryGradient }}
+          sx={{ background: primaryGradient }}
           radius='xl'
           size='md'
           onClick={toggleDrawer}>{'Randomize'}
         </Button>
         <Button
-          style={{ background: tertiaryGradient }}
+          sx={{ background: tertiaryGradient }}
           radius='xl'
           size='md'
           onClick={toggleDrawer}>{'Set Mood'}
         </Button>
         <Button
-          style={{ background: secondaryGradient }}
+          sx={{ background: secondaryGradient }}
           radius='xl'
           size='md'
           onClick={() => setAlbumsList(shuffleArray(albumsList))}>{'Shuffle'}
