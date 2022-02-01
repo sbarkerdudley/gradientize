@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Card, Image } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
+import { SearchContext } from './SearchProvider';
 
 export default function Thumb(props) {
-  let { img } = props
+  let { img, id, parent } = props
+  let { seeds, useSeeds } = useContext(SearchContext);
+
+  const handleClick = parent === 'seeds' ? useSeeds.splice : useSeeds.prepend
+
   const { hovered, ref } = useHover();
   let hoverEffect = hovered ? { filter: 'brightness(1.15)' } : {}
   return (
     <Card
       ref={ref}
-      onClick={() => console.log(props.img)}
+      onClick={() => handleClick({ img, id })}
       sx={{
         boxSizing: 'content-box',
         display: 'block',
@@ -21,9 +26,7 @@ export default function Thumb(props) {
         ...hoverEffect,
       }}
     >
-      {/* <Card.Section> */}
-        {(img) && (<Image src={img} />)}
-      {/* </Card.Section> */}
+      {(img) && (<Image src={img} />)}
     </Card>
   )
 }

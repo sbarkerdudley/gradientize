@@ -8,6 +8,7 @@ import ScrollButton from './components/ScrollButton';
 import Gradient from './components/Gradient';
 import Footer from './components/Footer';
 import AlbumGrid from './components/AlbumGrid';
+import SearchProvider from './components/SearchProvider';
 
 
 
@@ -18,18 +19,20 @@ const App = () => {
       <MantineProvider withGlobalStyles theme={{ colorScheme: 'dark' }} >
         <SpotifyAPIContext>
           <SpotifyProvider>
-            <Suspense fallback={<Gradient />}>
-              <AppShell header={<AppHeader />}>
+            <SearchProvider>
+              <Suspense fallback={<Gradient />}>
+                <AppShell header={<AppHeader />}>
 
-                <Suspense fallback={<Gradient />}>
-                  <AlbumGrid />
+                  <Suspense fallback={<Gradient />}>
+                    <AlbumGrid />
 
-                </Suspense>
+                  </Suspense>
 
-              </AppShell>
-              <Footer />
-            </Suspense>
-            <ScrollButton />
+                </AppShell>
+                <Footer />
+              </Suspense>
+              <ScrollButton />
+            </SearchProvider>
           </SpotifyProvider>
         </SpotifyAPIContext>
       </MantineProvider >

@@ -17,7 +17,7 @@ const AlbumGrid = () => {
       return albumsList.map((album, i) => {
         return (
           <Grid.Col xs={6} sm={6} md={4} lg={3} xl={2} key={album.id}>
-            <Thumb img={album.images[2].url} />
+            <Thumb img={album.images[2].url} id={album.id}/>
             {/* <Album {...{ album }} key={album.id} /> */}
           </Grid.Col>
         )
