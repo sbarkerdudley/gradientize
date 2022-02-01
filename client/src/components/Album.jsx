@@ -52,8 +52,8 @@ const Album = ({ album }) => {
         ref={ref}
         onClick={() => handleClick({ id: album.id, img: album.images?.[2].url })}
         key={album.id}
-        component="a"
-        href={`${album.uri}:play`}
+        // component="a"
+        // href={`${album.uri}:play`}
         style={hoverStyle}
         sx={sx}
         radius='md'

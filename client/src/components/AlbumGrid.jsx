@@ -7,6 +7,13 @@ import Thumb from './Thumb';
 import { SpotifyContext } from './SpotifyProvider';
 import ScrollButton from './ScrollButton';
 
+function getProps(album) {
+  return ({
+    images: [{}]
+  })
+}
+
+const props = ['album_group', 'album_type', 'artists', 'available_markets', 'external_urls', 'spotify', 'href', 'id', 'images', 'name', 'release_date', 'release_date_precision', 'total_tracks', 'type', 'uri']
 
 const AlbumGrid = () => {
 
@@ -15,10 +22,9 @@ const AlbumGrid = () => {
   let AlbumComponents = React.useMemo(() => {
     return albumsList.map((album, i) => (
       <Grid.Col xs={6} sm={6} md={4} lg={3} xl={2} key={`${album.id}${i}`}>
-
-          <Album {...{ album }} key={album.id} />
-        </Grid.Col>
-      ))
+        <Album {...{ album }} key={album.id} />
+      </Grid.Col>
+    ))
   }, [albumsList])
 
   return (
@@ -27,6 +33,7 @@ const AlbumGrid = () => {
         (<Grid span={12} gutter={'xl'} sx={{
         }}>
           {AlbumComponents}
+          {console.log(new Date())}
         </Grid>)
         :
         (<Gradient />)
