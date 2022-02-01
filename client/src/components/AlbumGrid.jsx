@@ -1,7 +1,9 @@
 import React from 'react';
 import { Grid } from '@mantine/core';
 import Album from './Album';
+import Gradient from './Gradient';
 import AlbumList from './AlbumList';
+import Thumb from './Thumb';
 import { SpotifyContext } from './SpotifyProvider';
 import ScrollButton from './ScrollButton';
 
@@ -15,7 +17,8 @@ const AlbumGrid = () => {
       return albumsList.map((album, i) => {
         return (
           <Grid.Col xs={6} sm={6} md={4} lg={3} xl={2} key={album.id}>
-            <Album {...{ album }} key={album.id}/>
+            <Thumb img={album.images[2].url} />
+            {/* <Album {...{ album }} key={album.id} /> */}
           </Grid.Col>
         )
       })
@@ -24,11 +27,14 @@ const AlbumGrid = () => {
 
   return (
     <>
-      <Grid span={12} gutter={'xl'} sx={{
-      }}>
-        {/* <AlbumList /> */}
-        {AlbumComponents}
-      </Grid>
+      {albumsList.length ?
+        (<Grid span={12} gutter={'xl'} sx={{
+        }}>
+          {AlbumComponents}
+        </Grid>)
+        :
+        (<Gradient />)
+      }
     </>
   )
 }

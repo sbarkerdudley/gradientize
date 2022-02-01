@@ -1,22 +1,18 @@
 import React from 'react';
 import { Header, Group } from '@mantine/core';
+import Nav from './AppHeader';
 import ColorSelector from './ColorSelector.jsx';
 
 const Footer = () => {
 
   return (
-    <Header
-      padding={'xs'}
-      sx={{
-        top: '100vh',
-        transform: 'translate(0, -100%)',
-        position: 'fixed',
-        paddingBottom: '1rem',
-        padding: '1rem',
-        margin: '0 auto',
-        opacity: '95%'
-      }}
-    >
+    <Nav sx={{
+      top: '100vh',
+      transform: 'translate(0, -100%)',
+      position: 'fixed',
+      paddingBottom: '1rem',
+      zIndex: 100,
+    }}>
       <Group
         grow
         direction='column'
@@ -24,7 +20,8 @@ const Footer = () => {
       >
         <ColorSelector />
       </Group>
-    </Header>
+    </Nav>
+
   );
 }
 
