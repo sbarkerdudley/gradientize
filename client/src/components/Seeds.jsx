@@ -20,10 +20,9 @@ export default React.memo(function Seeds() {
 
   return (
     <SimpleGrid cols={5}>
-      {seeds.map(seed => {
-        let { id, img } = seed
-        return <Thumb parent='seeds' id={id || null} img={img || null}></Thumb>
-      })}
+      {seeds.map((seed, i) => (
+        <Thumb parent='seeds' id={seed.id || null} img={seed.img || null} key={i} />
+      ))}
     </SimpleGrid>
   )
 })

@@ -13,16 +13,12 @@ const AlbumGrid = () => {
   let { albumsList, setAlbumsList } = React.useContext(SpotifyContext)
 
   let AlbumComponents = React.useMemo(() => {
-    if (Array.isArray(albumsList)) {
-      return albumsList.map((album, i) => {
-        return (
-          <Grid.Col xs={6} sm={6} md={4} lg={3} xl={2} key={album.id}>
-            <Thumb img={album.images[2].url} id={album.id}/>
-            {/* <Album {...{ album }} key={album.id} /> */}
-          </Grid.Col>
-        )
-      })
-    }
+      return albumsList.map((album, i) => (
+        <Grid.Col xs={6} sm={6} md={4} lg={3} xl={2} key={`${album.id}${i}`}>
+          {/* <Thumb img={album.images[2].url} id={album.id} key={album.id} /> */}
+          <Album {...{ album }} key={album.id} />
+        </Grid.Col>
+      ))
   }, [albumsList])
 
   return (

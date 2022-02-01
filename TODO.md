@@ -9,7 +9,19 @@ Server
 UI
 
 - Sliders drawer layout isn't responsive anymore - Refactor layouts with css grid
-
+- hook to upate sliders & query params
 - Finish Login splash page
 
 API
+
+- DEBOUNCER - lodash ?
+
+
+
+PRODUCTION/DEPLOYMENT:
+
+- integrate db ?
+- remove comments, minify
+- security in express app
+- daemonize with PM2
+

@@ -17,7 +17,7 @@ const ColorSelector = (props) => {
       style={{ height, cursor: 'pointer' }}
       styles={(theme) => ({
         thumb: {
-          height
+          height: (height - 2),
         }
       })}
     />

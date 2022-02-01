@@ -5,14 +5,19 @@ export const parseAlbumColorToCss = async (imageUrl) => {
   let averageColor = await fac.getColorAsync(
     imageUrl,
   ); /* Sample average color of smallest image */
-  let hue = await getHue(...averageColor.value); /* Convert color to pure hue */
+  let hue = await getHue(...averageColor.value); /* Convert [r, g, b] color to pure hue */
   let parsedHue = `hsla(${hue}, 100%, 50%, 0.34)`; /* Format for CSS */
   // let parsedHue = `hsla(${hue}, 100%, 50%, 0.44)`; /* Format for CSS */
   return await [hue, makeHSLAShadow(parsedHue)];
 };
 
+/**
+ * @param number 0 >= color <= 360
+ * @param number 0 >= angle <= 360
+ */
+
 export const makeHSLAGradient = (color = 360, angle = 0) =>
-  `linear-gradient(${angle}deg,
+`linear-gradient(${angle}deg,
     hsla(${color}, 100%, 50%, 100%),
     hsla(${color}, 100%, 50%, 0) 83%) `;
 
