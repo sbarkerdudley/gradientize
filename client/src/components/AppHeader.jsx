@@ -6,11 +6,11 @@ import SlidersDrawer from './SlidersDrawer';
 const UserAvatar = React.lazy(() => import('./UserAvatar'));
 import { LogOutButton } from './Buttons';
 
-export default function Nav(props) {
+export function Nav(props) {
   return (
     <Header
       padding={'xs'}
-      style={{
+      sx={{
         outline: 0,
         border: 'none',
         opacity: '80%',
@@ -24,23 +24,25 @@ export default function Nav(props) {
 }
 
 
-export const AppHeader = () => (
-  <Nav
-    sx={{
-      position: 'sticky',
-      top: 0,
-      margin: '0 auto',
-    }}
-  >
-    <Group
-      grow
-      direction='row'
-      position='apart'
+export default function AppHeader() {
+  return (
+    <Nav
+      sx={{
+        position: 'sticky',
+        top: 0,
+        margin: '0 auto',
+      }}
     >
-      <Seeds />
-      <SlidersDrawer />
-      <LogOutButton />
-      <UserAvatar />
-    </Group>
-  </Nav>
-);
+      <Group
+        grow
+        direction='row'
+        position='apart'
+      >
+        <Seeds />
+        <SlidersDrawer />
+        <LogOutButton />
+        <UserAvatar />
+      </Group>
+    </Nav>
+  );
+}

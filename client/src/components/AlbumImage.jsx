@@ -3,14 +3,14 @@ import { Image } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
 import { parseAlbumColorToCss } from '../utils';
 
-const AlbumImage = ({images}) => {
+const AlbumImage = ({image}) => {
 
-  if (!images) return <></> // TODO: Unsure if Suspense is handling this
+  if (!image) return <></> // TODO: Unsure if Suspense is handling this
 
   return (
     <Suspense fallback={<></>}>
       <Image
-        src={images?.[1].url}
+        src={image}
         sx={{
           'aspectRatio': '1',
           'objectFit': 'cover',

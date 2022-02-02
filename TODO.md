@@ -25,3 +25,8 @@ PRODUCTION/DEPLOYMENT:
 - security in express app
 - daemonize with PM2
 
+FANCY:
+
+- manifest.json
+- favicon.ico
+- robots.txt

@@ -18,7 +18,6 @@ import React, { useState } from 'react';
  *
  */
 
-
 const INITIAL_SIZE = 5;
 const FILLER = Array(INITIAL_SIZE).fill({});
 
@@ -29,12 +28,11 @@ function persistSeeds(dataArray) {
 }
 
 function getSeeds() {
-  let seeds = window.localStorage.getItem('seeds') || '[{},{},{},{},{}]';
+  let seeds = window.localStorage.getItem('seeds');
   return JSON.parse(seeds) || FILLER;
 }
 
 export default function useList(initialArray = getSeeds()) {
-
   const [list, setList] = useState(initialArray);
 
   function dedupe(list) {
@@ -55,9 +53,11 @@ export default function useList(initialArray = getSeeds()) {
       return copy;
     });
 
-  const pop = () => setList((list) => {
-    const copy = [{},...list.slice(0, -1)]
-  });
+  const pop = () =>
+    setList((list) => {
+      const copy = [{}, ...list.slice(0, -1)];
+      return copy;
+    });
 
   const splice = (target) =>
     setList((list) => {

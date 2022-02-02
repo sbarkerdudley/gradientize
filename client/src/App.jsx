@@ -3,12 +3,11 @@ import theme from './styles/theme';
 import { AppShell, MantineProvider } from '@mantine/core';
 import SpotifyAPIContext from './components/SpotifyAPIContext';
 import SpotifyProvider from './components/SpotifyProvider';
-import { AppHeader } from './components/AppHeader';
-import Login from './components/Login';
+const AlbumGrid = React.lazy(() => import('./components/AlbumGrid'));
+const AppHeader = React.lazy(() => import('./components/AppHeader'));
 import ScrollButton from './components/ScrollButton';
 import Gradient from './components/Gradient';
 import Footer from './components/Footer';
-import AlbumGrid from './components/AlbumGrid';
 import SearchProvider from './components/SearchProvider';
 
 

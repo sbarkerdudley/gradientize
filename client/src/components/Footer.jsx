@@ -1,6 +1,6 @@
 import React from 'react';
 import { Header, Group } from '@mantine/core';
-import Nav from './AppHeader';
+import { Nav } from './AppHeader';
 import ColorSelector from './ColorSelector.jsx';
 
 const Footer = () => {
@@ -11,7 +11,7 @@ const Footer = () => {
       transform: 'translate(0, -100%)',
       position: 'fixed',
       paddingBottom: '1rem',
-      zIndex: 100,
+      zIndex: 10,
     }}>
       <Group
         grow

@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 const LOCALSTORAGE_KEYS = {
   accessToken: 'spotify_access_token',
   refreshToken: 'spotify_refresh_token',
@@ -18,29 +17,39 @@ const LOCALSTORAGE_VALUES = {
 async function refreshToken() {
   try {
     // Logout if there's no refresh token stored or we've managed to get into a reload infinite loop
-    if (!LOCALSTORAGE_VALUES.refreshToken ||
+    console.log('refreshtoken caled......');
+    if (
+      !LOCALSTORAGE_VALUES.refreshToken ||
       LOCALSTORAGE_VALUES.refreshToken === 'undefined' ||
-      (Date.now() - Number(LOCALSTORAGE_VALUES.timestamp) / 1000) < 1000
+      Date.now() - Number(LOCALSTORAGE_VALUES.timestamp) / 1000 < 1000
     ) {
       console.error('No refresh token available');
       await logout();
-      return
+      return;
     }
 
     // Use `/refresh_token` endpoint from our Node app
-    const { data } = await axios.get(`/auth/refresh_token?refresh_token=${LOCALSTORAGE_VALUES.refreshToken}`);
+    await setHeaders();
+    console.log('headers set ......');
+    const { data } = await axios.get(
+      `/auth/refresh_token?refresh_token=${LOCALSTORAGE_VALUES.refreshToken}`,
+      );
 
-    // Update localStorage values
-    window.localStorage.setItem(LOCALSTORAGE_KEYS.accessToken, data.access_token);
-    window.localStorage.setItem(LOCALSTORAGE_KEYS.timestamp, Date.now());
+      // Update localStorage values
+      window.localStorage.setItem(
+        LOCALSTORAGE_KEYS.accessToken,
+        data.access_token,
+        );
+        console.log('rrsfesgh tooken gotten ;);)');
+        window.localStorage.setItem(LOCALSTORAGE_KEYS.timestamp, Date.now());
 
-    // Reload the page for localStorage updates to be reflected
-    window.location.reload();
-
-  } catch (e) {
-    console.error(e);
-  }
-};
+        // Reload the page for localStorage updates to be reflected
+        window.location.reload();
+      } catch (e) {
+        console.log('oh shits;)');
+        console.error(e);
+      }
+}
 
 function hasTokenExpired() {
   const { accessToken, timestamp, expireTime } = LOCALSTORAGE_VALUES;
@@ -48,9 +57,8 @@ function hasTokenExpired() {
     return false;
   }
   const millisecondsElapsed = Date.now() - Number(timestamp);
-  return (millisecondsElapsed / 1000) > Number(expireTime);
-};
-
+  return millisecondsElapsed / 1000 > Number(expireTime);
+}
 
 function getAccessToken() {
   const queryString = window.location.search;
@@ -63,12 +71,19 @@ function getAccessToken() {
   const error = urlParams.get('error');
 
   // If there's an error OR the token in localStorage has expired, refresh the token
-  if (error || hasTokenExpired() || typeof LOCALSTORAGE_VALUES.accessToken === 'undefined') {
+  if (
+    error ||
+    hasTokenExpired() ||
+    typeof LOCALSTORAGE_VALUES.accessToken === 'undefined'
+  ) {
     refreshToken();
   }
 
   // If there is a valid access token in localStorage, use that
-  if (LOCALSTORAGE_VALUES.accessToken && LOCALSTORAGE_VALUES.accessToken !== 'undefined') {
+  if (
+    LOCALSTORAGE_VALUES.accessToken &&
+    LOCALSTORAGE_VALUES.accessToken !== 'undefined'
+  ) {
     return LOCALSTORAGE_VALUES.accessToken;
   }
 
@@ -86,29 +101,26 @@ function getAccessToken() {
 
   // We should never get here!
   return false;
-};
+}
 
 export const accessToken = getAccessToken();
 
-
 export async function getUserProfile() {
-  await accessToken
-  return axios.get('/me')
-  .then(response => response.data)
+  await accessToken;
+  return axios.get('/me').then((response) => response.data);
 }
 
-
 export function logout() {
-  // window.localStorage.clear()
-  for (const property in LOCALSTORAGE_KEYS) {
-    window.localStorage.removeItem(LOCALSTORAGE_KEYS[property]);
-  }
+  window.localStorage.clear()
+  // for (const property in LOCALSTORAGE_KEYS) {
+  //   window.localStorage.removeItem(LOCALSTORAGE_KEYS[property]);
+  // }
   window.location = window.location.origin;
-};
+}
 
-
-(async function setHeaders(attempts = 10) {
+async function setHeaders(attempts = 3) {
   if (accessToken) {
+    console.log(accessToken);
     axios.defaults.baseURL = 'https://api.spotify.com/v1';
     axios.defaults.headers[
       'Authorization'
@@ -122,4 +134,10 @@ export function logout() {
       setHeaders(attempts);
     }, 1000);
   }
+}
+
+(function init() {
+  console.log('init');
+  setHeaders();
+
 })();

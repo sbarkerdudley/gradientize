@@ -5,6 +5,7 @@ import { SearchContext } from './SearchProvider';
 import Fav from './Fav';
 import AlbumImage from './AlbumImage';
 import AlbumTextModal from './AlbumTextModal';
+import CardBody from './CardBody';
 import { parseAlbumColorToCss } from '../utils';
 
 const Album = ({ album }) => {
@@ -12,12 +13,12 @@ const Album = ({ album }) => {
   let { useSeeds } = useContext(SearchContext);
 
   let [averageColor, setAverageColor] = React.useState({})
-  let [hue, setHue] = React.useState({})
   const handleClick = useSeeds.prepend
 
   const sx = {
-    'aspectRatio': '1 / 1',
-    'willChange': 'transform',
+    transition: 'ease-in-out 300ms',
+    aspectRatio: '1 / 1',
+    willChange: 'transform',
     ...averageColor
   }
 
@@ -25,25 +26,34 @@ const Album = ({ album }) => {
 
   let hoverStyle = hovered ? {
     transform: 'scale(1.04)',
-    transition: '200ms',
     ...sx
-  } : sx
+  } : {
+    transform: 'scale(1)',
+    ...sx
+  }
 
+  const Front = React.useMemo(() => (
+    <AlbumImage
+      image={album?.images[0].url}
+      radius='sm'
+      artistURL={album.artist}
+      albumURL={album?.external_urls.spotify}
+    />)
+  )
 
+  const Back = React.useMemo(() => (<AlbumTextModal album={album} />))
 
   useEffect(() => {
     if (album.images) {
       parseAlbumColorToCss(album.images[2].url)
         .then((success) => {
           let [hue, shadow] = success;
-          setHue(hue)
           setAverageColor(shadow)
-          album.hue = hue
           album.shadow = shadow
         })
         .catch(console.error)
     }
-  }, [album.images[2].url])
+  }, [])
 
 
   return (
@@ -54,20 +64,17 @@ const Album = ({ album }) => {
         key={album.id}
         // component="a"
         // href={`${album.uri}:play`}
-        style={hoverStyle}
-        sx={sx}
+        // style={hoverStyle}
+        sx={hoverStyle}
         radius='md'
       >
         <Card.Section>
-          <Suspense fallback={<></>}>
-            <Fav children={'+'} handleClick={() => console.log(album.id)} style={hoverStyle} color={hue} />
-          </Suspense>
+          <Fav children={'+'} handleClick={() => console.log(album.id)} style={hoverStyle} />
         </Card.Section>
         <Card.Section>
-          <AlbumImage images={album?.images} radius='sm' artistURL={album.artist} albumURL={album?.external_urls.spotify} />
-        </Card.Section>
-        <Card.Section>
-          <AlbumTextModal album={album} />
+          <CardBody>
+            {hovered ? Back : Front}
+          </CardBody>
         </Card.Section>
       </Card>
     </Suspense>
