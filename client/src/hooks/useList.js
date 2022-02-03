@@ -28,16 +28,22 @@ function persistSeeds(dataArray) {
 }
 
 function getSeeds() {
-  let seeds = window.localStorage.getItem('seeds');
-  return JSON.parse(seeds) || FILLER;
+  var seeds = window.localStorage.getItem('seeds');
+  if (seeds) {
+    seeds = JSON.parse(seeds)
+    IDS = dedupe(seeds)
+  }
+  return seeds || FILLER;
+}
+
+function dedupe(list) {
+  return new Set(list.map((seed) => seed.id));
 }
 
 export default function useList(initialArray = getSeeds()) {
   const [list, setList] = useState(initialArray);
 
-  function dedupe(list) {
-    return new Set(list.map((seed) => seed.id));
-  }
+
 
   const prepend = (seed) =>
     setList((list) => {
@@ -47,7 +53,7 @@ export default function useList(initialArray = getSeeds()) {
       const copy = [seed, ...list, ...FILLER];
       copy.length = INITIAL_SIZE;
       IDS = dedupe(copy);
-
+      console.log(copy);
       persistSeeds(copy);
 
       return copy;

@@ -2,18 +2,19 @@ import FastAverageColor from 'fast-average-color';
 const fac = new FastAverageColor();
 
 export const parseAlbumColorToCss = async (imageUrl) => {
-  let averageColor = await fac.getColorAsync(
-    imageUrl,
+  let avgColor = await fac.getColorAsync(
+    imageUrl
   ); /* Sample average color of smallest image */
-  let hue = await getHue(...averageColor.value); /* Convert [r, g, b] color to pure hue */
+  console.log(avgColor);
+  let hue = await getHue(...avgColor.value); /* Convert [r, g, b] color to pure hue */
   let parsedHue = `hsla(${hue}, 100%, 50%, 0.34)`; /* Format for CSS */
   // let parsedHue = `hsla(${hue}, 100%, 50%, 0.44)`; /* Format for CSS */
   return await [hue, makeHSLAShadow(parsedHue)];
 };
 
 /**
- * @param number 0 >= color <= 360
- * @param number 0 >= angle <= 360
+ * @param {number} color 0 >= color <= 360
+ * @param {number} angle 0 >= angle <= 360
  */
 
 export const makeHSLAGradient = (color = 360, angle = 0) =>
@@ -36,10 +37,10 @@ export const makeOffsetHSLAGradients = (colors, offset) => {
   return makeHSLAGradients(colors.map((color) => color + offset));
 };
 
-export const randomSliderValue = Math.floor(Math.random() * 100);
+export const randomSliderValue = () => Math.floor(Math.random() * 100);
 
 export const randomSliderValues = Array(2)
-  .fill(randomSliderValue)
+  .fill(randomSliderValue())
   .sort((a, b) => a - b);
 
 export const sliderMarks = Array(9)
@@ -58,6 +59,9 @@ export const shuffleArray = (array) => {
 };
 
 export const getHue = (r, g, b) => {
+  if (r === g && r === b) {
+    return 300
+  }
   r /= 255;
   g /= 255;
   b /= 255;

@@ -5,14 +5,14 @@ import { useHover } from '@mantine/hooks';
 const Fav = (props) => {
   let { color, id, img } = props
 
-  let { hovered, ref } = useHover();
-  let hoverState = hovered ? { backgroundColor: 'red' } : { backgroundColor: 'pink' }
+
+  // let hoverState = hovered ? { backgroundColor: 'red' } : { backgroundColor: 'pink' }
 
   const handleClick = () => {}
 
   return (
     <ThemeIcon
-      ref={ref}
+      // ref={ref}
       radius="xl"
       size="xl"
       color={color ? color : 'red'}
@@ -22,7 +22,10 @@ const Fav = (props) => {
         right: '0.5rem',
         zIndex: 5,
         cursor: 'pointer',
-        ...hoverState,
+        backgroundColor: 'pink',
+        '&:hover': {
+          backgroundColor: 'red',
+        }
       }}
       onClick={props.handleClick}>
       {props.children}
@@ -32,4 +35,4 @@ const Fav = (props) => {
 
 
 
-export default React.memo(Fav);
+export default Fav;

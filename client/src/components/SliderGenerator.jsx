@@ -14,7 +14,10 @@ const SliderGenerator = (props) => {
     console.log(e);
     console.log(name);
     console.log(soundSliders);
-    setSoundSlider(soundSliders[name] = e)
+    setSoundSlider({
+      ...soundSliders,
+      [name]: e
+    })
   }
   // soundSliders[name] = e.target.value
 
@@ -42,7 +45,7 @@ const SliderGenerator = (props) => {
         min={0}
         max={100}
         // value={randomSliderValues}
-        defaultValue={randomSliderValues}
+        defaultValue={[0, 100]}
         color={props.color}
         thumb={{
           height: 'xl',
