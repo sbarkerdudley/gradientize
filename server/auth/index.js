@@ -9,19 +9,28 @@ const client_secret = process.env.CLIENT_SECRET;
 const redirect_uri = process.env.REDIRECT_URI;
 const client_base_url = process.env.CLIENT_URL;
 
-
-const CREDENTIALS = Buffer
-  .from(`${client_id}:${client_secret}`)
-  .toString('base64');
+const CREDENTIALS = Buffer.from(`${client_id}:${client_secret}`).toString(
+  'base64',
+);
 
 const authorizationURL = 'https://accounts.spotify.com/authorize?';
 const tokenURL = 'https://accounts.spotify.com/api/token';
 const baseURL = 'https://api.spotify.com';
 const userURL = `${baseURL}/v1/me`;
 
-
-
 const scopes = [
+  'playlist-modify-private',
+  'playlist-modify-public',
+  'playlist-read-collaborative',
+  'playlist-read-private',
+  'streaming',
+  'user-library-modify',
+  'user-library-read',
+  'user-read-private',
+  'user-top-read',
+];
+
+const xscopes = [
   'user-read-email',
   'user-read-private',
   'user-top-read',
@@ -50,15 +59,15 @@ const generateRandomString = (length) => {
 };
 
 auth.get('/spotify', (req, res) => {
-  const state = generateRandomString(16);
+  var state = generateRandomString(16);
   res.cookie(stateKey, state);
 
   let params = querystring.stringify({
     client_id,
     response_type: 'code',
+    scope,
     redirect_uri,
     state,
-    // scope,
   });
 
   res.redirect(authorizationURL + params);
@@ -67,7 +76,7 @@ auth.get('/spotify', (req, res) => {
 auth.get('/spotify/callback', (req, res) => {
   try {
     let { code } = req.query;
-    if (!code) throw 'Maybe change this to null'
+    if (!code) throw 'Maybe change this to null';
 
     axios({
       method: 'post',
@@ -76,7 +85,7 @@ auth.get('/spotify/callback', (req, res) => {
         grant_type: 'authorization_code',
         code,
         redirect_uri,
-        show_dialog: true
+        show_dialog: true,
       }),
       headers: {
         Authorization: `Basic ${CREDENTIALS}`,
@@ -91,22 +100,11 @@ auth.get('/spotify/callback', (req, res) => {
             access_token,
             refresh_token,
             expires_in,
-          })
+          });
 
           res.redirect(`${client_base_url}/?${queryParams}`);
-
-          /*
-            {
-              "access_token": "...",
-              "token_type": "Bearer",
-              "expires_in": 3600,
-              "refresh_token": "...",
-              "scope": "user-read-email user-read-recently-played user-read-private user-top-read"
-            }
-         */
-
         } else {
-          throw 'Unauthorized user'
+          throw 'Unauthorized user';
         }
       })
       .catch((err) => {
@@ -124,7 +122,7 @@ auth.get('/refresh_token', (req, res) => {
     .post(tokenURL, {
       data: querystring.stringify({
         grant_type: 'refresh_token',
-        refresh_token: refresh_token,
+        refresh_token,
       }),
       headers: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -132,10 +130,10 @@ auth.get('/refresh_token', (req, res) => {
       },
     })
     .then((response) => {
-      res.status(200).send(response.data)
+      res.status(200).send(response.data);
     })
     .catch((error) => {
-      res.redirect('/auth/error')
+      res.redirect('/auth/error');
     });
 });
 
