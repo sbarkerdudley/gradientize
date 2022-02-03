@@ -14,6 +14,8 @@ const LOCALSTORAGE_VALUES = {
   timestamp: window.localStorage.getItem(LOCALSTORAGE_KEYS.timestamp),
 };
 
+window.axios = axios // sketchy
+
 async function refreshToken() {
   try {
     // Logout if there's no refresh token stored or we've managed to get into a reload infinite loop
@@ -33,23 +35,54 @@ async function refreshToken() {
     console.log('headers set ......');
     const { data } = await axios.get(
       `/auth/refresh_token?refresh_token=${LOCALSTORAGE_VALUES.refreshToken}`,
-      );
+    );
 
-      // Update localStorage values
-      window.localStorage.setItem(
-        LOCALSTORAGE_KEYS.accessToken,
-        data.access_token,
-        );
-        console.log('rrsfesgh tooken gotten ;);)');
-        window.localStorage.setItem(LOCALSTORAGE_KEYS.timestamp, Date.now());
+    // Update localStorage values
+    window.localStorage.setItem(
+      LOCALSTORAGE_KEYS.accessToken,
+      data.access_token,
+    );
+    console.log('rrsfesgh tooken gotten ;);)');
+    window.localStorage.setItem(LOCALSTORAGE_KEYS.timestamp, Date.now());
 
-        // Reload the page for localStorage updates to be reflected
-        window.location.reload();
-      } catch (e) {
-        console.log('oh shits;)');
-        console.error(e);
-      }
+    // Reload the page for localStorage updates to be reflected
+    window.location.reload();
+  } catch (e) {
+    console.log('oh shits;)');
+    console.error(e);
+  }
 }
+
+export function getTop(type) {
+  return axios.get(`/me/top/${type}`);
+}
+
+export function getSavedAlbums() {
+  return axios.get('/me/albums');
+}
+
+export function getAlbumTracks(id) {
+  return axios.get(`/albums/${id}/tracks`);
+}
+
+export function getRecs(seeds) {
+  /**
+   * (REQUIRED) - Comma separated list(s) as string. Maximum 5 seed values in any combination
+   * @param {string} seed_artists
+   * @param {string} seed_genres
+   * @param {string} seed_tracks
+   */
+  let PARAMS = Object.entries(seeds).map(seed => `${seed[0]}=${seed[1].join(',')}`)
+
+  return axios.get('/recommendations');
+}
+
+const Spotify = {
+  getTop,
+  getSavedAlbums,
+  getAlbumTracks,
+};
+
 
 function hasTokenExpired() {
   const { accessToken, timestamp, expireTime } = LOCALSTORAGE_VALUES;
@@ -111,14 +144,14 @@ export async function getUserProfile() {
 }
 
 export function logout() {
-  window.localStorage.clear()
+  window.localStorage.clear();
   // for (const property in LOCALSTORAGE_KEYS) {
   //   window.localStorage.removeItem(LOCALSTORAGE_KEYS[property]);
   // }
   window.location = window.location.origin;
 }
 
-async function setHeaders(attempts = 3) {
+export async function setHeaders(attempts = 3) {
   if (accessToken) {
     console.log(accessToken);
     axios.defaults.baseURL = 'https://api.spotify.com/v1';
@@ -139,5 +172,5 @@ async function setHeaders(attempts = 3) {
 (function init() {
   console.log('init');
   setHeaders();
-
 })();
+

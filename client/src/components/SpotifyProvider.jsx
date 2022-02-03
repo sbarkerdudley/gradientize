@@ -1,63 +1,52 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { MantineProvider } from '@mantine/core';
-import { makeHSLAGradients, makeOffsetHSLAGradients, shuffleArray } from '../utils.js'
+import { getTop } from '../spotify';
+import { shuffleArray } from '../utils.js'
 import data from '../../../data.js';
 import axios from 'axios';
 import { SpotifyApiContext } from 'react-spotify-api'
 
 export const SpotifyContext = React.createContext();
-export const ColorContext = React.createContext({});
 
 const SpotifyProvider = ({ children }) => {
 
 
 
-  let [slider, setSlider] = React.useState(Math.floor(Math.random() * 360));
-  let [soundSlider, setSoundSlider] = useState([40, 60]);
-  let [avatar, setAvatar] = useState(null);
-  let [albumsList, setAlbumsList] = useState(data.albums.items);
-  // let [albumsList, setAlbumsList] = useState([]);
+
+  const [soundSlider, setSoundSlider] = useState([0, 100]);
+  const [avatar, setAvatar] = useState(null);
+  // const [musicList, setMusicList] = useState(data.albums.items);
+  const [musicList, setMusicList] = useState([]);
+  const [next, setNext] = useState(window.location);
 
 
-  const getValues = () => Array(6).fill(slider).map((value, i) => value += 30 * i);
-  let values = getValues()
-
-  const colors = {
-    slider,
-    setSlider,
-    values,
-    primaryGradient: makeHSLAGradients(values),
-    secondaryGradient: makeOffsetHSLAGradients(values, 120),
-    tertiaryGradient: makeOffsetHSLAGradients(values, 240),
-  }
-
-
-
-  const theme = { colorScheme: 'dark' };
-
-  const primaryGradient = makeHSLAGradients(values);
-  const secondaryGradient = makeOffsetHSLAGradients(values, 120);
-  const tertiaryGradient = makeOffsetHSLAGradients(values, 240);
 
   React.useEffect(() => {
-    if (typeof slider === 'number') {
-      colors.slider = slider;
-      colors.values = getValues()
-      values = getValues();
-      colors.primaryGradient = makeHSLAGradients(values);
-      colors.secondaryGradient = makeOffsetHSLAGradients(values, 120);
-      colors.tertiaryGradient = makeOffsetHSLAGradients(values, 240);
-    }
-  }, [slider])
+    var results = [];
+    getTop('artists')
+      .then((response) => {
+        console.log(response)
+        return response.data
+      })
+      .then(success => {
+        results = success.items
+        setNext(success.next)
+        console.log(success.next, 'next', success, 'success')
+        return success
+      })
+      .catch(err => {
+        console.error(err, 'Spotify GET request failed')
+        results = musicList;
+      })
+      .finally(list => setMusicList(results))
+
+  }, [])
 
 
   const value = {
-    slider,
-    setSlider,
     avatar,
     setAvatar,
-    albumsList,
-    setAlbumsList,
+    musicList,
+    setMusicList,
     shuffleArray,
     soundSliders: {},
     soundSlider,
@@ -66,10 +55,8 @@ const SpotifyProvider = ({ children }) => {
 
   return (
     <SpotifyContext.Provider value={value}>
-      <ColorContext.Provider value={colors}>
-        {children}
-      </ColorContext.Provider>
-    </SpotifyContext.Provider>
+      {children}
+    </SpotifyContext.Provider >
   )
 }
 

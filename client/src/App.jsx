@@ -3,8 +3,9 @@ import theme from './styles/theme';
 import { AppShell, MantineProvider } from '@mantine/core';
 import SpotifyAPIContext from './components/SpotifyAPIContext';
 import SpotifyProvider from './components/SpotifyProvider';
-const AlbumGrid = React.lazy(() => import('./components/AlbumGrid'));
-const AppHeader = React.lazy(() => import('./components/AppHeader'));
+import ColorProvider from './components/ColorProvider';
+import AlbumGrid from './components/AlbumGrid';
+import AppHeader  from './components/AppHeader';
 import ScrollButton from './components/ScrollButton';
 import Gradient from './components/Gradient';
 import Footer from './components/Footer';
@@ -16,20 +17,20 @@ import SearchProvider from './components/SearchProvider';
 const App = () => {
   return (
     <div id='app'>
-      <MantineProvider withGlobalStyles {...{theme}} >
+      <MantineProvider withGlobalStyles theme={theme} >
         <SpotifyAPIContext>
           <SpotifyProvider>
+          <ColorProvider>
             <SearchProvider>
-              <Suspense fallback={<Gradient />}>
-                <AppShell header={<AppHeader />}>
-                  <Suspense fallback={<Gradient />}>
-                    <AlbumGrid />
-                  </Suspense>
-                </AppShell>
-                <Footer />
-              </Suspense>
+              <AppShell header={<AppHeader />}>
+                <Suspense fallback={<Gradient />}>
+                  <AlbumGrid />
+                </Suspense>
+              </AppShell>
+              <Footer />
               <ScrollButton />
             </SearchProvider>
+          </ColorProvider>
           </SpotifyProvider>
         </SpotifyAPIContext>
       </MantineProvider >

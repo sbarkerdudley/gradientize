@@ -4,12 +4,8 @@ import { Card } from '@mantine/core';
 const CardBody = ({ children }) => {
 
   const sx = {
-    aspectRatio: '1 / 1',
     willChange: 'transform',
-    perspective: '2rem',
-    position: 'absolute',
-    transformStyle: 'preserve-3d',
-    transition: 'transform(300ms)'
+    // aspectRatio: '1'
   }
 
   return (

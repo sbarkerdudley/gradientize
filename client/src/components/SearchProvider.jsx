@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useList, useSoundSliders } from '../hooks';
-import axios from 'axios';
+import Seeds from './Seeds';
 
 export const SearchContext = React.createContext({});
 
 export default function SearchProvider({ children }) {
 
   const [seeds, useSeeds] = useList()
-  const [sliders, useSliders, SLIDERS] = useSoundSliders()
-  console.log(sliders, SLIDERS);
+  // const [sliders, useSliders, SLIDERS] = useSoundSliders()
+  // console.log(sliders, SLIDERS);
   React.useEffect(() => {
-
   }, [])
 
 
@@ -25,3 +24,5 @@ export default function SearchProvider({ children }) {
     </SearchContext.Provider>
   )
 }
+
+// export const WrappedSliders = React.createElement(SearchProvider, {}, React.createElement(Seeds, {}, null))

@@ -1,13 +1,15 @@
 import React, { useContext } from 'react';
 import { HueSlider } from '@mantine/core';
-import { SpotifyContext, ColorContext } from './SpotifyProvider.jsx';
+import { ColorContext } from './ColorProvider.jsx';
 
 
 const ColorSelector = (props) => {
 
   const height = 60;
-  let { slider, setSlider } = useContext(SpotifyContext);
-  // let { slider, setSlider } = useContext(ColorContext);
+  // let { slider, setSlider } = useContext(SpotifyContext);
+  let { slider, setSlider } = useContext(ColorContext);
+
+  console.log(slider);
 
   return (
     <HueSlider

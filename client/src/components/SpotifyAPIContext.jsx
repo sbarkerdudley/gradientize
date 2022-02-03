@@ -1,7 +1,5 @@
+import { accessToken, setHeaders } from '../spotify';
 import React, { useEffect } from 'react'
-import { accessToken } from '../spotify';
-import Cookies from 'js-cookie'
-import { SpotifyAuth, Scopes } from 'react-spotify-auth'
 import axios from 'axios';
 import Login from './Login';
 import { SpotifyApiContext } from 'react-spotify-api'
@@ -12,7 +10,10 @@ const SpotifyAPIContext = ({ children }) => {
   useEffect(() => {
     if (accessToken) {
       setToken(accessToken);
-      console.log(accessToken, '\n\n\n\n', new Date())
+      setHeaders()
+      console.log();
+    } else {
+      console.log('efsrgdthfntdgrsefsgrd');
     }
   }, [token])
   return (

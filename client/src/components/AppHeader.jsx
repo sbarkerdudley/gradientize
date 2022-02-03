@@ -3,7 +3,7 @@ import { Header, Group, Grid } from '@mantine/core';
 import ColorSelector from './ColorSelector';
 import Seeds from './Seeds';
 import SlidersDrawer from './SlidersDrawer';
-const UserAvatar = React.lazy(() => import('./UserAvatar'));
+import UserAvatar from './UserAvatar'
 import { LogOutButton } from './Buttons';
 
 export function Nav(props) {
@@ -16,6 +16,9 @@ export function Nav(props) {
         opacity: '80%',
         margin: '0 auto',
         ...props.sx,
+        '& > *': {
+          opacity: '100%',
+        }
       }}
     >
       {props.children}
@@ -30,7 +33,6 @@ export default function AppHeader() {
       sx={{
         position: 'sticky',
         top: 0,
-        margin: '0 auto',
       }}
     >
       <Group

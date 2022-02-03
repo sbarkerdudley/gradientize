@@ -12,14 +12,16 @@ export default React.memo(function Seeds() {
 
   }, [])
 
-  if (!Array.isArray(seeds)) {
-    return <></>
-  }
-
   return (
     <SimpleGrid cols={5}>
       {seeds.map((seed, i) => (
-        <Thumb parent='seeds' id={seed.id || null} img={seed.img || null} key={i} />
+        <Thumb
+          parent='seeds'
+          id={seed.id || null}
+          img={seed.img || null}
+          type={seed.type || null}
+          key={i}
+        />
       ))}
     </SimpleGrid>
   )
