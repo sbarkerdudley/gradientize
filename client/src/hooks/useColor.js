@@ -3,47 +3,46 @@ import FastAverageColor from 'fast-average-color';
 const fac = new FastAverageColor();
 
 /**
- *
  * @param {string} url
- *
  * Samples the average color of an image and returns an object of .....TODO
- *
  */
 
-
-function persistColors(object) {
-  window.localStorage.setItem('colors', JSON.stringify(object));
+/**
+ * @param {string} id
+ * @param {number} hue
+ */
+function persist(id, hue) {
+  window.localStorage.setItem(id, JSON.stringify(hue));
 }
 
-function getCachedColors() {
-  var colors = window.localStorage.getItem('colors');
-  if (colors && colors !== 'undefined') {
-    return JSON.parse(colors);
-  }
-  return {};
+function retrieve(id) {
+  let hue = parseInt(window.localStorage.getItem(id));
+  if (!Number.isNaN(hue)) {
+    return hue
+  } return false
 }
 
-export default function useColor(object = getCachedColors()) {
-  const [cache, setCache] = useState(object);
+const cache = {};
 
-  async function parseAlbumColorToCss(imageUrl) {
+export default function useColor() {
+
+  console.log(cache, 'cache Initialized');
+
+  async function parseImageUrlToCss(imageUrl) {
     let avgColor = await fac.getColorAsync(
       imageUrl,
     ); /* Sample average color of smallest image */
-    console.log(avgColor);
-    let hue = await getHue(
-      ...avgColor.value,
-    ); /* Convert [r, g, b] color to pure hue */
-    let parsedHue = `hsla(${hue}, 100%, 50%, 0.34)`; /* Format for CSS */
+      console.log('Calculating Average Color');
+    let hueInteger = await getHue.apply(null, avgColor.value); /* Convert [r, g, b] color to pure hue */
+    let parsedHue = `hsla(${hueInteger}, 100%, 50%, 0.34)`; /* Format for CSS */
     // let parsedHue = `hsla(${hue}, 100%, 50%, 0.44)`; /* Format for CSS */
-    return await [hue, makeHSLAShadow(parsedHue)];
+    return await [hueInteger, makeHSLAShadowFromColor(parsedHue)];
   }
 
   async function parseImageUrlToHue(imageUrl) {
     let avgColor = await fac.getColorAsync(imageUrl);
-    console.log(avgColor);
-    let hue = await getHue.apply(null, avgColor.value)
-
+    let hue = getHue(...avgColor.value);
+    console.log(hue, 'hue');
     /**
      *
      * @param {string} imageUrl
@@ -51,18 +50,16 @@ export default function useColor(object = getCachedColors()) {
      * @returns {number} 0 >= hue <= 360
      */
 
-    return await hue
+    return hue;
   }
 
-  /**
-   *
-   * @param {number} r 0 >= r <= 255
-   * @param {number} g 0 >= g <= 255
-   * @param {number} b 0 >= b <= 255
-   * @returns {number} 0 >= hue <= 360
-   */
-
-  function getHue(r, g, b) {
+  async function getHue(r, g, b) {
+    /**
+     * @param {number} r 0 >= r <= 255
+     * @param {number} g 0 >= g <= 255
+     * @param {number} b 0 >= b <= 255
+     * @returns {number} 0 >= hue <= 360
+     */
     if (r === g && r === b) {
       return 300;
     }
@@ -101,6 +98,7 @@ export default function useColor(object = getCachedColors()) {
     return parseInt(hue * 60); // hue is in [0,6], scale it up
   }
 
+  function makeHSLAShadowFromColor(color) {
   /**
    * @param {string} color Any representation of CSS color as a String
    *  '#FF33AA'              hex
@@ -110,16 +108,27 @@ export default function useColor(object = getCachedColors()) {
    *  'rgb(45, 25, 255)'     rgb
    *  'rgba(45, 25, 255)'    rgba
    *  'hotpink'              (common name)
-   * @returns {object} CSS {boxShadow: String} for use in `React`. Standardized CSS key name is 'box-shadow'
+   * @returns {object} CSS {boxShadow: String} for use in `React`.
+   *  Standardized CSS key name is 'box-shadow'
    */
-  function makeHSLAShadow(color) {
-    return {
+    return ({
       boxShadow: [
         `-10px 10px 9.9px ${color} `,
         `-20px 20px 28.5px ${color} `,
-        `-6px 60px 52.6px ${color} `
-      ].join(', ')
-    };
+        `-6px 60px 52.6px ${color} `,
+      ].join(', '),
+    });
+  }
+
+  function makeHSLAShadowFromInt(int) {
+    let color = `hsla(${int}, 100%, 50%, 0.34)`;
+    return ({
+      boxShadow: [
+        `-10px 10px 9.9px ${color} `,
+        `-20px 20px 28.5px ${color} `,
+        `-6px 60px 52.6px ${color} `,
+      ].join(', '),
+    });
   }
 
   /**
@@ -135,57 +144,74 @@ export default function useColor(object = getCachedColors()) {
    * let [hue, object] = getOne(url, id, {})
    */
 
-  function getOne(url, id = null, object = {}) {
-    if (typeof url === 'object') {
-      object = url
+  async function setOne(url, id = null, object = {}) {
+    var hue, color;
+    if (!url || url === null) {
+      return [url, {}]
+    }
+    if ((url) !== null && typeof url === 'object') {
+      object = url;
       if (object.id) {
-        id = object.id
+        id = object.id;
       }
-      url = object.url
+      url = object.images?.at(-1).url;
     }
-    var color;
+
     if (id && cache[id]) {
-      color = cache[id]
+      hue = cache[id]
+      console.log('CACHED VALUE USED');
+      return await [hue, makeHSLAShadowFromInt(hue)];
     } else {
-      color = parseAlbumColorToCss(url)
-      var [hue, makeHSLAShadow(parsedHue)] = parseAlbumColorToCss(url);
+      let results = await parseImageUrlToCss(url);
+      hue = results[0]
+      color = results[1]
+
       if (id) {
-        setCache(cache => ({
-          ...cache,
-          id: hue
-        }))
-        console.log(cache);
+        cache[id] = hue
+
       }
-      object.hue = hue
+      object.hue = color;
     }
-    return [hue, object]
+    return [hue, color, object];
   }
 
-  function getList(list) {
+  async function setList(list) {
     /**
      * @param {string} item url of image, OR
      * @param {Object} item object with [url] key
      * @param {string} item.id (OPTIONAL) for caching
      */
     return list.map((item) => {
-      if (!item) return item
-      return getOne(item, item.id || null)
-    })
+      if (!item) return item;
+      return getOne(item);
+    });
   }
 
-  function set(url) {
-
+  async function getOne(id) {
+    if (id && cache[id]) {
+      return cache[id];
+    } else if (id) {
+      return setOne(id)
+    } else {
+      return false
+    }
   }
 
-  function setList(list) {
+  const get = getOne.bind(this);
 
-  }
+  const set = setOne.bind(this);
+
+  function getList(list) {}
 
   return [
     cache,
     {
+      get,
       getOne,
       getList,
+      set,
+      setOne,
+      setList,
     },
   ];
 }

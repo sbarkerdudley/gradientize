@@ -18,6 +18,12 @@ import React, { useState } from 'react';
  *
  */
 
+const QUERY_KEYS = {
+  artist: 'seed_artists',
+  genre: 'seed_genres',
+  track: 'seed_tracks',
+}
+
 const INITIAL_SIZE = 5;
 const FILLER = Array(INITIAL_SIZE).fill({});
 
@@ -53,7 +59,6 @@ export default function useList(initialArray = getSeeds()) {
       const copy = [seed, ...list, ...FILLER];
       copy.length = INITIAL_SIZE;
       IDS = dedupe(copy);
-      console.log(copy);
       persistSeeds(copy);
 
       return copy;
@@ -75,12 +80,23 @@ export default function useList(initialArray = getSeeds()) {
       return copy;
     });
 
+    const aggregateQuery = () => {
+      const copy = list.slice()
+      return copy.reduce((agg, obj) => {
+        for (var key in obj) {
+          agg[QUERY_KEYS[key]] = obj[key].join();
+        }
+        return agg;
+      }, {})
+    }
+
   return [
     list,
     {
       prepend,
       pop,
       splice,
+      aggregateQuery,
     },
   ];
 }
