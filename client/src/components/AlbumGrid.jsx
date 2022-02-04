@@ -1,11 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Grid } from '@mantine/core';
-import Album from './Album';
-import Gradient from './Gradient';
-import AlbumList from './AlbumList';
-import Thumb from './Thumb';
-import { SpotifyContext } from './SpotifyProvider';
-import ScrollButton from './ScrollButton';
+import {
+  SpotifyContext,
+  Album,
+  Gradient,
+  AlbumList,
+  Thumb,
+  ScrollButton,
+} from './';
 
 
 function getProps(album) {

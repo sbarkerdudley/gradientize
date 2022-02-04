@@ -1,7 +1,5 @@
 import React, { useState, useContext, useEffect, Suspense } from 'react';
 import { Image } from '@mantine/core';
-import { useHover } from '@mantine/hooks';
-import { parseAlbumColorToCss } from '../utils';
 
 const AlbumImage = ({ image }) => {
 

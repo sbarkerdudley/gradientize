@@ -2,16 +2,18 @@ import { accessToken, setHeaders } from '../spotify';
 import React, { useEffect } from 'react'
 import axios from 'axios';
 import Login from './Login';
-import { SpotifyApiContext } from 'react-spotify-api'
+// import { SpotifyAPIContext } from 'react-spotify-api'
 
-const SpotifyAPIContext = ({ children }) => {
+export const SpotifyAPIContext = React.createContext();
+
+const SpotifyAPIProvider = ({ children }) => {
   const [token, setToken] = React.useState(null)
 
   useEffect(() => {
     if (accessToken) {
-      setToken(accessToken);
       setHeaders()
-      console.log();
+      .then(token => setToken(accessToken))
+      console.log(accessToken);
     } else {
       console.log('efsrgdthfntdgrsefsgrd');
     }
@@ -19,9 +21,9 @@ const SpotifyAPIContext = ({ children }) => {
   return (
     <>
       {token ? (
-        <SpotifyApiContext.Provider value={token}>
+        <SpotifyAPIContext.Provider value={token}>
           {children}
-        </SpotifyApiContext.Provider>
+        </SpotifyAPIContext.Provider>
       ) : (
         <Login />
       )}
@@ -29,4 +31,4 @@ const SpotifyAPIContext = ({ children }) => {
   )
 };
 
-export default SpotifyAPIContext;
+export default SpotifyAPIProvider;

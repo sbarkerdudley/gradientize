@@ -3,7 +3,7 @@ import { getTop } from '../spotify';
 import { shuffleArray } from '../utils.js'
 import data from '../../../data.js';
 import axios from 'axios';
-import { SpotifyApiContext } from 'react-spotify-api'
+// import { SpotifyApiContext } from 'react-spotify-api'
 
 export const SpotifyContext = React.createContext();
 
@@ -23,8 +23,7 @@ const SpotifyProvider = ({ children }) => {
 
   React.useEffect(() => {
     var results = [];
-    getTop.tracks({limit: 50})
-    // getTop('artists', {limit: 50})
+    getTop('artists', {limit: 50})
       .then((response) => {
         console.log(response)
         return response.data

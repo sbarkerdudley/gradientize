@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Card, Image } from '@mantine/core';
-import { useHover } from '@mantine/hooks';
-import { SearchContext } from './SearchProvider';
+import { SearchContext } from './';
 
 export default function Thumb(props) {
   const { img, id, type, parent } = props

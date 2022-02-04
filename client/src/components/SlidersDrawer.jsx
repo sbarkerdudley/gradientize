@@ -1,10 +1,13 @@
 import React, { useState, useContext } from 'react';
-import { Drawer, Button, Col, Group, Title, Space } from '@mantine/core';
-import SlidersContainer from './SlidersContainer'
-import { SpotifyContext } from './SpotifyProvider';
-import { ColorContext } from './ColorProvider';
-import { ButtonGenerator } from './Buttons';
+import { Drawer, Button, Col, Group, Title } from '@mantine/core';
 import { shuffleArray } from '../utils';
+import {
+  SpotifyContext,
+  ColorContext,
+  ColorProvider,
+  ButtonGenerator,
+  SlidersContainer,
+} from './'
 
 
 const SlidersDrawer = (props) => {
@@ -28,7 +31,7 @@ const SlidersDrawer = (props) => {
 
 
   return (
-    <>
+    <ColorProvider>
       <Drawer
         opened={opened}
         onClose={() => setOpened(false)}
@@ -64,7 +67,7 @@ const SlidersDrawer = (props) => {
           onClick={() => setMusicList(musicList => shuffleArray(musicList))}>{'Shuffle'}
         </Button>
       </Group>
-    </>
+    </ColorProvider>
   );
 };
 

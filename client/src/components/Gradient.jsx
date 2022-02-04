@@ -39,14 +39,7 @@ export default function Gradient({ children }) {
         }
       `}
     >
-      {/* <div
-        css={css`
-          position: relative;
-          z-index: 10;
-        `}
-      > */}
-        {children}
-      {/* </div> */}
+      {children}
     </div>
   )
 };

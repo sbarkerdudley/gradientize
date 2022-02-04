@@ -1,10 +1,13 @@
-import React, { Suspense } from 'react';
-import { Header, Group, Grid } from '@mantine/core';
-import ColorSelector from './ColorSelector';
-import Seeds from './Seeds';
-import SlidersDrawer from './SlidersDrawer';
-import UserAvatar from './UserAvatar'
-import { LogOutButton } from './Buttons';
+import React from 'react';
+import { Header, Group } from '@mantine/core';
+import {
+  ColorSelector,
+  Seeds,
+  SlidersDrawer,
+  UserAvatar,
+  LogoutButton
+} from './';
+
 
 export function Nav(props) {
   return (
@@ -42,7 +45,7 @@ export default function AppHeader() {
       >
         <Seeds />
         <SlidersDrawer />
-        <LogOutButton />
+        <LogoutButton />
         <UserAvatar />
       </Group>
     </Nav>

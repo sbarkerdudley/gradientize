@@ -1,8 +1,9 @@
 import React, { useEffect, useContext } from 'react';
 import { SimpleGrid } from '@mantine/core';
-import { SearchContext } from './SearchProvider';
-import Thumb from './Thumb';
-import { useList } from '../hooks/useList';
+import {
+  SearchContext,
+  Thumb,
+} from './';
 
 export default React.memo(function Seeds() {
   const { seeds } = useContext(SearchContext);

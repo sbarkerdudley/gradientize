@@ -8,4 +8,4 @@ export default function StyleProvider({ children }) {
       {children}
     </MantineProvider>
   )
-}
+};

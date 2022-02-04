@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Avatar } from '@mantine/core';
-import { SpotifyContext } from './SpotifyProvider';
+import { SpotifyContext } from './';
 import { getUserProfile } from '../spotify';
 
 const UserAvatar = () => {

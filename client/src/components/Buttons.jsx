@@ -12,14 +12,14 @@ const ButtonGenerator = (props) => (
   </Button>
 );
 
-export const LogOutButton = () => (
+export const LogoutButton = () => (
   <ButtonGenerator
     onClick={logout}
     label={'Log Out'}
   />
 );
 
-export const LogInButton = () => (
+export const LoginButton = () => (
   <ButtonGenerator
     onClick={() => window.location.href += 'login'}
     label={'Log In'}

@@ -1,6 +1,8 @@
 import React from 'react';
-import Gradient from './Gradient'
-import { LogInButton } from './Buttons';
+import {
+  Gradient,
+  LoginButton,
+} from './';
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react'
 
@@ -34,7 +36,7 @@ const Login = () => {
           </h1>
         </header>
 
-        <LogInButton />
+        <LoginButton />
       </div>
     </Gradient>
 

@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useContext, Suspense } from 'react';
-import { Card, Image, Text, ThemeIcon, Overlay, Group } from '@mantine/core';
+import { Card, Text,  } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
-import { SearchContext } from './SearchProvider';
-import { ColorContext } from './ColorProvider';
-import Fav from './Fav';
-import AlbumImage from './AlbumImage';
-import ItemText from './ItemText';
-import CardBody from './CardBody';
+import {
+  AlbumImage,
+  CardBody,
+  ColorContext,
+  Fav,
+  ItemText,
+  SearchContext,
+} from './';
 import { parseAlbumColorToCss } from '../utils';
 
 const Item = ({ item }) => {

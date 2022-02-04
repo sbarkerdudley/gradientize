@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useList, useSoundSliders } from '../hooks';
-import Seeds from './Seeds';
+import { Seeds } from './Seeds';
 
 export const SearchContext = React.createContext({});
 

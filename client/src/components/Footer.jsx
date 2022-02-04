@@ -1,7 +1,9 @@
 import React from 'react';
-import { Header, Group } from '@mantine/core';
-import { Nav } from './AppHeader';
-import ColorSelector from './ColorSelector.jsx';
+import { Group } from '@mantine/core';
+import {
+  Nav,
+  ColorSelector,
+} from './';
 
 const Footer = () => {
 

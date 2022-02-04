@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Grid } from '@mantine/core';
-import Album from './Album';
+import { Album } from './';
 import { parseAlbumColorToCss } from '../utils';
 
 export default function AlbumList({ list }) {

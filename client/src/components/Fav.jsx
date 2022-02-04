@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { ThemeIcon } from '@mantine/core';
-import { useHover } from '@mantine/hooks';
+
 
 const Fav = (props) => {
   let { color, id, img } = props
@@ -32,7 +32,6 @@ const Fav = (props) => {
     </ThemeIcon>
   );
 };
-
 
 
 export default Fav;

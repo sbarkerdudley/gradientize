@@ -16,7 +16,7 @@ import Login from './Login';
 import ScrollButton from './ScrollButton';
 import SearchProvider from './SearchProvider';
 import Seeds from './Seeds';
-import SpotifyAPIContext from './SpotifyAPIContext';
+import SpotifyAPIProvider from './SpotifyAPIProvider';
 import SlidersContainer from './SlidersContainer';
 import SlidersDrawer from './SlidersDrawer';
 import SliderGenerator from './SliderGenerator';
@@ -25,6 +25,15 @@ import StyleProvider from './StyleProvider';
 import Thumb from './Thumb';
 import UserAvatar from './UserAvatar';
 
+import { LoginButton } from './Buttons';
+import { LogoutButton } from './Buttons';
+import { Nav } from './AppHeader';
+
+import { ColorContext } from './ColorProvider';
+import { SearchContext } from './SearchProvider';
+import { SpotifyAPIContext } from './SpotifyAPIProvider';
+import { SpotifyContext } from './SpotifyProvider';
+import { StyleContext } from './StyleProvider';
 
 export {
   Album,
@@ -35,6 +44,7 @@ export {
   Buttons,
   CardBody,
   ColorProvider,
+  ColorContext,
   ColorSelector,
   Fav,
   Footer,
@@ -42,15 +52,21 @@ export {
   Item,
   ItemText,
   Login,
+  LoginButton,
+  LogoutButton,
+  Nav,
   ScrollButton,
   SearchProvider,
+  SearchContext,
   Seeds,
   SpotifyAPIContext,
+  SpotifyAPIProvider,
   SlidersContainer,
   SlidersDrawer,
   SliderGenerator,
+  SpotifyContext,
   SpotifyProvider,
   StyleProvider,
   Thumb,
-  UserAvatar
+  UserAvatar,
 };
