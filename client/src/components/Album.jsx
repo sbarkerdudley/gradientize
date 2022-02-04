@@ -18,7 +18,84 @@ const Album = ({ album }) => {
   const { useSeeds } = useContext(SearchContext);
   const { useColorCache } = useContext(ColorContext);
 
+  const { type, uri } = album
+  delete album['available_markets']
+  var id, thumb, name, href, genres, popularity
+  if (type === 'track')  {
+    delete album.artists[0].available_markets
+
+
+    console.log('ENTRIES', Object.entries(album));
+
+  }
+
+
+  return <div><pre>{JSON.stringify(album, null, ' \n')}</pre></div>
+  const TYPES = {
+    album: function () {
+      id = album.artists[0].id;
+      thumb = album.images.at(-1);
+      href = album.href
+      // img = album.images.at(0);
+
+
+    },
+    artist: function () {
+      id = album.id;
+      thumb = album.images.at(-1)
+      name = album.name
+      href = album.href
+      genres = album.genres
+      popularity = album.popularity
+      // img = album.images.at(0)
+    },
+    track: function (item) {
+      const { album,
+        artists,
+        // available_markets,
+        disc_number,
+        duration_ms,
+        explicit,
+        external_ids,
+        external_urls,
+        href,
+        id,
+        is_local,
+        name,
+        popularity,
+        preview_url,
+        track_number,
+        type,
+        uri
+      } = item
+      return {
+        year: album['release_date'],
+        explicit,
+        href,
+        id,
+        popularity,
+        name,
+        artist,
+        external_ids,
+        external_urls,
+        is_local,
+        track_number,
+        preview_url,
+
+
+      }
+
+    }
+  }
+
+  useEffect(() => {
+    if (TYPES[type]) {
+      TYPES[type]()
+    }
+  }, [])
+
   const handleClick = useSeeds.prepend
+  const addToSeeds = useSeeds.prepend.bind(null, { id, img: thumb, type })
 
   const sx = {
     transition: 'ease-in-out 200ms',
@@ -64,19 +141,19 @@ const Album = ({ album }) => {
         .then(results => {
           album.hue = results[0]
           album.shadow = results[1]
-          setStyles(styles => ({...styles, ...results[1]}))
+          setStyles(styles => ({ ...styles, ...results[1] }))
         })
     } else if (album.hue) {
-      setStyles(styles => ({...styles, ...album.shadow}))
+      setStyles(styles => ({ ...styles, ...album.shadow }))
     }
   }, [album, album.hue])
 
-  if(album.shadow) {
+  if (album.shadow) {
     return (
       <Suspense fallback={<></>} >
         <Card
           ref={ref}
-          onClick={() => handleClick({ id: album.id, img: album.images?.[2].url, type: album.type })}
+          // onClick={() => handleClick({ id: album.id, img: album.images?.[2].url, type: album.type })}
           key={album.id}
           padding={0}
           // component="a"
@@ -85,7 +162,7 @@ const Album = ({ album }) => {
           radius='md'
         >
 
-          <Fav children={'+'} handleClick={() => console.log(album)} style={sx} />
+          <Fav children={'+'} handleClick={addToSeeds} style={sx} />
 
 
 

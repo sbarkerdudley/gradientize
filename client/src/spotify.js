@@ -51,9 +51,13 @@ async function refreshToken() {
   }
 }
 
-export function getTop(type) {
-  return axios.get(`/me/top/${type}`);
+export function getTop(type, opts) {
+  return axios.get(`/me/top/${type}`, {params: opts});
 }
+
+getTop.tracks = getTop.bind(this, 'tracks')
+getTop.artists = getTop.bind(this, 'artists')
+// getTop.albums = getTop.bind(this, 'albums')
 
 export function getSavedAlbums() {
   return axios.get('/me/albums');
