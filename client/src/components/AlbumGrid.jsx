@@ -7,6 +7,7 @@ import Thumb from './Thumb';
 import { SpotifyContext } from './SpotifyProvider';
 import ScrollButton from './ScrollButton';
 
+
 function getProps(album) {
   return ({
     images: [{}]

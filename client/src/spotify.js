@@ -14,7 +14,6 @@ const LOCALSTORAGE_VALUES = {
   timestamp: window.localStorage.getItem(LOCALSTORAGE_KEYS.timestamp),
 };
 
-window.axios = axios // sketchy
 
 async function refreshToken() {
   try {
@@ -48,7 +47,6 @@ async function refreshToken() {
     // Reload the page for localStorage updates to be reflected
     window.location.reload();
   } catch (e) {
-    console.log('oh shits;)');
     console.error(e);
   }
 }

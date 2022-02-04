@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { makeHSLAGradients, makeOffsetHSLAGradients } from '../utils.js'
+import { useColor } from '../hooks'
 
 export const ColorContext = React.createContext({});
 
 const SpotifyProvider = ({ children }) => {
+
+  const [colorCache, useColorCache] = useColor();
 
   const [slider, setSlider] = React.useState(Math.floor(Math.random() * 255));
 
@@ -11,6 +14,8 @@ const SpotifyProvider = ({ children }) => {
   var values = getValues()
 
   const colors = {
+    colorCache,
+    useColorCache,
     slider,
     setSlider,
     values,
@@ -34,7 +39,7 @@ const SpotifyProvider = ({ children }) => {
   return (
     <ColorContext.Provider value={colors}>
 
-        {children}
+      {children}
 
     </ColorContext.Provider>
   )

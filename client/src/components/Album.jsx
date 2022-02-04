@@ -2,87 +2,108 @@ import React, { useState, useEffect, useContext, Suspense } from 'react';
 import { Card, Image, Text, ThemeIcon, Overlay, Group } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
 import { SearchContext } from './SearchProvider';
+import { ColorContext } from './ColorProvider';
 import Fav from './Fav';
 import AlbumImage from './AlbumImage';
-import AlbumTextModal from './AlbumTextModal';
+import ItemText from './ItemText';
 import CardBody from './CardBody';
 import { parseAlbumColorToCss } from '../utils';
 
 const Album = ({ album }) => {
 
-  let { useSeeds } = useContext(SearchContext);
+  // console.log(album.type, 'inside Album component');
+  // check for 'type' key: artist, track, album, etc
 
-  let [averageColor, setAverageColor] = React.useState({})
+
+  const { useSeeds } = useContext(SearchContext);
+  const { useColorCache } = useContext(ColorContext);
+
   const handleClick = useSeeds.prepend
 
   const sx = {
-    transition: 'ease-in-out 300ms',
-    aspectRatio: '1 / 1',
+    transition: 'ease-in-out 200ms',
+    aspectRatio: '1',
+    padding: 0,
+    // margin: 'auto',
     willChange: 'transform',
-    ...averageColor
+    '&>*': {
+      cursor: 'pointer',
+    },
+    '&:hover,&:focus': {
+      transform: 'scale(1.04)',
+    },
   }
+
+  const [styles, setStyles] = React.useState(sx)
 
   let { hovered, ref } = useHover();
 
-  let hoverStyle = hovered ? {
-    transform: 'scale(1.04)',
-    ...sx
-  } : {
-    transform: 'scale(1)',
-    ...sx
-  }
+  const Front = <AlbumImage
+    image={album?.images[0].url}
+    radius='sm'
+    artistURL={album.artist}
+    albumURL={album?.external_urls.spotify}
+  />
 
-  const Front = React.useMemo(() => (
-    <AlbumImage
-      image={album?.images[0].url}
-      radius='sm'
-      artistURL={album.artist}
-      albumURL={album?.external_urls.spotify}
-    />)
-  )
+  const Back = <ItemText item={album} />
 
-  const Back = React.useMemo(() => (<AlbumTextModal album={album} />))
+  // useEffect(() => {
+  //   if (album.images) {
+  //     parseAlbumColorToCss(album.images[2].url)
+  //       .then((success) => {
+  //         let [hue, shadow] = success;
+  //         setStyles(shadow)
+  //         album.shadow = shadow
+  //       })
+  //   }
+  // }, [])
 
   useEffect(() => {
-    if (album.images) {
-      parseAlbumColorToCss(album.images[2].url)
-        .then((success) => {
-          let [hue, shadow] = success;
-          setAverageColor(shadow)
-          album.shadow = shadow
+    if (album.images && !album.hue) {
+      useColorCache.set(album)
+        .then(results => {
+          album.hue = results[0]
+          album.shadow = results[1]
+          setStyles(styles => ({...styles, ...results[1]}))
         })
-        .catch(console.error)
+    } else if (album.hue) {
+      setStyles(styles => ({...styles, ...album.shadow}))
     }
-  }, [])
+  }, [album, album.hue])
+
+  if(album.shadow) {
+    return (
+      <Suspense fallback={<></>} >
+        <Card
+          ref={ref}
+          onClick={() => handleClick({ id: album.id, img: album.images?.[2].url, type: album.type })}
+          key={album.id}
+          padding={0}
+          // component="a"
+          // href={`${album.uri}:play`}
+          sx={styles}
+          radius='md'
+        >
+
+          <Fav children={'+'} handleClick={() => console.log(album)} style={sx} />
 
 
-  return (
-    <Suspense fallback={<Card sx={sx} />} >
-      <Card
-        ref={ref}
-        onClick={() => handleClick({ id: album.id, img: album.images?.[2].url })}
-        key={album.id}
-        // component="a"
-        // href={`${album.uri}:play`}
-        // style={hoverStyle}
-        sx={hoverStyle}
-        radius='md'
-      >
-        <Card.Section>
-          <Fav children={'+'} handleClick={() => console.log(album.id)} style={hoverStyle} />
-        </Card.Section>
-        <Card.Section>
-          <CardBody>
-            {hovered ? Back : Front}
-          </CardBody>
-        </Card.Section>
-      </Card>
-    </Suspense>
-  )
+
+
+
+          {hovered ? Back : Front}
+
+        </Card>
+      </Suspense>
+    )
+  } else {
+    return <></>
+  }
+
 }
 
-// export default Album;
-export default React.memo(Album);
+export default Album;
+// export default React.memo(Album)
 
 
 /*

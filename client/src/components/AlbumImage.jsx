@@ -3,24 +3,20 @@ import { Image } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
 import { parseAlbumColorToCss } from '../utils';
 
-const AlbumImage = ({image}) => {
+const AlbumImage = ({ image }) => {
 
   if (!image) return <></> // TODO: Unsure if Suspense is handling this
 
-  return (
-    <Suspense fallback={<></>}>
-      <Image
-        src={image}
-        sx={{
-          'aspectRatio': '1',
-          'objectFit': 'cover',
-        }}
 
-        // style={averageColor}
-        radius='xs'
-      />
-    </Suspense>
+  return (
+
+    <Image
+      fit='cover'
+      src={image}
+      radius='xs'
+    />
+
   )
 };
 
-export default React.memo(AlbumImage);
+export default AlbumImage;

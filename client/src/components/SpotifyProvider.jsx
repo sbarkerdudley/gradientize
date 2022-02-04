@@ -14,32 +14,33 @@ const SpotifyProvider = ({ children }) => {
 
   const [soundSlider, setSoundSlider] = useState([0, 100]);
   const [avatar, setAvatar] = useState(null);
-  // const [musicList, setMusicList] = useState(data.albums.items);
-  const [musicList, setMusicList] = useState([]);
+  const [musicList, setMusicList] = useState(data.albums.items);
+  // const [musicList, setMusicList] = useState([data.albums.items[0]]);
+  // const [musicList, setMusicList] = useState([]);
   const [next, setNext] = useState(window.location);
 
 
 
-  React.useEffect(() => {
-    var results = [];
-    getTop('artists')
-      .then((response) => {
-        console.log(response)
-        return response.data
-      })
-      .then(success => {
-        results = success.items
-        setNext(success.next)
-        console.log(success.next, 'next', success, 'success')
-        return success
-      })
-      .catch(err => {
-        console.error(err, 'Spotify GET request failed')
-        results = musicList;
-      })
-      .finally(list => setMusicList(results))
+  // React.useEffect(() => {
+  //   var results = [];
+  //   getTop('artists')
+  //     .then((response) => {
+  //       console.log(response)
+  //       return response.data
+  //     })
+  //     .then(success => {
+  //       results = success.items
+  //       setNext(success.next)
+  //       console.log(success.next, 'next', success, 'success')
+  //       return success
+  //     })
+  //     .catch(err => {
+  //       console.error(err, 'Spotify GET request failed')
+  //       results = musicList;
+  //     })
+  //     .finally(list => setMusicList(results))
 
-  }, [])
+  // }, [])
 
 
   const value = {
