@@ -1,9 +1,10 @@
+import __Provider from './__Provider';
 import Album from './Album';
 import AlbumGrid from './AlbumGrid';
 import AlbumImage from './AlbumImage';
 import AlbumList from './AlbumList';
 import AppHeader from './AppHeader';
-import Buttons from './Buttons';
+import ButtonGenerator from './Buttons';
 import CardBody from './CardBody';
 import ColorProvider from './ColorProvider';
 import ColorSelector from './ColorSelector';
@@ -36,12 +37,13 @@ import { SpotifyContext } from './SpotifyProvider';
 import { StyleContext } from './StyleProvider';
 
 export {
+  __Provider,
   Album,
   AlbumGrid,
   AlbumImage,
   AlbumList,
   AppHeader,
-  Buttons,
+  ButtonGenerator,
   CardBody,
   ColorProvider,
   ColorContext,

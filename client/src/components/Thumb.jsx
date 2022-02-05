@@ -7,8 +7,8 @@ export default function Thumb(props) {
   const { useSeeds } = useContext(SearchContext);
 
 
-  const handleClick = parent === 'seeds' ? useSeeds.aggregateQuery : useSeeds.prepend
-  // const handleClick = parent === 'seeds' ? useSeeds.splice : useSeeds.prepend
+  // const handleClick = parent === 'seeds' ? useSeeds.aggregateQuery : useSeeds.prepend
+  const handleClick = parent === 'seeds' ? useSeeds.splice : useSeeds.prepend
 
   return (
     <Card

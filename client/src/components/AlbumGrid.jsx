@@ -2,19 +2,13 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Grid } from '@mantine/core';
 import {
   SpotifyContext,
+  ColorProvider,
   Album,
   Gradient,
   AlbumList,
   Thumb,
   ScrollButton,
 } from './';
-
-
-function getProps(album) {
-  return ({
-    images: [{}]
-  })
-}
 
 const props = ['album_group', 'album_type', 'artists', 'available_markets', 'external_urls', 'spotify', 'href', 'id', 'images', 'name', 'release_date', 'release_date_precision', 'total_tracks', 'type', 'uri']
 
@@ -49,7 +43,7 @@ const AlbumGrid = () => {
 
 
   return (
-    <>
+    <ColorProvider>
       {list.length ?
         (<Grid span={12} gutter={'xl'} sx={{
         }}>
@@ -58,7 +52,7 @@ const AlbumGrid = () => {
         :
         (<Gradient />)
       }
-    </>
+    </ColorProvider>
   )
 }
 

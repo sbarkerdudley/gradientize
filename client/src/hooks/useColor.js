@@ -32,7 +32,7 @@ export default function useColor() {
     let avgColor = await fac.getColorAsync(
       imageUrl,
     ); /* Sample average color of smallest image */
-      console.log('Calculating Average Color');
+      // console.log('Calculating Average Color');
     let hueInteger = await getHue.apply(null, avgColor.value); /* Convert [r, g, b] color to pure hue */
     let parsedHue = `hsla(${hueInteger}, 100%, 50%, 0.34)`; /* Format for CSS */
     // let parsedHue = `hsla(${hue}, 100%, 50%, 0.44)`; /* Format for CSS */

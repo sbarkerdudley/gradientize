@@ -21,8 +21,8 @@ const SlidersDrawer = (props) => {
   } = useContext(SpotifyContext)
 
   const {
-    slider,
-    setSlider,
+    // slider,
+    // setSlider,
     primaryGradient,
     secondaryGradient,
     tertiaryGradient,
@@ -47,24 +47,27 @@ const SlidersDrawer = (props) => {
         <SlidersContainer />
       </Drawer>
 
-      <Group padding='sm' direction='row' grow position='apart'>
+      <Group padding='sm' direction='row' grow >
         <Button
           sx={{ background: primaryGradient }}
           radius='xl'
           size='md'
-          onClick={toggleDrawer}>{'Randomize'}
+          onClick={toggleDrawer}>
+            {'Randomize'}
         </Button>
         <Button
           sx={{ background: tertiaryGradient }}
           radius='xl'
           size='md'
-          onClick={toggleDrawer}>{'Set Mood'}
+          onClick={toggleDrawer}>
+            {'Set Mood'}
         </Button>
         <Button
           sx={{ background: secondaryGradient }}
           radius='xl'
           size='md'
-          onClick={() => setMusicList(musicList => shuffleArray(musicList))}>{'Shuffle'}
+          onClick={() => setMusicList(musicList => shuffleArray(musicList))}>
+            {'Shuffle'}
         </Button>
       </Group>
     </ColorProvider>

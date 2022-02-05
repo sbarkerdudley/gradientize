@@ -1,4 +1,6 @@
 import { accessToken, setHeaders } from '../spotify';
+// import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react'
 import axios from 'axios';
 import Login from './Login';
@@ -6,18 +8,21 @@ import Login from './Login';
 
 export const SpotifyAPIContext = React.createContext();
 
-const SpotifyAPIProvider = ({ children }) => {
+export default function SpotifyAPIProvider({ children }) {
+  const navigate = useNavigate();
+
   const [token, setToken] = React.useState(null)
 
   useEffect(() => {
-    if (accessToken) {
+    if (typeof accessToken === 'string') {
       setHeaders()
-      .then(token => setToken(accessToken))
+        .then(token => setToken(accessToken))
+        .then(() => navigate('/login'))
       console.log(accessToken);
     } else {
       console.log('efsrgdthfntdgrsefsgrd');
     }
-  }, [token])
+  }, [accessToken, token])
   return (
     <>
       {token ? (
@@ -25,10 +30,11 @@ const SpotifyAPIProvider = ({ children }) => {
           {children}
         </SpotifyAPIContext.Provider>
       ) : (
-        <Login />
+        // <Navigate to='/login'>
+          <Login />
+        // </Navigate>
       )}
     </>
   )
 };
 
-export default SpotifyAPIProvider;

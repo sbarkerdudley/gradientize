@@ -55,10 +55,6 @@ export function getTop(type, opts) {
   return axios.get(`/me/top/${type}`, {params: opts});
 }
 
-getTop.tracks = getTop.bind(this, 'tracks')
-getTop.artists = getTop.bind(this, 'artists')
-// getTop.albums = getTop.bind(this, 'albums')
-
 export function getSavedAlbums() {
   return axios.get('/me/albums');
 }
@@ -141,8 +137,9 @@ function getAccessToken() {
 export const accessToken = getAccessToken();
 
 export async function getUserProfile() {
-  await accessToken;
-  return axios.get('/me').then((response) => response.data);
+  if (accessToken) {
+    return axios.get('/me').then((response) => response.data);
+  }
 }
 
 export function logout() {
@@ -173,6 +170,7 @@ export async function setHeaders(attempts = 3) {
 
 (function init() {
   console.log('init');
-  setHeaders();
+  // getAccessToken()
+  setHeaders()
 })();
 

@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from 'react';
-import ButtonGenerator from './Buttons';
+import { ButtonGenerator } from './';
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react'
 
@@ -15,7 +15,8 @@ function handleScroll() {
 const ScrollButton = () => {
 
   let [top, setTop] = React.useState(window.scrollY)
-  let [display, setDisplay] = React.useState('none')
+
+  let display = (top < 10) ? 'none' : 'block'
 
 
   React.useEffect(() => {
@@ -23,7 +24,7 @@ const ScrollButton = () => {
   }, [])
 
   React.useLayoutEffect(() => {
-    setDisplay(top < 1 ? 'none' : 'block')
+    // setDisplay(top < 1 ? 'none' : 'block')
     handleScroll()
   }, [scrollTo, window.scrollY])
 
@@ -32,20 +33,25 @@ const ScrollButton = () => {
       css={css`
         position: 'absolute';
         zIndex: 2000;
-        margin: 3rem;
+
         padding: '3rem';
-        top: 90vh;
-        left: 90vw;
+        top: 10vh;
+        left: 10vw;
         cursor: 'pointer';
 
       `}
     >
       <ButtonGenerator
         sx={{
-          position: 'relative',
+          position: 'absolute',
+
+          zIndex: 2000,
+          padding: '3rem',
+          top: '10vh',
+          left: '10vw',
+          cursor: 'pointer',
           margin: 'auto',
-          // display: {(top < 10) ? 'none' : 'block'}
-          display
+          display,
         }}
         className='scroll'
         onClick={handleScroll}

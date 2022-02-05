@@ -2,10 +2,10 @@ import React from 'react';
 import { Header, Group } from '@mantine/core';
 import {
   ColorSelector,
+  LogoutButton,
   Seeds,
   SlidersDrawer,
   UserAvatar,
-  LogoutButton
 } from './';
 
 
@@ -14,12 +14,12 @@ export function Nav(props) {
     <Header
       padding={'xs'}
       sx={{
-        outline: 0,
-        border: 'none',
+        // outline: 0,
+        // border: 'none',
         opacity: '80%',
-        margin: '0 auto',
+        // margin: '0 auto',
         ...props.sx,
-        '& > *': {
+        '&>*': {
           opacity: '100%',
         }
       }}

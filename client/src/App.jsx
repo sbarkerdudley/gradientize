@@ -1,15 +1,19 @@
-import React, { Suspense } from 'react';
-import theme from './styles/theme';
-import { AppShell, MantineProvider } from '@mantine/core';
-import SpotifyAPIContext from './components/SpotifyAPIContext';
-import SpotifyProvider from './components/SpotifyProvider';
-import ColorProvider from './components/ColorProvider';
-import AlbumGrid from './components/AlbumGrid';
-import AppHeader  from './components/AppHeader';
-import ScrollButton from './components/ScrollButton';
-import Gradient from './components/Gradient';
-import Footer from './components/Footer';
-import SearchProvider from './components/SearchProvider';
+import React from 'react';
+import { BrowserRouter, Routes, Route, Outlet, Link } from 'react-router-dom';
+import { AppShell } from '@mantine/core';
+import {
+  SpotifyAPIProvider,
+  SpotifyProvider,
+  ColorProvider,
+  AlbumGrid,
+  Login,
+  AppHeader,
+  ScrollButton,
+  Gradient,
+  Footer,
+  SearchProvider,
+  StyleProvider
+} from './components';
 
 
 
@@ -17,25 +21,18 @@ import SearchProvider from './components/SearchProvider';
 const App = () => {
   return (
     <div id='app'>
-      <MantineProvider withGlobalStyles theme={theme} >
-        <SpotifyAPIContext>
-          <SpotifyProvider>
-          <ColorProvider>
-            <SearchProvider>
-              <AppShell header={<AppHeader />}>
-                <Suspense fallback={<Gradient />}>
-                  <AlbumGrid />
-                </Suspense>
-              </AppShell>
-              <Footer />
-              <ScrollButton />
-            </SearchProvider>
-          </ColorProvider>
-          </SpotifyProvider>
-        </SpotifyAPIContext>
-      </MantineProvider >
+      <AppShell header={<AppHeader />}>
+        {/* <Link to='/profile'>Test</Link> */}
+        {/* <Link to='/logout' element={<Gradient />}>Gradient</Link> */}
+        {/* <Link to='/login' element={<Login />}>Login</Link> */}
+        <AlbumGrid />
+        <ScrollButton />
+      </AppShell>
+      {/* <Gradient /> */}
+      <Footer />
     </div>
   );
 };
 
 export default App;
+

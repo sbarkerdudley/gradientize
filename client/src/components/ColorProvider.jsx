@@ -4,7 +4,7 @@ import { useColor } from '../hooks'
 
 export const ColorContext = React.createContext({});
 
-const ColorProvider = ({ children }) => {
+const SpotifyProvider = ({ children }) => {
 
   const [colorCache, useColorCache] = useColor();
 
@@ -38,9 +38,11 @@ const ColorProvider = ({ children }) => {
 
   return (
     <ColorContext.Provider value={colors}>
+
       {children}
+
     </ColorContext.Provider>
   )
 }
 
-export default ColorProvider;
+export default SpotifyProvider;

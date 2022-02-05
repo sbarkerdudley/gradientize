@@ -59,7 +59,7 @@ export default function useList(initialArray = getSeeds()) {
       copy.length = INITIAL_SIZE;
       IDS = dedupe(copy);
       persistSeeds(copy);
-
+      console.log(seed);
       return copy;
     });
 
