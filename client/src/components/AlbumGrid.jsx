@@ -12,53 +12,49 @@ import {
 
 const props = ['album_group', 'album_type', 'artists', 'available_markets', 'external_urls', 'spotify', 'href', 'id', 'images', 'name', 'release_date', 'release_date_precision', 'total_tracks', 'type', 'uri']
 
-const AlbumGrid = () => {
+const AlbumGrid = ({ items }) => {
+
+  items = items.slice()
 
   let { musicList, setMusicList } = useContext(SpotifyContext)
 
-  let [list, setList] = useState([])
+  // let [items, setList] = useState([])
 
-  useEffect(() => {
-    // var colorized = musicList.map() //
-    setList(musicList)
-  }, [list, musicList])
 
-  var AlbumComponents = list.map((album, i) => (
-    <Grid.Col xs={6} sm={6} md={4} lg={3} xl={2} key={`${album.id}${i}`}>
-      <Album {...{ album }} key={album.id} />
+  var AlbumComponents = items.map((item, i) => (
+    <Grid.Col xs={6} sm={6} md={4} lg={3} xl={2} key={`${item.id}${i}`}>
+      <Album {...{ item }} key={item.id} />
     </Grid.Col>
   ))
 
-  const format = {
-    artist: (artist) => (<div key={artist.id}><pre>{JSON.stringify(Object.keys(artist))}</pre></div>),
-    album: (album) => (<Album album={album} key={album.id} />),
-    track: (track) => (<div><em><pre>{JSON.stringify(Object.keys(track))}</pre></em></div>)
-  }
+  // const format = {
+  //   artist: (artist) => (<div key={artist.id}><pre>{JSON.stringify(Object.keys(artist))}</pre></div>),
+  //   album: (album) => (<Album album={album} key={album.id} />),
+  //   track: (track) => (<div><em><pre>{JSON.stringify(Object.keys(track))}</pre></em></div>),
+  // }
 
 
-  // var AlbumComponents = list.map(item => format[item.type](item))
+  // var AlbumComponents = items.map(item => format[item.type](item))
 
 
 
 
 
   return (
-    <ColorProvider>
-      {list.length ?
-        (<Grid span={12} gutter={'xl'} sx={{
-        }}>
+    <>
+      {items.length ?
+        (<Grid span={12} gutter={'xl'} >
           {AlbumComponents}
         </Grid>)
         :
         (<Gradient />)
       }
-    </ColorProvider>
+    </>
   )
 }
 
 export default AlbumGrid;
 
-// (<Thumb img={album.images[2].url} id={album.id} key={album.id} />)
 
 /*
 

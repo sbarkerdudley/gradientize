@@ -10,102 +10,33 @@ import {
   SearchContext,
 } from './';
 
-import { parseAlbumColorToCss } from '../utils';
+const Album = ({ item }) => {
 
-const Album = ({ album }) => {
+  if (!item.type) {
+    if (item.album) {
+      item = item.album
+    } else if (item.artist) {
+      item = item.artist
+    }
+  }
 
-  const { type, uri, id, images } = album
+  const { type, uri, id, images, name, external_urls } = item
+
+
+  var thumb = images.at(-1).url
+  const img = images[0].url;
 
   const { useSeeds } = useContext(SearchContext);
   const { useColorCache } = useContext(ColorContext);
 
 
-  useEffect(() => {
-    let isColorized = false;
-    if (album.images && !album.hue) {
-      useColorCache.set(album)
-        .then(results => {
-          setStyles(styles => ({ ...styles, ...results[1] }))
-          album.hue = results[0]
-          album.shadow = results[1]
-        })
-    } else {
-      setStyles(styles => ({ ...styles, ...album.shadow }))
-    }
-
-    return () => {
-      isColorized = true;
-    }
-
-  }, [album, album.hue, album.shadow])
-
-  // const TYPES = {
-  //   album: function () {
-  //     id = album.artists[0].id;
-  //     thumb = album.images.at(-1);
-  //     href = album.href
-  //     // img = album.images.at(0);
-
-
-  //   },
-  //   artist: function () {
-  //     id = album.id;
-  //     thumb = album.images.at(-1)
-  //     name = album.name
-  //     href = album.href
-  //     genres = album.genres
-
-  //     // img = album.images.at(0)
-  //   },
-  //   track: function (item) {
-  //     const { album,
-  //       artists,
-  //       // available_markets,
-  //       disc_number,
-  //       duration_ms,
-  //       explicit,
-  //       external_ids,
-  //       external_urls,
-  //       href,
-  //       id,
-  //       is_local,
-  //       name,
-  //       popularity,
-  //       preview_url,
-  //       track_number,
-  //       type,
-  //       uri
-  //     } = item
-  //     return {
-  //       year: album['release_date'],
-  //       explicit,
-  //       href,
-  //       id,
-  //       popularity,
-  //       name,
-  //       artist,
-  //       external_ids,
-  //       external_urls,
-  //       is_local,
-  //       track_number,
-  //       preview_url,
-
-
-  //     }
-
-  //   }
-  // }
-
-
-
-  const handleClick = () => useSeeds.prepend({ id, img: images?.[2].url, type })
-  const addToSeeds = () => useSeeds.prepend({ id, img: images[2].url, type })
+  const handleClick = () => useSeeds.prepend({ id, img: thumb, type })
+  const addToSeeds = () => useSeeds.prepend({ id, img: thumb, type })
 
   const sx = {
     transition: 'ease-in-out 200ms',
     aspectRatio: '1',
     padding: 0,
-    // margin: 'auto',
     willChange: 'transform',
     '&>*': {
       cursor: 'pointer',
@@ -121,29 +52,39 @@ const Album = ({ album }) => {
 
 
 
+  useEffect(() => {
+    let isColorized = false;
+    if (images && !item.hue) {
+      useColorCache.set(item)
+        .then(results => {
+          setStyles(styles => ({ ...styles, ...results[1] }))
+          console.log('some bullshit');
+          item.hue = results[0]
+          item.shadow = results[1]
+        })
+    } else {
+      setStyles(styles => ({ ...styles, ...item.shadow }))
+    }
 
-
+    return () => {
+      isColorized = true;
+    }
+  }, [])
 
   const Front = <AlbumImage
-    image={album.images[0].url}
+    image={img}
     radius='sm'
-    artistURL={album.artist}
-    albumURL={album?.external_urls.spotify}
   />
 
-  const Back = <ItemText item={album} />
+  const Back = <ItemText item={item} />
 
-  if (album.shadow) {
+  if (item) {
 
     return (
       <Suspense fallback={<></>} >
         <Card
           ref={ref}
           onClick={handleClick}
-          key={album.id}
-          padding={0}
-          // component="a"
-          // href={`${album.uri}:play`}
           sx={styles}
           radius='md'
         >
@@ -159,5 +100,4 @@ const Album = ({ album }) => {
 
 }
 
-export default Album;
-// export default React.memo(Album)
+export default React.memo(Album);

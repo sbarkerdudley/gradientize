@@ -1,19 +1,17 @@
-import React, { useState, useContext, useEffect, Suspense } from 'react';
+import React from 'react';
 import { Image } from '@mantine/core';
 
 const AlbumImage = ({ image }) => {
+  console.log(image);
 
-  if (!image) return <></> // TODO: Unsure if Suspense is handling this
-
+  if (!image) return <></>
 
   return (
-
     <Image
       fit='cover'
       src={image}
       radius='xs'
     />
-
   )
 };
 

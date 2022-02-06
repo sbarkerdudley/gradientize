@@ -3,17 +3,19 @@ import { Grid } from '@mantine/core';
 import { Album } from './';
 import { parseAlbumColorToCss } from '../utils';
 
-export default function AlbumList({ list }) {
+export default function AlbumList({ items }) {
 
-  console.log(list, 'Album LIST');
-  // if (!list.length) return <></>
-  // if (!list[0].id) return <h1>Error Loading AlbumList component</h1>
+  // return items.map(artist => (<pre>{artist}</pre>))
 
-  return list.map(artist => (<pre>{artist}</pre>))
+  const TYPE = {
+    artist: (artist, id) => <Album item={artist} key={id} />,
+    album: (album, id) => <Album item={album} key={id} />,
+    track: (track, id) => <Album item={track} key={id} />,
+    playlist: (playlist, id) => <Album item={playlist} key={id} />,
+  }
 
+  return items.map((album, i) => {
 
-
-  return list.map((album, i) => {
     return (<Grid.Col xs={6} sm={4} md={4} lg={3} xl={3} key={`${album.id}${i}`}>
       <Album album={album} key={album.id} />
     </Grid.Col>)
