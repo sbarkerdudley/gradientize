@@ -30,3 +30,4 @@ FANCY:
 - manifest.json
 - favicon.ico
 - robots.txt
+

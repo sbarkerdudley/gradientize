@@ -14,7 +14,6 @@ const LOCALSTORAGE_VALUES = {
   timestamp: window.localStorage.getItem(LOCALSTORAGE_KEYS.timestamp),
 };
 
-
 async function refreshToken() {
   try {
     // Logout if there's no refresh token stored or we've managed to get into a reload infinite loop
@@ -51,36 +50,75 @@ async function refreshToken() {
   }
 }
 
-export function getTop(type, opts) {
-  return axios.get(`/me/top/${type}`, {params: opts});
+export function top(type = 'artists', opts = {}) {
+  let params = Object.assign(opts, { type: 'artist' });
+  return axios.get(`/me/top/${type}`, { params });
 }
 
-export function getSavedAlbums() {
-  return axios.get('/me/albums');
+export function savedAlbums(opts = {}) {
+  let params = Object.assign(opts, { type: 'artist' });
+  return axios.get('/me/albums', { params });
 }
 
-export function getAlbumTracks(id) {
+export function followedArtists(opts = {}) {
+  let params = new URLSearchParams(opts).toString()
+  return axios.get('/me/following?type=artist');
+}
+
+export function albumTracks(id) {
   return axios.get(`/albums/${id}/tracks`);
 }
 
-export function getRecs(seeds) {
+export function userPlaylists(userid, opts = {}) {
+  let params = Object.assign(opts);
+  return axios.get(`/me/playlists?`, { params });
+}
+
+export function recs(seeds) {
   /**
    * (REQUIRED) - Comma separated list(s) as string. Maximum 5 seed values in any combination
    * @param {string} seed_artists
    * @param {string} seed_genres
    * @param {string} seed_tracks
    */
-  let PARAMS = Object.entries(seeds).map(seed => `${seed[0]}=${seed[1].join(',')}`)
+  let PARAMS = Object.entries(seeds).map(
+    (seed) => `${seed[0]}=${seed[1].join(',')}`,
+  );
 
-  return axios.get('/recommendations');
+  return axios.get('/recommendations', { params: PARAMS });
 }
 
-const Spotify = {
-  getTop,
-  getSavedAlbums,
-  getAlbumTracks,
+export const Spotify = {
+  get: {
+    albumTracks,
+    followedArtists,
+    recs,
+    savedAlbums,
+    top,
+    userProfile,
+    userPlaylists,
+  },
+  post: {},
+  checkAuth,
+  getAccessToken,
+  logout,
+  refreshToken,
 };
 
+function checkAuth() {
+  if (accessToken && typeof accessToken === 'string') {
+    if (axios.defaults.headers['Authorization'] !== `Bearer ${accessToken}`) {
+      axios.defaults.headers['Authorization'] = `Bearer ${accessToken}`;
+      return true;
+    } else {
+      accessToken = getAccessToken();
+      setHeaders();
+      return true;
+    }
+  } else {
+    return false;
+  }
+}
 
 function hasTokenExpired() {
   const { accessToken, timestamp, expireTime } = LOCALSTORAGE_VALUES;
@@ -134,11 +172,11 @@ function getAccessToken() {
   return false;
 }
 
-export const accessToken = getAccessToken();
+export var accessToken = getAccessToken();
 
-export async function getUserProfile() {
+export async function userProfile() {
   if (accessToken) {
-    return axios.get('/me').then((response) => response.data);
+    return axios.get('/me');
   }
 }
 
@@ -151,7 +189,7 @@ export function logout() {
 }
 
 export async function setHeaders(attempts = 3) {
-  if (accessToken) {
+  if (accessToken && typeof accessToken === 'string') {
     console.log(accessToken);
     axios.defaults.baseURL = 'https://api.spotify.com/v1';
     axios.defaults.headers[
@@ -171,6 +209,5 @@ export async function setHeaders(attempts = 3) {
 (function init() {
   console.log('init');
   // getAccessToken()
-  setHeaders()
+  setHeaders();
 })();
-

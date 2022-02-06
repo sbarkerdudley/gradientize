@@ -5,7 +5,7 @@ const CardBody = ({ children }) => {
 
   const sx = {
     willChange: 'transform',
-    // aspectRatio: '1'
+    aspectRatio: '1',
   }
 
   return (

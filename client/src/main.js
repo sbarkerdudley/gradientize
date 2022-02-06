@@ -10,6 +10,7 @@ export default function Main() {
     <__Provider>
         <Routes>
           <Route path="/" element={<App />}>
+
             <Route path="login" element={<Login />} />
             {/* <Route index element={<Login />} /> */}
             <Route

@@ -1,29 +1,33 @@
 import React from 'react';
 import { Group, Text } from '@mantine/core'
-import List from '../utils/List'
+
+import { List, genres } from '../utils/'
 
 const ItemText = ({ item }) => {
 
-  return JSON.stringify(Object.values(item))
+  // return JSON.stringify(Object.entries(item))
   const { type } = item;
 
-  const T = (text, props) => (<Text weight={'400'} sx={{ lineHeight: 1.2 }} {...{props}}>{text}</Text>)
+  const T = (text, props) => (<p><Text weight={'400'} sx={{ lineHeight: 1.2 }} {...{ props }}>{text}</Text></p>)
 
-  const types = {
+  const TYPES = {
     artist: (a) => {
-      return [T(a.name), T(List.commaSeparated(a.genres)), T(a.uri, {component: 'a', href: a.uri})]
+      return [a.name, a.uri, a.external_urls.spotify, a.href, ...a.genres].map(text => T(text))
     },
     track: () => {
       return (<p>This is a Track</p>)
     },
     album: () => {
-      return (<p>This is an Album</p>)
+      return (Object.entries(item).map(data => <p>{JSON.stringify(data)}</p>))
+    },
+    playlist: () => {
+      return <p>Playlist</p>
     }
   }
 
 
   return (<Group position='reverse' direction='column' >
-    {types[type](item)}
+    {TYPES[type](item)}
   </Group>)
 };
 

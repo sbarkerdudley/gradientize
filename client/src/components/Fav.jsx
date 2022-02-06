@@ -8,7 +8,7 @@ const Fav = (props) => {
 
   // let hoverState = hovered ? { backgroundColor: 'red' } : { backgroundColor: 'pink' }
 
-  const handleClick = () => { }
+
 
   return (
     <ThemeIcon
@@ -21,6 +21,7 @@ const Fav = (props) => {
         top: '0.5rem',
         right: '0.5rem',
         zIndex: 5,
+        userSelect: 'none',
         cursor: 'pointer',
         backgroundColor: 'pink',
         '&:hover': {

@@ -18,22 +18,29 @@ function persist(id, hue) {
 function retrieve(id) {
   let hue = parseInt(window.localStorage.getItem(id));
   if (!Number.isNaN(hue)) {
-    return hue
-  } return false
+    return hue;
+  }
+  return false;
 }
 
-const cache = {};
+// const cache = {};
 
-export default function useColor() {
+function useColor() {
+  // export default function useColor() {
+  const cache = {};
 
+  // const [cache , setCache] = useState({})
   console.log(cache, 'cache Initialized');
 
   async function parseImageUrlToCss(imageUrl) {
     let avgColor = await fac.getColorAsync(
       imageUrl,
     ); /* Sample average color of smallest image */
-      // console.log('Calculating Average Color');
-    let hueInteger = await getHue.apply(null, avgColor.value); /* Convert [r, g, b] color to pure hue */
+    // console.log('Calculating Average Color');
+    let hueInteger = await getHue.apply(
+      null,
+      avgColor.value,
+    ); /* Convert [r, g, b] color to pure hue */
     let parsedHue = `hsla(${hueInteger}, 100%, 50%, 0.34)`; /* Format for CSS */
     // let parsedHue = `hsla(${hue}, 100%, 50%, 0.44)`; /* Format for CSS */
     return await [hueInteger, makeHSLAShadowFromColor(parsedHue)];
@@ -99,36 +106,36 @@ export default function useColor() {
   }
 
   function makeHSLAShadowFromColor(color) {
-  /**
-   * @param {string} color Any representation of CSS color as a String
-   *  '#FF33AA'              hex
-   *  '#FF33AAFF'            hexa
-   *  'hsl(360, 100%, 50%)'  hsl
-   *  'hsla(160, 100%, 50%)' hsla
-   *  'rgb(45, 25, 255)'     rgb
-   *  'rgba(45, 25, 255)'    rgba
-   *  'hotpink'              (common name)
-   * @returns {object} CSS {boxShadow: String} for use in `React`.
-   *  Standardized CSS key name is 'box-shadow'
-   */
-    return ({
+    /**
+     * @param {string} color Any representation of CSS color as a String
+     *  '#FF33AA'              hex
+     *  '#FF33AAFF'            hexa
+     *  'hsl(360, 100%, 50%)'  hsl
+     *  'hsla(160, 100%, 50%)' hsla
+     *  'rgb(45, 25, 255)'     rgb
+     *  'rgba(45, 25, 255)'    rgba
+     *  'hotpink'              (common name)
+     * @returns {object} CSS {boxShadow: String} for use in `React`.
+     *  Standardized CSS key name is 'box-shadow'
+     */
+    return {
       boxShadow: [
         `-10px 10px 9.9px ${color} `,
         `-20px 20px 28.5px ${color} `,
         `-6px 60px 52.6px ${color} `,
       ].join(', '),
-    });
+    };
   }
 
   function makeHSLAShadowFromInt(int) {
     let color = `hsla(${int}, 100%, 50%, 0.34)`;
-    return ({
+    return {
       boxShadow: [
         `-10px 10px 9.9px ${color} `,
         `-20px 20px 28.5px ${color} `,
         `-6px 60px 52.6px ${color} `,
       ].join(', '),
-    });
+    };
   }
 
   /**
@@ -145,34 +152,34 @@ export default function useColor() {
    */
 
   async function setOne(url, id = null, object = {}) {
-    var hue, color;
+    var hue, shadow;
     if (!url || url === null) {
-      return [url, {}]
+      return [url, {}];
     }
-    if ((url) !== null && typeof url === 'object') {
+    if (url !== null && typeof url === 'object') {
       object = url;
       if (object.id) {
         id = object.id;
       }
       url = object.images?.at(-1).url;
     }
-
     if (id && cache[id]) {
-      hue = cache[id]
+      hue = cache[id];
       console.log('CACHED VALUE USED');
       return await [hue, makeHSLAShadowFromInt(hue)];
     } else {
       let results = await parseImageUrlToCss(url);
-      hue = results[0]
-      color = results[1]
+      hue = results[0];
+      shadow = results[1];
 
       if (id) {
-        cache[id] = hue
-
+        window.sessionStorage.setItem(id, hue);
+        cache[id] = hue;
       }
-      object.hue = color;
+      object.hue = hue;
+      object.hue = shadow;
     }
-    return [hue, color, object];
+    return [hue, shadow, object];
   }
 
   async function setList(list) {
@@ -191,9 +198,9 @@ export default function useColor() {
     if (id && cache[id]) {
       return cache[id];
     } else if (id) {
-      return setOne(id)
+      return setOne(id);
     } else {
-      return false
+      return false;
     }
   }
 
@@ -203,15 +210,19 @@ export default function useColor() {
 
   function getList(list) {}
 
-  return [
-    cache,
-    {
-      get,
-      getOne,
-      getList,
-      set,
-      setOne,
-      setList,
-    },
-  ];
+  return () => {
+    return [
+      cache,
+      {
+        get,
+        getOne,
+        getList,
+        set,
+        setOne,
+        setList,
+      },
+    ];
+  };
 }
+
+export default useColor();

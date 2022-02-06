@@ -2,18 +2,14 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Outlet, Link } from 'react-router-dom';
 import { AppShell } from '@mantine/core';
 import {
-  SpotifyAPIProvider,
-  SpotifyProvider,
-  ColorProvider,
   AlbumGrid,
-  Login,
+  AppContainer,
   AppHeader,
   ScrollButton,
   Gradient,
-  Footer,
-  SearchProvider,
-  StyleProvider
+  Resource,
 } from './components';
+import { Spotify } from './spotify'
 
 
 
@@ -21,15 +17,22 @@ import {
 const App = () => {
   return (
     <div id='app'>
-      <AppShell header={<AppHeader />}>
-        {/* <Link to='/profile'>Test</Link> */}
-        {/* <Link to='/logout' element={<Gradient />}>Gradient</Link> */}
-        {/* <Link to='/login' element={<Login />}>Login</Link> */}
-        <AlbumGrid />
-        <ScrollButton />
-      </AppShell>
-      {/* <Gradient /> */}
-      <Footer />
+      <AppContainer>
+        <Resource
+          action={Spotify.get.userPlaylists}
+          render={(state) => <AlbumGrid items={state} />}
+          opts={{ limit: 30 }}
+          path={''}
+        />
+        {/* <Resource
+          action={Spotify.get.followedArtists}
+          render={(state) => <AlbumGrid items={state.items} />}
+          opts={{ limit: 30 }}
+          path={''}
+        /> */}
+
+      </AppContainer>
+      <ScrollButton />
     </div>
   );
 };

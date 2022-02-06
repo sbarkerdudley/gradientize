@@ -4,6 +4,7 @@ import AlbumGrid from './AlbumGrid';
 import AlbumImage from './AlbumImage';
 import AlbumList from './AlbumList';
 import AppHeader from './AppHeader';
+import AppContainer from './AppContainer';
 import ButtonGenerator from './Buttons';
 import CardBody from './CardBody';
 import ColorProvider from './ColorProvider';
@@ -14,6 +15,7 @@ import Gradient from './Gradient';
 import Item from './Item';
 import ItemText from './ItemText';
 import Login from './Login';
+import Resource from './Resource';
 import ScrollButton from './ScrollButton';
 import SearchProvider from './SearchProvider';
 import Seeds from './Seeds';
@@ -43,6 +45,7 @@ export {
   AlbumImage,
   AlbumList,
   AppHeader,
+  AppContainer,
   ButtonGenerator,
   CardBody,
   ColorProvider,
@@ -57,6 +60,7 @@ export {
   LoginButton,
   LogoutButton,
   Nav,
+  Resource,
   ScrollButton,
   SearchProvider,
   SearchContext,

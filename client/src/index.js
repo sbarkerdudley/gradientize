@@ -1,10 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App.jsx';
+import { render } from 'react-dom';
+import Main from './main';
 
 if (document) {
-  ReactDOM.render(
-    <App />,
+  render(
+    <Main />,
     document.getElementById('root')
   );
 }

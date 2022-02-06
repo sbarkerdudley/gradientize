@@ -1,5 +1,3 @@
-import React, { useState, useEffect, useContext, Suspense } from 'react';
-import { Card, Text,  } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
 import {
   AlbumImage,
@@ -9,7 +7,7 @@ import {
   ItemText,
   SearchContext,
 } from './';
-import { parseAlbumColorToCss } from '../utils';
+
 
 const Item = ({ item }) => {
 
@@ -60,43 +58,28 @@ const Item = ({ item }) => {
   //   }
   // }, [])
 
-  useEffect(() => {
-    if (item.images && !item.hue) {
-      useColorCache.set(album)
-        .then(results => {
-          item.hue = results[0]
-          item.shadow = results[1]
-          setStyles(styles => ({...styles, ...results[1]}))
-        })
-    } else if (item.hue) {
-      setStyles(styles => ({...styles, ...item.shadow}))
-    }
-  }, [album, item.hue])
 
-  if(item.shadow) {
+  if (item.shadow) {
     return (
-      <Suspense fallback={<></>} >
-        <Card
-          ref={ref}
-          onClick={() => handleClick({ id: item.id, img: item.images?.[2].url, type: item.type })}
-          key={item.id}
-          padding={0}
-          // component="a"
-          // href={`${item.uri}:play`}
-          // sx={styles}
-          radius='md'
-        >
 
-          <Fav children={'+'} handleClick={() => console.log(album)} style={sx} />
+      <Card
+        ref={ref}
+        onClick={() => handleClick({ id: item.id, img: item.images?.[2].url, type: item.type })}
+        key={item.id}
+        padding={0}
+        radius='md'
+      >
+
+        <Fav children={'+'} handleClick={() => console.log(album)} style={sx} />
 
 
-          <div><pre>{JSON.stringify(item)}</pre></div>
+        <div><pre>{JSON.stringify(item)}</pre></div>
 
 
-          {/* {hovered ? Back : Front} */}
+        {/* {hovered ? Back : Front} */}
 
-        </Card>
-      </Suspense>
+      </Card>
+
     )
   } else {
     return <></>
@@ -105,7 +88,64 @@ const Item = ({ item }) => {
 }
 
 export default Item;
-// export default React.memo(Item)
+
+
+import React, { useState, useEffect, useContext } from 'react';
+import { Card, Image, Text, ThemeIcon, Overlay, Group } from '@mantine/core';
+
+import { SpotifyContext } from './SpotifyProvider';
+
+
+
+
+const Album = ({ album }) => {
+
+
+  let [averageColor, setAverageColor] = React.useState({})
+  let [hue, setHue] = React.useState({})
+
+  const sx = {
+    'aspectRatio': '1 / 1',
+    'willChange': 'transform',
+    ...averageColor
+  }
+
+  let { hovered, ref } = useHover();
+  let [referenceElement, setReferenceElement] = useState(null);
+  let hoverStyle = hovered ? {
+    transform: 'scale(1.04)',
+    transition: '200ms',
+    ...sx
+  } : sx
+
+
+
+
+
+  return (
+    <Card
+      ref={ref}
+      key={album.id}
+      component="a"
+      href={`${album.uri}:play`}
+      style={hoverStyle}
+      sx={sx}
+      radius='md'
+    >
+      <Card.Section>
+        <Fav children={'♥️'} handleClick={() => console.log(album.id)} style={hoverStyle} color={hue} />
+      </Card.Section>
+      <Card.Section>
+        <AlbumImage images={album?.images} radius='sm' artistURL={album.artist} albumURL={album?.external_urls.spotify} />
+      </Card.Section>
+      <Card.Section>
+        <AlbumTextModal album={album} />
+      </Card.Section>
+    </Card>
+  )
+}
+
+// export default Album;
 
 
 /*

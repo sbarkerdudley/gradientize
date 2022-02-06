@@ -19,7 +19,7 @@ const baseURL = 'https://api.spotify.com';
 const userURL = `${baseURL}/v1/me`;
 
 const scopes = [
-  'playlist-modify-private',
+  // 'playlist-modify-private',
   'playlist-modify-public',
   'playlist-read-collaborative',
   'playlist-read-private',
@@ -28,6 +28,7 @@ const scopes = [
   'user-library-read',
   'user-read-private',
   'user-top-read',
+  'user-follow-read',
 ];
 
 const xscopes = [

@@ -5,7 +5,11 @@ import { Button } from "@mantine/core";
 
 const ButtonGenerator = (props) => (
   <Button
-  sx={{backgroundColor: 'hotpink', ...props.sx}}
+  sx={{
+    userSelect: 'none',
+    backgroundColor: 'hotpink',
+    ...props.sx,
+  }}
   radius='xl'
   size='lg'
   onClick={props.onClick}>{props.label}

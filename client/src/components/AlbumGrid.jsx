@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Grid } from '@mantine/core';
+import { Grid, SimpleGrid } from '@mantine/core';
 import {
   SpotifyContext,
   ColorProvider,
@@ -14,7 +14,20 @@ const props = ['album_group', 'album_type', 'artists', 'available_markets', 'ext
 
 const AlbumGrid = ({ items }) => {
 
-  items = items.slice()
+  if (items.items) {
+    items = items.items
+  }
+  return (<SimpleGrid><div><pre>
+    {JSON.stringify(items.map(item => Object.entries(item)))}
+  </pre><br /></div></SimpleGrid>)
+  if (!Array.isArray(items)) {
+    if (items.artists) {
+      items = items.artists.items
+    } else if (items.albums) {
+      items = items.albums.items
+    }
+    console.log({items});
+  }
 
   let { musicList, setMusicList } = useContext(SpotifyContext)
 
