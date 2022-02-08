@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { LoadingOverlay } from '@mantine/core';
 import axios from 'axios';
 import { Spotify } from '../spotify'
+import { parseSpotifyResults } from '../utils'
 import Colorize from './Colorize'
 
 export default class Resource extends Component {
@@ -29,8 +30,9 @@ export default class Resource extends Component {
           return response.data
         })
         .then((data) => {
-          console.log({data});
-          return data
+          console.log(data);
+          return parseSpotifyResults(data)
+
         })
         .then(data => {
           this.setState(state => ({

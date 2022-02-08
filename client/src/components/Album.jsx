@@ -70,7 +70,7 @@ const Album = ({ item }) => {
       useColorCache.set(item)
         .then(results => {
           setStyles(styles => ({ ...styles, ...results[1] }))
-          console.log(results);
+          // console.log(results);
           item.hue = results[0]
           item.shadow = results[1]
         })
@@ -104,7 +104,6 @@ const Album = ({ item }) => {
 
     return (
       <Suspense fallback={<></>} >
-        {console.log(item.shadow)}
         <Card
           ref={ref}
           onClick={handleClick}

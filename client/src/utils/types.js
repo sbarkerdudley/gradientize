@@ -126,3 +126,36 @@ export const genres = {
   'work-out': 'Workout',
   'world-music': 'World Music',
 };
+
+
+export function parseSpotifyResults(res) {
+  if (res.data) {
+    console.log(Object.keys(res), 'DATA');
+    res = res.data
+  }
+    if (res.items) {
+      console.log(Object.keys(res), 'ITEMS');
+
+      return res;
+    }
+
+  if (res.next) {
+    console.log(Object.keys(res), 'NEXT');
+    return res
+  }
+  if (res.artists) {
+    console.log(Object.keys(res), 'ARTISTS');
+    res = res.artists
+    return res;
+  }
+
+
+  console.log('ELSE');
+  return res
+}
+
+  // if (items.artists) {
+  //   items = items.artists.items;
+  // } else if (items.items) {
+  //   items = items.items;
+  // }

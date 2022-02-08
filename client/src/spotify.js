@@ -51,8 +51,9 @@ async function refreshToken() {
 }
 
 export function top(type = 'artists', opts = {}) {
-  let params = Object.assign(opts, { type: 'artist' });
-  return axios.get(`/me/top/${type}`, { params });
+  let params = new URLSearchParams(opts).toString();
+  return axios.get(`/me/top/artists?${params}`);
+  return axios.get(`/me/top/${type}?${params}`);
 }
 
 export function savedAlbums(opts = {}) {
@@ -61,7 +62,7 @@ export function savedAlbums(opts = {}) {
 }
 
 export function followedArtists(opts = {}) {
-  let params = new URLSearchParams(opts).toString()
+  let params = new URLSearchParams(opts).toString();
   return axios.get('/me/following?type=artist&limit=50');
 }
 
@@ -211,18 +212,3 @@ export async function setHeaders(attempts = 3) {
   // getAccessToken()
   setHeaders();
 })();
-
-export function parseSpotifyResults(obj) {
-  if (obj.data) {
-    obj = obj.data
-  }
-  if (obj.items) {
-    return obj
-  }
-  if (obj.artists) {
-    return parseSpotifyResults(obj.artists)
-  }
-  if (obj.albums) {
-    return parseSpotifyResults(obj.albums);
-  }
-}

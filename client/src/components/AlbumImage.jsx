@@ -2,7 +2,7 @@ import React from 'react';
 import { Image } from '@mantine/core';
 
 const AlbumImage = ({ image }) => {
-  console.log(image);
+
 
   if (!image) return <></>
 
