@@ -16,9 +16,10 @@
 
 
 
-Response Status Codes
+### Spotify API Response Status Codes
 
-| :--- STATUS | :--- CODE |	:--- DESCRIPTION --- |
+| STATUS | CODE |	DESCRIPTION      |
+| :----- | :--- |	:--------------- |
 | 200 |	OK | The request has succeeded. The client can read the result of the request in the body and the headers of the response. |
 | 201 |	Created | The request has been fulfilled and resulted in a new resource being created. |
 | 202 |	Accepted | The request has been accepted for processing, but the processing has not been completed. |
