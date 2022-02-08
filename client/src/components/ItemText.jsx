@@ -3,7 +3,7 @@ import { Group, Text } from '@mantine/core'
 
 import { List, genres } from '../utils/'
 
-const ItemText = ({ item }) => {
+const ItemText = ({ item, children }) => {
 
   // return JSON.stringify(Object.entries(item))
   const { type } = item;
@@ -27,6 +27,7 @@ const ItemText = ({ item }) => {
 
 
   return (<Group position='reverse' direction='column' >
+    {children}
     {TYPES[type](item)}
   </Group>)
 };

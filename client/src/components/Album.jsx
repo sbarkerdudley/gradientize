@@ -1,11 +1,17 @@
 import React, { useState, useEffect, useContext, Suspense } from 'react';
-import { Card, Image, Text, Group } from '@mantine/core';
+import {
+  Card,
+  Image,
+  Text,
+  Group,
+} from '@mantine/core';
 import { useHover } from '@mantine/hooks';
 import {
   AlbumImage,
   CardBody,
   ColorContext,
   Fav,
+  Genres,
   ItemText,
   SearchContext,
 } from './';
@@ -20,15 +26,13 @@ const Album = ({ item }) => {
     }
   }
 
-  const { type, uri, id, images, name, external_urls } = item
+  const { type, uri, id, images, name, external_urls, genres } = item
 
-
-  var thumb = images.at(-1).url
-  const img = images[0].url;
+  var thumb = images.at(-1)?.url;
+  const img = images[0]?.url;
 
   const { useSeeds } = useContext(SearchContext);
   const { useColorCache } = useContext(ColorContext);
-
 
   const handleClick = () => useSeeds.prepend({ id, img: thumb, type })
   const addToSeeds = () => useSeeds.prepend({ id, img: thumb, type })
@@ -49,6 +53,14 @@ const Album = ({ item }) => {
   const [styles, setStyles] = React.useState(sx)
 
   let { hovered, ref } = useHover();
+
+
+
+
+
+  // if (genres && Array.isArray(genres)) {
+  //   return <Genres values={genres} />
+  // }
 
 
 
@@ -76,7 +88,17 @@ const Album = ({ item }) => {
     radius='sm'
   />
 
-  const Back = <ItemText item={item} />
+  /**
+ * @param {string[]} genres
+ */
+
+  var GenreChips =  []
+
+  if (genres && Array.isArray(genres)) {
+    GenreChips = <Genres values={genres} />
+  }
+
+  const Back = (<ItemText item={item}>{GenreChips}</ItemText>)
 
   if (item) {
 

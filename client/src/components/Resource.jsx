@@ -25,6 +25,7 @@ export default class Resource extends Component {
           if (response.status !== 200) {
             throw new Error('Bad Request')
           }
+          console.log(response?.config?.url);
           return response.data
         })
         .then((data) => {

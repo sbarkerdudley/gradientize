@@ -14,24 +14,26 @@ const props = ['album_group', 'album_type', 'artists', 'available_markets', 'ext
 
 const AlbumGrid = ({ items }) => {
 
-  if (items.items) {
+  console.log(items, 'ITEMS');
+  if (items.artists) {
+    items = items.artists.items
+  } else if (items.items) {
     items = items.items
   }
-  return (<SimpleGrid><div><pre>
-    {JSON.stringify(items.map(item => Object.entries(item)))}
-  </pre><br /></div></SimpleGrid>)
-  if (!Array.isArray(items)) {
-    if (items.artists) {
-      items = items.artists.items
-    } else if (items.albums) {
-      items = items.albums.items
-    }
-    console.log({items});
-  }
+  // return (<SimpleGrid><div><pre>
+  //   {JSON.stringify(items.map(item => Object.entries(item)))}
+  // </pre><br /></div></SimpleGrid>)
+  // if (!Array.isArray(items)) {
+  //   if (items.artists) {
+  //     items = items.artists.items
+  //   } else if (items.albums) {
+  //     items = items.albums.items
+  //   }
+  //   console.log({items});
+  // }
 
   let { musicList, setMusicList } = useContext(SpotifyContext)
 
-  // let [items, setList] = useState([])
 
 
   var AlbumComponents = items.map((item, i) => (
@@ -39,17 +41,6 @@ const AlbumGrid = ({ items }) => {
       <Album {...{ item }} key={item.id} />
     </Grid.Col>
   ))
-
-  // const format = {
-  //   artist: (artist) => (<div key={artist.id}><pre>{JSON.stringify(Object.keys(artist))}</pre></div>),
-  //   album: (album) => (<Album album={album} key={album.id} />),
-  //   track: (track) => (<div><em><pre>{JSON.stringify(Object.keys(track))}</pre></em></div>),
-  // }
-
-
-  // var AlbumComponents = items.map(item => format[item.type](item))
-
-
 
 
 

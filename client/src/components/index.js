@@ -11,6 +11,8 @@ import ColorProvider from './ColorProvider';
 import ColorSelector from './ColorSelector';
 import Fav from './Fav';
 import Footer from './Footer';
+import Genre from './Genre';
+import Genres from './Genres';
 import Gradient from './Gradient';
 import Item from './Item';
 import ItemText from './ItemText';
@@ -53,6 +55,8 @@ export {
   ColorSelector,
   Fav,
   Footer,
+  Genre,
+  Genres,
   Gradient,
   Item,
   ItemText,

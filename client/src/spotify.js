@@ -62,7 +62,7 @@ export function savedAlbums(opts = {}) {
 
 export function followedArtists(opts = {}) {
   let params = new URLSearchParams(opts).toString()
-  return axios.get('/me/following?type=artist');
+  return axios.get('/me/following?type=artist&limit=50');
 }
 
 export function albumTracks(id) {
@@ -70,8 +70,8 @@ export function albumTracks(id) {
 }
 
 export function userPlaylists(userid, opts = {}) {
-  let params = Object.assign(opts);
-  return axios.get(`/me/playlists?`, { params });
+  let params = new URLSearchParams(opts).toString();
+  return axios.get(`/me/playlists?${params}`);
 }
 
 export function recs(seeds) {
@@ -211,3 +211,18 @@ export async function setHeaders(attempts = 3) {
   // getAccessToken()
   setHeaders();
 })();
+
+export function parseSpotifyResults(obj) {
+  if (obj.data) {
+    obj = obj.data
+  }
+  if (obj.items) {
+    return obj
+  }
+  if (obj.artists) {
+    return parseSpotifyResults(obj.artists)
+  }
+  if (obj.albums) {
+    return parseSpotifyResults(obj.albums);
+  }
+}

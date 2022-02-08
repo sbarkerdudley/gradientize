@@ -16,8 +16,11 @@ export default function SpotifyAPIProvider({ children }) {
   useEffect(() => {
     if (typeof accessToken === 'string') {
       setHeaders()
-        .then(token => setToken(accessToken))
-        .then(() => navigate('/login'))
+        .then(token => {
+          setToken(accessToken)
+          window.accessToken = accessToken;
+        })
+        // .then(() => navigate('/login'))
       console.log(accessToken);
     } else {
       console.log('efsrgdthfntdgrsefsgrd');

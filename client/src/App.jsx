@@ -19,7 +19,7 @@ const App = () => {
     <div id='app'>
       <AppContainer>
         <Resource
-          action={Spotify.get.userPlaylists}
+          action={Spotify.get.followedArtists}
           render={(state) => <AlbumGrid items={state} />}
           opts={{ limit: 30 }}
           path={''}

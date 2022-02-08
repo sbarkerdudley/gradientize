@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-// import { getTop } from '../spotify';
-import { shuffleArray } from '../utils.js'
+
+import { shuffleArray } from '../utils'
 import data from '../../../data.js';
 import axios from 'axios';
-// import { SpotifyApiContext } from 'react-spotify-api'
+
 
 export const SpotifyContext = React.createContext();
 

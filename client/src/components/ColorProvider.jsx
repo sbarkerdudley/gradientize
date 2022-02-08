@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { makeHSLAGradients, makeOffsetHSLAGradients } from '../utils.js'
+import { makeHSLAGradients, makeOffsetHSLAGradients } from '../utils'
 import { useColor } from '../hooks'
 
 export const ColorContext = React.createContext({});

@@ -10,6 +10,7 @@ export default function Colorize( item ) {
 
   if (images && !item.hue) {
     useColorCache.set(thumb).then((results) => {
+      'colorized before setting state'
       item.hue = results[0];
       item.shadow = results[1];
     });
