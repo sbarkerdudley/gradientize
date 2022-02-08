@@ -46,6 +46,9 @@
 - `useColor` - uses [Fast Average Color](https://github.com/fast-average-color/fast-average-color) to sample the average color in *RGB* of incoming images (album covers, playlist images, artist profile photos, etc). The `getColorAsync` method returns a promise, and an object of various formats of the sampled *RGB* color. Sometimes the color can be muddy when there is no dominant color, or the average is influenced by contrasting colors. The `getHue` method converts the `[ R, G, B ]` { value } property returned by `getColorAsync` and parses it into an integer where `0 <= n <= 360`. This format can be concatenated into an `hsl(${int}, 100%, 50%)` string to be used as a color property in CSS.
 
 [hsl()](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsl()) and [hsla()](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsla())
+
+| `abbr.` | for | type/value range | Description |
+| :---: | :--- | :------------- | :------------------------------------------------- |
 | `h` | hue | 0 <= `int` <= 360 | value representing the pure hue of the `hsl` color |
 | `s` | saturation | `'0%'` <= `string` <= `'100%'` | 100% saturation reflects a pure hue |
 | `l` | lightness |  `'0%'` <= `string` <= `'100%'` | 50% is the pure hue, *100%* is white, *0%* is black |
