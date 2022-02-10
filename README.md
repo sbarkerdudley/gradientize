@@ -55,4 +55,3 @@ I built the bulk of the UI in about 2 days with the immense help of [Mantine.dev
 | `s` | saturation | `'0%'` <= `string` <= `'100%'` | 100% saturation reflects a pure hue |
 | `l` | lightness |  `'0%'` <= `string` <= `'100%'` | 50% is the pure hue, *100%* is white, *0%* is black |
 | (`a`) | alpha | 0 <= `float` <= `1` | optional opacity when using the `hsla()` constructor. 0 is transparent, 1 is opaque |
-
