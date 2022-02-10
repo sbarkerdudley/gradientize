@@ -41,6 +41,8 @@
 
 #### Components
 
+I built the bulk of the UI in about 2 days with the immense help of [Mantine.dev](https://github.com/mantinedev). I found it extremely intuitive and fast to *compose* a polished-looking app quickly. The styling API is a bit more work to get the hang of, and I mostly found myself making on-the-fly inline CSS changes as needed. Overall, I highly recommend the component library.
+
 #### Hooks
 
 - `useColor` - uses [Fast Average Color](https://github.com/fast-average-color/fast-average-color) to sample the average color in *RGB* of incoming images (album covers, playlist images, artist profile photos, etc). The `getColorAsync` method returns a promise, and an object of various formats of the sampled *RGB* color. Sometimes the color can be muddy when there is no dominant color, or the average is influenced by contrasting colors. The `getHue` method converts the `[ R, G, B ]` { value } property returned by `getColorAsync` and parses it into an integer where `0 <= n <= 360`. This format can be concatenated into an `hsl(${int}, 100%, 50%)` string to be used as a color property in CSS.
