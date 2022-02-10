@@ -5,9 +5,10 @@ import {
   AlbumGrid,
   AppContainer,
   AppHeader,
-  ScrollButton,
+  GenreSelect,
   Gradient,
   Resource,
+  ScrollButton,
 } from './components';
 import { Spotify } from './spotify'
 
@@ -17,6 +18,7 @@ import { Spotify } from './spotify'
 const App = () => {
   return (
     <div id='app'>
+      <GenreSelect />
       <AppContainer>
         <Resource
           action={Spotify.get.userPlaylists}

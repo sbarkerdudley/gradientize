@@ -13,6 +13,7 @@ import Fav from './Fav';
 import Footer from './Footer';
 import Genre from './Genre';
 import Genres from './Genres';
+import GenreSelect from './GenreSelect';
 import Gradient from './Gradient';
 import Item from './Item';
 import ItemText from './ItemText';
@@ -57,6 +58,7 @@ export {
   Footer,
   Genre,
   Genres,
+  GenreSelect,
   Gradient,
   Item,
   ItemText,
