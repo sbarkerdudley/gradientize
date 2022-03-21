@@ -6,6 +6,13 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+# Video
+
+*.mov
+*.mp4
+*.mpg
+*.mpeg
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
