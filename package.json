@@ -6,7 +6,8 @@
   "proxy": "http://localhost:3000",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack -w",
+    "build": "webpack",
+    "dev": "webpack -w",
     "serve": "npx webpack-dev-server --config webpack.config.js",
     "server": "nodemon server/index.js",
     "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run build\""
