@@ -33,7 +33,7 @@
     "@mantine/hooks": "^3.6.0",
     "@mantine/styles": "^3.6.0",
     "axios": "^0.24.0",
-    "babel-loader": "^8.2.3",
+    "babel-loader": "^8.3.0",
     "babel-polyfill": "^6.26.0",
     "cookie-session": "^2.0.0",
     "css-loader": "^6.5.1",
